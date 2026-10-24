@@ -1,0 +1,168 @@
+/* Header geometry never changes between the initial and scrolled states. */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  block-size: 96px;
+  border-block-end: 1px solid var(--dark-line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  block-size: 100%;
+}
+.header-sentinel {
+  position: absolute;
+  inset: 180px auto auto 0;
+  inline-size: 1px;
+  block-size: 1px;
+  pointer-events: none;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  inline-size: 220px;
+  min-inline-size: 44px;
+  min-block-size: 48px;
+  flex-shrink: 0;
+}
+.brand svg {
+  inline-size: 100%;
+  overflow: visible;
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.684px;
+  fill: white;
+}
+.devmark {
+  font-family: var(--font-mono);
+  font-size: 18.24px;
+  font-weight: 500;
+  letter-spacing: 5.13px;
+  fill: var(--yellow);
+}
+.header-cta {
+  min-inline-size: 176px;
+  margin-inline-start: auto;
+}
+.menu-button {
+  inline-size: auto;
+  min-inline-size: 100px;
+  grid-auto-flow: column;
+  gap: 12px;
+  padding: 12px;
+  font-size: 0.875rem;
+}
+.header-symbol,
+.wordmark,
+.devmark,
+.x-upper,
+.x-lower {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Footer and native dialog */
+.site-footer {
+  padding-block: 56px 24px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  align-items: center;
+}
+.footer-top nav {
+  display: flex;
+  gap: 28px;
+}
+.footer-top nav a {
+  display: flex;
+  align-items: center;
+  min-block-size: 48px;
+  padding-inline: 10px;
+}
+.footer-description {
+  color: var(--dim);
+  margin-block: 28px 40px;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-block-start: 1px solid var(--dark-line);
+  padding-block-start: 16px;
+  font-size: 0.875rem;
+}
+.footer-bottom > p {
+  color: var(--dim);
+  margin-inline-end: auto;
+}
+.modal-open {
+  overflow: hidden;
+}
+dialog {
+  border: 0;
+  max-inline-size: none;
+  max-block-size: none;
+}
+dialog::backdrop {
+  background: #0009;
+}
+.mobile-menu {
+  inline-size: 100%;
+  block-size: 100svh;
+  inset: 0;
+  margin: 0;
+  padding: 32px 64px;
+  overflow-y: auto;
+}
+.mobile-menu-inner {
+  max-inline-size: 1000px;
+  margin-inline: auto;
+}
+.menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-block-size: 48px;
+  margin-block-end: 48px;
+}
+.mobile-menu nav {
+  max-inline-size: 680px;
+  margin-block: 28px 48px;
+}
+.mobile-menu nav > a {
+  display: grid;
+  grid-template-columns: 32px 1fr 24px;
+  align-items: center;
+  gap: 16px;
+  min-block-size: 100px;
+  border-block-end: 1px solid var(--dark-line);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+.mobile-menu nav > a > span:last-child {
+  font-size: 1.5rem;
+  color: var(--yellow);
+}
+.mobile-menu nav > a[aria-current='page'] {
+  color: var(--yellow);
+}
+.menu-project {
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+.menu-email {
+  display: flex;
+  align-items: center;
+  min-block-size: 48px;
+  margin-block: 24px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}

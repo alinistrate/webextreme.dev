@@ -1,0 +1,10 @@
+MAILJET_API_KEY=
+MAILJET_API_SECRET=
+CONTACT_FROM=contact@webextreme.dev
+CONTACT_TO=contact@webextreme.dev
+CONTACT_ALLOWED_ORIGIN=http://127.0.0.1:3100
+# Set only for local tests. Production rejects this flag on public hosts.
+CONTACT_TEST_MODE=true
+
+# Cloudflare official dummy secret, usable only on a loopback hostname.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

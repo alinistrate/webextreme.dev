@@ -1,0 +1,10 @@
+node_modules
+.nuxt
+.output
+.wrangler
+pnpm-lock.yaml
+reports
+playwright-report
+test-results
+
+dist

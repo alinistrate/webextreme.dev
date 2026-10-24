@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-yellow: #ffd426;
+  --color-graphite: #191b1d;
+  --font-sans: 'Inter Variable', Inter, Arial, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+@import './fonts.css';
+@import './base.css';
+@import './shell.css';
+@import './home.css';
+@import './pages.css';
+@import './motion.css';
+@import './responsive.css';
+
+@import './consent.css';
