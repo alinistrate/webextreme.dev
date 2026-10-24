@@ -18,8 +18,8 @@ function accept(allow: boolean) {
     <div>
       <h2>Your privacy, your choice.</h2>
       <p>
-        We use essential security technology to protect this site. With your permission, Google
-        Analytics helps us understand how the website is used. No analytics runs before you accept.
+        Optional Google Analytics starts only after you accept. We use essential security tools to
+        protect the site. You can change your choice anytime.
       </p>
       <NuxtLink to="/cookies/">Read our Cookie Policy</NuxtLink>
     </div>
