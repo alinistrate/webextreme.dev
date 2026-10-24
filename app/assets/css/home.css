@@ -426,16 +426,18 @@
 .contact-form {
   display: grid;
   align-content: start;
-  gap: 28px;
+  min-inline-size: 0;
+  gap: 20px;
 }
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
 }
 .field {
   display: grid;
-  gap: 12px;
+  align-content: start;
+  gap: 8px;
   min-inline-size: 0;
 }
 .field label {
@@ -452,7 +454,7 @@ textarea {
   background: white;
   border: 1px solid var(--dark);
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 10px 12px;
   min-block-size: 48px;
   inline-size: 100%;
   max-inline-size: 100%;
@@ -464,7 +466,7 @@ textarea::placeholder {
 }
 textarea {
   resize: vertical;
-  min-block-size: 128px;
+  min-block-size: 112px;
   line-height: 1.5;
 }
 .contact-form .button {

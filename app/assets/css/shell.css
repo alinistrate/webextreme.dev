@@ -46,7 +46,9 @@
   fill: var(--yellow);
 }
 .header-cta {
-  min-inline-size: 176px;
+  min-block-size: 48px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
   margin-inline-start: auto;
 }
 .menu-button {

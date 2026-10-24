@@ -151,11 +151,10 @@ h2:focus {
 .button {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-block-size: 56px;
-  min-inline-size: 224px;
-  padding: 16px 24px;
+  justify-content: center;
+  gap: 12px;
+  min-block-size: 48px;
+  padding: 8px 16px;
   border: 1px solid transparent;
   border-radius: 8px;
   background: var(--yellow);

@@ -43,7 +43,6 @@ usePageMotion();
             the next steps from there.
           </p>
           <a class="email-link" href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>
-          <p class="location-copy">Based in Sibiu, Romania.</p>
           <div class="contact-next">
             <h3>What happens next</h3>
             <ol>

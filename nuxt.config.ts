@@ -47,5 +47,8 @@ export default defineNuxtConfig({
       ],
     },
   },
-  experimental: { payloadExtraction: true },
+  experimental: {
+    payloadExtraction: true,
+    defaults: { nuxtLink: { prefetchOn: { visibility: false, interaction: true } } },
+  },
 });

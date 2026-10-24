@@ -55,13 +55,6 @@ usePageSeo(
           Providing contact details is voluntary, but without an email address and enough
           information we may be unable to respond.
         </p>
-        <h2>No contact database</h2>
-        <p>
-          The contact form does not save enquiries in a website database. Messages are sent through
-          Mailjet to contact@webextreme.dev and forwarded through Cloudflare Email Routing to our
-          Google email account. The correspondence is therefore processed in email and by the
-          providers involved in delivery.
-        </p>
         <h2>Providers and international processing</h2>
         <p>
           We use Cloudflare for hosting, DNS, email forwarding and Turnstile spam protection;

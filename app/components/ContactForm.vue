@@ -100,7 +100,6 @@ async function submit() {
     </div>
     <div class="field">
       <label :for="id + '-details'">Project details <span>(required)</span></label>
-      <p :id="id + '-details-help'" class="form-note">Please include at least 20 characters.</p>
       <textarea
         :id="id + '-details'"
         v-model="fields.details"
@@ -109,9 +108,10 @@ async function submit() {
         :aria-describedby="id + '-details-help'"
         minlength="20"
         maxlength="5000"
-        rows="4"
+        rows="3"
         placeholder="What would you like to build?"
       />
+      <p :id="id + '-details-help'" class="form-note">Please include at least 20 characters.</p>
     </div>
     <div class="honeypot" aria-hidden="true">
       <label :for="id + '-website'">Leave this field empty</label

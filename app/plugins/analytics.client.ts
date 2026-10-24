@@ -44,6 +44,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       page_location: location.origin + trackedPath,
       page_title: document.title,
       page_referrer: cleanUrl(document.referrer),
+      cookie_flags: location.protocol === 'https:' ? 'SameSite=Lax;Secure' : 'SameSite=Lax',
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
     });

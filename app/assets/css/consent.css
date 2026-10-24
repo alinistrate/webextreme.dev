@@ -91,9 +91,13 @@
 .cookie-dialog .cookie-actions {
   margin-block-start: 24px;
 }
+.turnstile-check {
+  display: grid;
+  gap: 8px;
+  min-inline-size: 0;
+}
 .turnstile-widget {
-  min-block-size: 140px;
-  margin-block-start: 12px;
+  inline-size: 100%;
 }
 #enquiry-form {
   scroll-margin-block-start: 120px;

@@ -30,7 +30,9 @@ async function start() {
       sitekey: config.public.turnstileSiteKey,
       action: 'contact',
       theme: 'light',
-      size: 'compact',
+      // Use Cloudflare's supported appearance rather than styling its cross-origin frame.
+      appearance: 'interaction-only',
+      size: widget.value.clientWidth >= 300 ? 'flexible' : 'compact',
       'response-field': false,
       callback: (value: string) => {
         token.value = value;
