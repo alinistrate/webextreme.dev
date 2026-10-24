@@ -14,10 +14,12 @@ export function useConsent() {
   const analytics = computed(
     () => ready.value && choice.value?.version === 1 && choice.value.analytics === true,
   );
-  const needsChoice = computed(() => ready.value && choice.value?.version !== 1);
+  const hasChoice = computed(() => choice.value?.version === 1);
+  // Fresh visitors receive the banner in prerendered HTML; Analytics still waits for readiness.
+  const needsChoice = computed(() => !ready.value || !hasChoice.value);
   function save(allowAnalytics: boolean) {
     choice.value = { version: 1, analytics: allowAnalytics };
     settingsOpen.value = false;
   }
-  return { ready, analytics, needsChoice, settingsOpen, save };
+  return { ready, analytics, hasChoice, needsChoice, settingsOpen, save };
 }

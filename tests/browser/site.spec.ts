@@ -15,7 +15,9 @@ for (const route of pages)
   test('accessible prerendered page ' + route, async ({ page, request }) => {
     const response = await request.get(route);
     expect(response.ok()).toBeTruthy();
-    expect(await response.text()).toContain('<h1');
+    const html = await response.text();
+    expect(html).toContain('<h1');
+    expect(html).toContain('aria-label="Cookie choices"');
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
     await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -117,6 +119,7 @@ test('analytics requires a choice and rejection survives reload', async ({ page,
   await settings.getByRole('button', { name: 'Reject optional', exact: true }).click();
   await page.reload();
   await expect(banner).not.toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-consent-known', 'true');
   expect(googleRequests).toEqual([]);
   expect((await context.cookies()).map((cookie) => cookie.name)).toEqual(['wed_consent']);
 });

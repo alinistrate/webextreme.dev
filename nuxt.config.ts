@@ -26,6 +26,12 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          key: 'consent-display-init',
+          tagPosition: 'head',
+          // Only suppress a previously answered banner; this never enables or loads analytics.
+          innerHTML: `try{var c=document.cookie.split('; ').find(function(v){return v.startsWith('wed_consent=')});if(c&&JSON.parse(decodeURIComponent(c.slice(12))).version===1)document.documentElement.dataset.consentKnown='true'}catch{}`,
+        },
+        {
           key: 'theme-init',
           tagPosition: 'head',
           innerHTML: `try{var t=localStorage.getItem('wed_theme');if(t==='light'||t==='dark')document.querySelector('meta[name="color-scheme"]').content=t}catch{}`,

@@ -158,3 +158,8 @@
     font-size: 0.875rem;
   }
 }
+
+/* A valid stored choice hides the static banner before paint on return visits. */
+html[data-consent-known='true'] .cookie-banner {
+  display: none;
+}

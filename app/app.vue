@@ -3,6 +3,8 @@ import { site } from '~/content/site';
 import { company } from '~/content/company';
 import displayFont from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 const { enabled } = useMotion();
+const { hasChoice } = useConsent();
+useHead(() => ({ htmlAttrs: { 'data-consent-known': hasChoice.value ? 'true' : 'false' } }));
 const { choice } = useTheme();
 useHead(() => ({
   meta: [
@@ -49,5 +51,5 @@ useHead({
       <a href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>. Navigation links are
       available in the footer.
     </p></noscript
-  ><SiteFooter /><ClientOnly><CookieConsent /></ClientOnly>
+  ><SiteFooter /><CookieConsent />
 </template>

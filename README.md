@@ -104,3 +104,5 @@ PageHeroArt contains four decorative SVG compositions. BrandIcon uses the typed 
 The header color-scheme toggle follows the system by default and stores only explicit opposite choices in wed_theme local storage. A minimal early head script prevents a theme flash; reactive head state owns subsequent updates. Both state icons remain in markup and CSS exposes only the current action. Yellow contact sections retain a fixed light scheme for predictable form contrast.
 
 Home keeps its hero, navigation, FAQ and contact form immediately interactive. Services, About and Approach sections use Nuxt visible hydration with a 200px margin. Their full HTML remains prerendered for search engines and no-JavaScript access. Motion observes this existing HTML independently of hydration.
+
+The consent banner is prerendered for fresh visits. A small early script only hides an already answered banner; it cannot load Analytics. Reactive cookie state owns subsequent visibility, while the existing readiness-and-consent checks continue to gate Google requests.
