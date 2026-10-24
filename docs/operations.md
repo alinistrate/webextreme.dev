@@ -27,7 +27,11 @@ Verified launch: 24 October 2026. Canonical origin: https://webextreme.dev.
 ## Verification and limits
 
 - ESLint, strict TypeScript, formatting, prerender build and 10 contact-handler tests pass.
-- 30 Playwright checks pass across Chromium and WebKit, including axe WCAG 2.2 AA rules, responsive widths, menu keyboard/focus, reduced motion, contact simulation, consent and analytics URL filtering.
+- 36 Playwright checks pass across Chromium and WebKit, including axe WCAG 2.2 AA rules, responsive widths, menu keyboard/focus, motion, contact simulation, consent and analytics URL filtering.
 - Latest production Lighthouse lab scores: Home performance 99 mobile / 100 desktop; Contact 100 mobile / 100 desktop. Accessibility, Best Practices and SEO are 100 for these four measurements. Reports are generated into ignored reports/.
 - Lab scores fluctuate and are not a PageSpeed field-data guarantee or ADA legal certification. Firefox could not launch in this Windows environment; physical Safari/iOS and assistive-technology review remain outside the verified test coverage.
 - One transitive node-forge advisory remains in the Nuxt build/development toolchain; no such code was found in the deployed assets or Worker. Check upstream patches during maintenance rather than suppressing audit results.
+
+## Motion and navigation update
+
+Anchors use native smooth scrolling with fixed-header offsets, including client route navigation. Browser Back restores anchor positions. Shared reveals now cover every page, including policy content. Hero frames and corners assemble once on entry. Link underlines, CTA arrows, brand marks and menu rows have short hover/focus animations. Motion remains active regardless of OS reduced-motion preference at the owner's explicit request; this choice supersedes the launch behavior. Static content and links remain usable without JavaScript. The Accessibility page reflects the current behavior. Responsive checks include 320, 390, 768 and 1440px, with additional open-menu axe checks and visual review at mobile/tablet sizes.

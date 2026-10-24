@@ -6,9 +6,10 @@ usePageSeo(
   'Essential security technology, optional Google Analytics cookies and how to change your cookie choices.',
   '/cookies/',
 );
+usePageMotion();
 </script>
 <template>
-  <main id="main" tabindex="-1">
+  <main id="main" ref="page" tabindex="-1">
     <section class="page-hero dark">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">

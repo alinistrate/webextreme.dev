@@ -276,7 +276,7 @@
   .service-card:nth-child(even) {
     inline-size: 100%;
     margin: 0;
-    --entry-x: 16px;
+    --entry-x: 0px;
   }
   .service-card a {
     grid-template-columns: 24px 1fr 20px;
@@ -596,5 +596,18 @@
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header .brand {
+    inline-size: 112px;
+  }
+  .menu-button {
+    inline-size: 48px;
+    min-inline-size: 48px;
+  }
+  .menu-button > span {
+    display: none;
   }
 }

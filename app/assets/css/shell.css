@@ -46,6 +46,7 @@
   fill: var(--yellow);
 }
 .header-cta {
+  white-space: nowrap;
   min-block-size: 48px;
   padding: 8px 12px;
   font-size: 0.875rem;

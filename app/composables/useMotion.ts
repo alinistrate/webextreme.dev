@@ -1,6 +1,5 @@
-/** The operating system preference controls production motion; there is no stored override. */
+/** Motion is enabled after hydration; static HTML remains the no-JavaScript fallback. */
 export function useMotion() {
   const enabled = useState('motion-enabled', () => false);
-  const reduced = useState('motion-reduced', () => false);
-  return { enabled, reduced };
+  return { enabled };
 }

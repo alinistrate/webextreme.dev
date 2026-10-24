@@ -24,13 +24,19 @@ export function usePageMotion() {
       },
       { rootMargin: '0px 0px -24px 0px', threshold: 0 },
     );
-    page.querySelectorAll<HTMLElement>('.reveal').forEach((element, index) => {
-      // Never hide content already visible on first paint, including the LCP heading.
-      if (element.getBoundingClientRect().top < window.innerHeight) return;
-      element.style.setProperty('--reveal-delay', (index % 3) * 60 + 'ms');
-      element.classList.add('is-observed');
-      observer?.observe(element);
-    });
+    page
+      .querySelectorAll<HTMLElement>('.reveal, .prose > *, .page-section-heading')
+      .forEach((element, index) => {
+        element.classList.add('reveal');
+        // Never hide content already visible on first paint, including the LCP heading.
+        if (element.getBoundingClientRect().top < window.innerHeight) return;
+        element.style.setProperty('--reveal-delay', (index % 3) * 60 + 'ms');
+        element.classList.add('is-observed');
+        observer?.observe(element);
+      });
+    // Assemble the decorative Home artwork when it first enters view, including on phones.
+    const artwork = page.querySelector('.precision-art');
+    if (artwork) observer.observe(artwork);
     startIntro();
   });
   watch(enabled, (value) => {

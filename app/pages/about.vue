@@ -2,7 +2,7 @@
 import { about } from '~/content/about';
 usePageSeo(
   'About',
-  'Web Extreme Dev is based in Sibiu, Romania. Hands-on web development and technical project delivery experience across websites, ecommerce and applications.',
+  'Web Extreme Dev brings hands-on web development and technical project delivery experience across websites, ecommerce and applications.',
   '/about/',
 );
 usePageMotion();
@@ -21,8 +21,8 @@ usePageMotion();
             <p class="eyebrow yellow reveal">About</p>
             <h1 tabindex="-1" class="page-title reveal">Technical depth.<br />Clear delivery.</h1>
             <p class="page-lead reveal">
-              A software and web company based in Sibiu, Romania. Built on practical development and
-              project delivery experience.
+              A software and web company. Built on practical development and project delivery
+              experience.
             </p>
           </div>
           <div class="page-art reveal" aria-hidden="true">
@@ -83,7 +83,6 @@ usePageMotion();
         </div>
         <div class="location-line reveal">
           <span class="location-dot" aria-hidden="true"></span>
-          <p>Based in Sibiu, Romania.</p>
           <NuxtLink class="text-link light-link" to="/contact/"
             >Start a conversation <span aria-hidden="true">↗</span></NuxtLink
           >

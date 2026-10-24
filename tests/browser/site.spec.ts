@@ -23,7 +23,7 @@ for (const route of pages)
     const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
     if (await reject.isVisible()) await reject.click();
     await expect(page.locator('main h1')).toHaveCount(1);
-    await expect(page.locator('html')).toHaveAttribute('data-motion', 'off');
+    await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
       .analyze();
@@ -54,10 +54,10 @@ test('menu closes with Escape, returns focus and navigates', async ({ page }) =>
   await expect(page).toHaveURL(/approach/);
   await expect(page.locator('main h1')).toContainText('A clear path.');
 });
-test('reduced motion and FAQ state', async ({ page }) => {
+test('approved motion stays active and FAQ state works', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('html')).toHaveAttribute('data-motion', 'off');
+  await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
   await expect(page.getByText('Motion on', { exact: true })).toHaveCount(0);
   await expect(page.getByText('Motion off', { exact: true })).toHaveCount(0);
   const question = page.getByRole('button', { name: 'Can we start with a smaller scope?' });
@@ -160,4 +160,51 @@ test('analytics omits URL details and counts each route once after consent', asy
   expect(events[1]?.page_location).toBe('http://127.0.0.1:3100/services/');
   expect(events[1]?.page_referrer).toBe('http://127.0.0.1:3100/');
   expect(JSON.stringify(events)).not.toMatch(/private|@|%40/);
+});
+
+test('service anchors scroll below the fixed header and history restores the previous anchor', async ({
+  page,
+}) => {
+  await page.goto('/services/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  const categories = page.getByRole('navigation', { name: 'Service categories' });
+  await categories.getByRole('link', { name: '05 Landing Pages' }).click();
+  await expect(page).toHaveURL(/#landing-pages$/);
+  const top = (id: string) => page.locator(id).evaluate((el) => el.getBoundingClientRect().top);
+  await expect.poll(async () => Math.abs((await top('#landing-pages')) - 112)).toBeLessThan(3);
+  await categories.getByRole('link', { name: '02 Web Development' }).click();
+  await expect(page).toHaveURL(/#web-development$/);
+  await expect.poll(async () => Math.abs((await top('#web-development')) - 112)).toBeLessThan(3);
+  await page.goBack();
+  await expect(page).toHaveURL(/#landing-pages$/);
+  await expect.poll(async () => Math.abs((await top('#landing-pages')) - 112)).toBeLessThan(3);
+});
+
+test('a Home service link reaches the correct section after client navigation', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  await page.locator('.service-card a[href="/services/#landing-pages"]').click();
+  await expect(page).toHaveURL(/services\/#landing-pages$/);
+  await expect
+    .poll(async () =>
+      Math.abs(
+        (await page.locator('#landing-pages').evaluate((el) => el.getBoundingClientRect().top)) -
+          112,
+      ),
+    )
+    .toBeLessThan(3);
+  await expect(page.locator('#landing-pages h2')).toBeVisible();
+});
+
+test('policy content reveals as it enters view without changing keyboard access', async ({
+  page,
+}) => {
+  await page.goto('/privacy/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  const heading = page.getByRole('heading', { name: 'Your rights' });
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('heading', { name: 'Privacy Policy', exact: true })).toHaveCount(1);
 });

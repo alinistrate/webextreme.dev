@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://webextreme.dev/</loc></url>
-  <url><loc>https://webextreme.dev/services/</loc></url>
-  <url><loc>https://webextreme.dev/approach/</loc></url>
-  <url><loc>https://webextreme.dev/about/</loc></url>
-  <url><loc>https://webextreme.dev/contact/</loc></url>
-  <url><loc>https://webextreme.dev/privacy/</loc></url>
-  <url><loc>https://webextreme.dev/accessibility/</loc></url>
-  <url><loc>https://webextreme.dev/terms/</loc></url>
-  <url><loc>https://webextreme.dev/cookies/</loc></url>
+  <url><loc>https://webextreme.dev/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/services/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/approach/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/about/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/contact/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/privacy/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/accessibility/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/terms/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://webextreme.dev/cookies/</loc><lastmod>2026-10-24</lastmod></url>
 </urlset>

@@ -77,7 +77,7 @@ GTM should send an initial GA4 page_view and virtual_page_view route changes exa
 
 ## Accessibility and browser support
 
-Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Motion follows OS reduced-motion preferences, with no public animation controls or stored override.
+Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Short, non-looping motion stays active for all visitors, including reduced-motion preferences, as explicitly requested for the visual direction. There are no public animation controls or stored overrides. Native anchor scrolling is smooth with fixed-header offsets.
 
 Automated axe and Lighthouse checks complement keyboard, focus, zoom, contrast and assistive-technology review. Playwright WebKit is not physical Safari/iOS testing. Automated scores do not establish ADA legal certification. Record actual browser test and audit limits in the launch report.
 

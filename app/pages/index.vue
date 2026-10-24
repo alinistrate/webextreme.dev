@@ -7,7 +7,7 @@ import HomeFaq from '~/components/home/HomeFaq.vue';
 import HomeContact from '~/components/home/HomeContact.vue';
 usePageSeo(
   'Software built with precision',
-  'Design, websites, ecommerce and custom web applications. Web Extreme Dev is based in Sibiu, Romania, working from idea to launch.',
+  'Design, websites, ecommerce and custom web applications. Web Extreme Dev works with you from the first idea to launch.',
   '/',
 );
 usePageMotion();

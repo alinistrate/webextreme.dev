@@ -1,6 +1,6 @@
 export const about = {
   intro:
-    'Web Extreme Dev is a software and web company based in Sibiu, Romania. Our work is built on more than 15 years of hands-on web development and technical project delivery experience. Our focus spans websites, ecommerce and custom web applications.',
+    'Web Extreme Dev is a software and web company. Our work is built on more than 15 years of hands-on web development and technical project delivery experience. Our focus spans websites, ecommerce and custom web applications.',
   experience:
     'That experience includes building and maintaining web applications, integrating third-party services, improving existing codebases and guiding projects from scope definition to production release.',
   delivery:

@@ -4,6 +4,7 @@ usePageSeo(
   'Accessibility features and how to report a problem on the Web Extreme Dev website.',
   '/accessibility/',
 );
+usePageMotion();
 </script>
 
 <template>
@@ -28,7 +29,8 @@ usePageSeo(
         <h2>Using the website</h2>
         <p>
           You can navigate using a keyboard, skip directly to the main content and enlarge text.
-          Decorative animations are disabled when your operating system requests reduced motion.
+          Decorative animations use short transitions and stop after entering view. Content remains
+          available when JavaScript is disabled.
         </p>
         <h2>Report a problem</h2>
         <p>

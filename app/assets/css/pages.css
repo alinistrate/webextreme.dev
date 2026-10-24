@@ -52,7 +52,8 @@
 .page-art > span {
   position: absolute;
   inset: auto 20px 24px;
-  font: 0.625rem var(--font-mono);
+  font: clamp(0.5rem, 1vw, 0.625rem) var(--font-mono);
+  white-space: nowrap;
   color: var(--dim);
   text-align: center;
   letter-spacing: 0.07em;
@@ -95,7 +96,7 @@
   color: var(--muted);
 }
 .service-detail-block {
-  scroll-margin-block-start: 112px;
+  scroll-margin-block-start: 0;
 }
 .detail-grid,
 .decision-grid,
@@ -225,7 +226,7 @@
   gap: 100px;
   padding-block: 48px;
   border-block-start: 1px solid var(--line);
-  scroll-margin-block-start: 120px;
+  scroll-margin-block-start: 8px;
 }
 .phase-title {
   display: grid;

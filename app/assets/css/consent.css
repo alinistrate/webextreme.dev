@@ -100,7 +100,7 @@
   inline-size: 100%;
 }
 #enquiry-form {
-  scroll-margin-block-start: 120px;
+  scroll-margin-block-start: 8px;
 }
 .footer-bottom {
   flex-wrap: wrap;

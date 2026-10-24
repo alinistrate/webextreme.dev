@@ -49,11 +49,9 @@
 }
 @keyframes menu-item-in {
   from {
-    opacity: 0;
     transform: translateY(18px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
@@ -71,101 +69,94 @@
     transform: scaleY(1);
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  html[data-motion='on'] .button span {
-    transition: translate 160ms ease;
-  }
-  html[data-motion='on'] .button:hover span {
-    translate: 3px -3px;
-  }
-  html[data-motion='on'] .site-header .wordmark {
-    transition:
-      opacity 320ms 180ms var(--ease),
-      transform 440ms 140ms var(--ease);
-  }
-  html[data-motion='on'] .site-header .devmark {
-    transition:
-      opacity 280ms 80ms var(--ease),
-      transform 380ms 80ms var(--ease);
-  }
-  html[data-motion='on'] .site-header.is-symbol .wordmark {
-    opacity: 0;
-    transform: translateX(-18px);
-    transition-delay: 0ms;
-  }
-  html[data-motion='on'] .site-header.is-symbol .devmark {
-    opacity: 0;
-    transform: translateX(-12px);
-    transition-delay: 140ms;
-  }
-  html[data-motion='on'] .site-header.is-symbol .header-symbol {
-    animation: header-symbol-lock 620ms var(--ease) both;
-  }
-  html[data-motion='on'] .playing .hero-x .x-upper {
-    animation: logo-top 800ms var(--ease) both;
-  }
-  html[data-motion='on'] .playing .hero-x .x-lower {
-    animation: logo-bottom 800ms 80ms var(--ease) both;
-  }
-  html[data-motion='on'] .playing .type-line {
-    animation: type-in 500ms steps(14, end) backwards;
-  }
-  html[data-motion='on'] .playing .line-two {
-    animation: title-slide 500ms 120ms var(--ease) backwards;
-  }
-  html[data-motion='on'] .playing .line-three {
-    animation: title-slide 600ms 180ms var(--ease) backwards;
-  }
-  html[data-motion='on'] .reveal.is-observed {
-    opacity: 0;
-    transform: translate(var(--entry-x, 0), 30px);
-    transition:
-      opacity 650ms var(--ease),
-      transform 650ms var(--ease);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  html[data-motion='on'] .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-  html[data-motion='on'] .mobile-menu[open] nav > a {
-    animation: menu-item-in 460ms var(--ease) backwards;
-  }
-  html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(1) {
-    animation-delay: 100ms;
-  }
-  html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(2) {
-    animation-delay: 170ms;
-  }
-  html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(3) {
-    animation-delay: 240ms;
-  }
-  html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(4) {
-    animation-delay: 310ms;
-  }
-  html[data-motion='on'] .mobile-menu[open].is-closing nav > a {
-    animation: menu-item-out 280ms var(--ease) both;
-  }
-  html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(4) {
-    animation-delay: 0ms;
-  }
-  html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(3) {
-    animation-delay: 70ms;
-  }
-  html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(2) {
-    animation-delay: 140ms;
-  }
-  html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(1) {
-    animation-delay: 210ms;
-  }
-  @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    html[data-motion='on'] .service-rail > span {
-      animation: rail-draw auto linear both;
-      animation-timeline: --services;
-      animation-range: cover 15% cover 85%;
-    }
+html[data-motion='on'] .site-header .wordmark {
+  transition:
+    opacity 320ms 180ms var(--ease),
+    transform 440ms 140ms var(--ease);
+}
+html[data-motion='on'] .site-header .devmark {
+  transition:
+    opacity 280ms 80ms var(--ease),
+    transform 380ms 80ms var(--ease);
+}
+html[data-motion='on'] .site-header.is-symbol .wordmark {
+  opacity: 0;
+  transform: translateX(-18px);
+  transition-delay: 0ms;
+}
+html[data-motion='on'] .site-header.is-symbol .devmark {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition-delay: 140ms;
+}
+html[data-motion='on'] .site-header.is-symbol .header-symbol {
+  animation: header-symbol-lock 620ms var(--ease) both;
+}
+html[data-motion='on'] .precision-art.is-visible .hero-x .x-upper {
+  animation: logo-top 680ms 180ms var(--ease) both;
+}
+html[data-motion='on'] .precision-art.is-visible .hero-x .x-lower {
+  animation: logo-bottom 680ms 260ms var(--ease) both;
+}
+html[data-motion='on'] .playing .type-line {
+  animation: type-in 500ms steps(14, end) backwards;
+}
+html[data-motion='on'] .playing .line-two {
+  animation: title-slide 500ms 120ms var(--ease) backwards;
+}
+html[data-motion='on'] .playing .line-three {
+  animation: title-slide 600ms 180ms var(--ease) backwards;
+}
+html[data-motion='on'] .reveal.is-observed {
+  opacity: 0;
+  transform: translate(var(--entry-x, 0), 18px);
+}
+html[data-motion='on'] .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms var(--ease),
+    transform 480ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html[data-motion='on'] .mobile-menu[open] nav > a {
+  animation: menu-item-in 460ms var(--ease) backwards;
+}
+html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(1) {
+  animation-delay: 100ms;
+}
+html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(2) {
+  animation-delay: 170ms;
+}
+html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(3) {
+  animation-delay: 240ms;
+}
+html[data-motion='on'] .mobile-menu[open] nav > a:nth-child(4) {
+  animation-delay: 310ms;
+}
+html[data-motion='on'] .mobile-menu[open].is-closing nav > a {
+  animation: menu-item-out 280ms var(--ease) both;
+}
+html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(4) {
+  animation-delay: 0ms;
+}
+html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(3) {
+  animation-delay: 70ms;
+}
+html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(2) {
+  animation-delay: 140ms;
+}
+html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(1) {
+  animation-delay: 210ms;
+}
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  html[data-motion='on'] .service-rail > span {
+    animation: rail-draw auto linear both;
+    animation-timeline: --services;
+    animation-range: cover 15% cover 85%;
   }
 }
+
 .reveal:focus-within {
   opacity: 1 !important;
   transform: none !important;
@@ -181,4 +172,180 @@ html[data-motion='off'] .reveal {
   opacity: 1;
   transform: none;
   transition: none;
+}
+
+/* Short route intros keep text painted and do not add layout movement. */
+@keyframes page-title-in {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes page-detail-in {
+  from {
+    opacity: 0.4;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes cta-arrow-pass {
+  0%,
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+  45% {
+    transform: translate(5px, -5px);
+    opacity: 0;
+  }
+  46% {
+    transform: translate(-5px, 5px);
+    opacity: 0;
+  }
+}
+html[data-motion='on'] .playing .page-hero .page-title {
+  animation: page-title-in 520ms var(--ease) both;
+}
+html[data-motion='on'] .playing .page-hero :is(.eyebrow, .page-lead, .policy-meta) {
+  animation: page-detail-in 420ms 60ms var(--ease) backwards;
+}
+html[data-motion='on'] .playing .page-art svg path:first-child {
+  animation: logo-top 560ms var(--ease) both;
+}
+html[data-motion='on'] .playing .page-art svg path:last-child {
+  animation: logo-bottom 560ms 60ms var(--ease) both;
+}
+html[data-motion='on']
+  :is(.button, .text-link):is(:hover, :focus-visible)
+  > span[aria-hidden='true'],
+html[data-motion='on'] .service-card a:is(:hover, :focus-visible) .service-arrow,
+html[data-motion='on'] .mobile-menu nav > a:is(:hover, :focus-visible) > span:last-child {
+  animation: cta-arrow-pass 320ms var(--ease) both;
+}
+
+/* The frame assembles once on entry; only opacity and transforms are animated. */
+@keyframes contour-assemble {
+  from {
+    opacity: 0;
+    transform: rotate(-14deg) scale(0.78);
+  }
+  to {
+    opacity: var(--contour-opacity, 0.4);
+    transform: none;
+  }
+}
+@keyframes corner-lock {
+  from {
+    opacity: 0;
+    transform: translate(var(--corner-x), var(--corner-y)) scale(0.6);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.12);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.contour-2 {
+  --contour-opacity: 0.3;
+  --contour-delay: 110ms;
+}
+.contour-3 {
+  --contour-opacity: 0.24;
+  --contour-delay: 220ms;
+}
+.contour-4 {
+  --contour-opacity: 0.2;
+  --contour-delay: 330ms;
+}
+.corner-tl {
+  --corner-x: -12px;
+  --corner-y: -12px;
+  --corner-delay: 80ms;
+}
+.corner-tr {
+  --corner-x: 12px;
+  --corner-y: -12px;
+  --corner-delay: 150ms;
+}
+.corner-br {
+  --corner-x: 12px;
+  --corner-y: 12px;
+  --corner-delay: 220ms;
+}
+.corner-bl {
+  --corner-x: -12px;
+  --corner-y: 12px;
+  --corner-delay: 290ms;
+}
+html[data-motion='on'] .precision-art.is-visible .contour {
+  animation: contour-assemble 620ms var(--contour-delay, 0ms) var(--ease) both;
+}
+html[data-motion='on'] .precision-art.is-visible .corner {
+  animation: corner-lock 560ms var(--corner-delay) var(--ease) both;
+}
+
+@keyframes brand-upper-gesture {
+  0%,
+  100% {
+    transform: none;
+  }
+  38% {
+    transform: translate(-2px, -5px) rotate(-4deg);
+  }
+  70% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+}
+@keyframes brand-lower-gesture {
+  0%,
+  100% {
+    transform: none;
+  }
+  38% {
+    transform: translate(2px, 5px) rotate(4deg);
+  }
+  70% {
+    transform: translate(-1px, -1px) rotate(-1deg);
+  }
+}
+html[data-motion='on'] .brand:is(:hover, :focus-visible) .x-upper {
+  animation: brand-upper-gesture 520ms var(--ease) both;
+}
+html[data-motion='on'] .brand:is(:hover, :focus-visible) .x-lower {
+  animation: brand-lower-gesture 520ms 40ms var(--ease) both;
+}
+/* Link geometry stays fixed while the selected row gains a clear hover/focus state. */
+.mobile-menu nav > a {
+  position: relative;
+  transition:
+    color 180ms ease,
+    translate 220ms var(--ease);
+}
+.mobile-menu nav > a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  block-size: 1px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease);
+}
+.mobile-menu nav > a:is(:hover, :focus-visible) {
+  color: var(--yellow);
+  translate: 6px 0;
+}
+.mobile-menu nav > a:is(:hover, :focus-visible, [aria-current='page'])::after {
+  transform: scaleX(1);
+}
+.mobile-menu nav > a:is(:hover, :focus-visible) > .eyebrow {
+  color: var(--yellow);
 }
