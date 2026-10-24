@@ -60,9 +60,9 @@ usePageSeo(
           event.
         </p>
         <p>
-          Google Analytics can set first-party cookies such as <code>_ga</code> and
-          <code>_ga_&lt;ID&gt;</code> to distinguish browsers and sessions. The actual names and
-          expiry depend on the stream and cookie settings. These cookies are not enabled before
+          Google Analytics uses first-party cookies <code>_ga</code> and
+          <code>_ga_S462Q33299</code> to distinguish browsers and sessions. Their configured
+          lifetime is up to two years and can be renewed during use. They are not enabled before
           consent. No advertising or remarketing tags are part of this implementation.
         </p>
         <h2>Cookie inventory</h2>
@@ -90,13 +90,18 @@ usePageSeo(
                 <td>When needed for delivery and the contact form</td>
               </tr>
               <tr>
-                <th scope="row">_ga, _ga_&lt;ID&gt;</th>
-                <td>Optional Google Analytics measurement</td>
+                <th scope="row">_ga, _ga_S462Q33299</th>
+                <td>Optional Google Analytics measurement; up to two years</td>
                 <td>Only after accepting analytics</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p>
+          GA4 user-level and event-level data retention is set to two months, with automatic renewal
+          on new activity disabled. Standard aggregated reports can have a different retention
+          lifecycle. Cookie lifetime and analytics data retention are separate settings.
+        </p>
         <h2>Changing your choice</h2>
         <p>
           Use Cookie settings in the footer at any time. Rejecting analytics after previously

@@ -20,7 +20,13 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en', 'data-motion': 'off' },
       titleTemplate: '%s | Web Extreme Dev',
       meta: [{ name: 'theme-color', content: '#191b1d' }],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [
+        { rel: 'icon', href: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+        { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
+        { rel: 'icon', type: 'image/svg+xml', sizes: 'any', href: '/favicon.svg' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+      ],
     },
   },
   nitro: {

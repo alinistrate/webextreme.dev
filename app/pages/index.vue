@@ -10,12 +10,12 @@ usePageSeo(
   'Design, websites, ecommerce and custom web applications. Web Extreme Dev is based in Sibiu, Romania, working from idea to launch.',
   '/',
 );
-const { replay } = usePageMotion();
+usePageMotion();
 </script>
 
 <template>
   <main id="main" ref="page" tabindex="-1">
-    <HomeHero @replay="replay" />
+    <HomeHero />
     <div class="capabilities">
       <div class="container">
         <span>Websites</span><span aria-hidden="true">/</span><span>Web applications</span

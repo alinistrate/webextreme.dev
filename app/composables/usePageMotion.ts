@@ -4,7 +4,7 @@ export function usePageMotion() {
   const { enabled } = useMotion();
   let observer: IntersectionObserver | undefined;
   let frame = 0;
-  function replay() {
+  function startIntro() {
     if (!enabled.value || !scope.value) return;
     scope.value.classList.remove('playing');
     frame = requestAnimationFrame(() => {
@@ -31,14 +31,13 @@ export function usePageMotion() {
       element.classList.add('is-observed');
       observer?.observe(element);
     });
-    replay();
+    startIntro();
   });
   watch(enabled, (value) => {
-    if (value) replay();
+    if (value) startIntro();
   });
   onBeforeUnmount(() => {
     observer?.disconnect();
     cancelAnimationFrame(frame);
   });
-  return { replay };
 }

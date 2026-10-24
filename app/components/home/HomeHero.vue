@@ -1,8 +1,3 @@
-<script setup lang="ts">
-defineEmits<{ replay: [] }>();
-const { enabled } = useMotion();
-</script>
-
 <template>
   <section class="hero dark" id="home">
     <div class="container hero-grid">
@@ -32,7 +27,6 @@ const { enabled } = useMotion();
         </div>
         <div class="hero-meta">
           <p>Clear thinking. Precise execution.</p>
-          <p class="eyebrow">webextreme.dev</p>
         </div>
       </div>
       <div class="hero-visual">
@@ -49,16 +43,6 @@ const { enabled } = useMotion();
           ><i class="corner corner-bl"></i><i class="corner corner-br"></i>
         </div>
         <p class="eyebrow art-caption">X / Precision</p>
-        <div class="motion-controls">
-          <button
-            class="outline-button replay"
-            type="button"
-            :disabled="!enabled"
-            @click="$emit('replay')"
-          >
-            Replay intro
-          </button>
-        </div>
       </div>
     </div>
   </section>

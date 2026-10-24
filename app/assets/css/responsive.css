@@ -246,10 +246,6 @@
   .art-caption {
     margin-block: 24px 20px;
   }
-  .motion-controls button {
-    flex: 1;
-    min-inline-size: 0;
-  }
   .capabilities {
     padding-block: 32px;
   }
@@ -587,7 +583,6 @@
   }
   .site-header,
   .mobile-menu,
-  .motion-controls,
   .contact-form,
   .site-footer {
     display: none;

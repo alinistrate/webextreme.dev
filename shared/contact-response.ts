@@ -1,10 +1,10 @@
-import { handleContact, type ContactEnvironment } from '../../shared/contact';
+import { handleContact, type ContactEnvironment } from './contact';
 
 /** Native form submissions receive an accessible HTML result; AJAX receives JSON. */
-export async function onRequest(context: { request: Request; env: ContactEnvironment }) {
-  const response = await handleContact(context.request, context.env);
+export async function contactResponse(request: Request, env: ContactEnvironment) {
+  const response = await handleContact(request, env);
   if (
-    !context.request.headers.get('Accept')?.includes('text/html') ||
+    !request.headers.get('Accept')?.includes('text/html') ||
     !response.headers.get('Content-Type')?.includes('application/json')
   )
     return response;

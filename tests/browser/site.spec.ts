@@ -135,3 +135,29 @@ test('Let us talk focuses the form on Home and Contact', async ({ page }) => {
     ).toBeGreaterThanOrEqual(80);
   }
 });
+
+test('analytics omits URL details and counts each route once after consent', async ({ page }) => {
+  // Mock the container transport so this regression never sends visits to production GA4.
+  await page.route('https://www.googletagmanager.com/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }),
+  );
+  await page.goto('/?email=private%40example.com#private');
+  await page.getByRole('button', { name: 'Accept analytics', exact: true }).click();
+  const pageEvents = () =>
+    page.evaluate(() => {
+      const layer = (
+        window as Window & {
+          dataLayer: Array<{ event?: string; page_location?: string; page_referrer?: string }>;
+        }
+      ).dataLayer;
+      return layer.filter((item) => item.event === 'gtm.js' || item.event === 'virtual_page_view');
+    });
+  await expect.poll(async () => (await pageEvents()).length).toBe(1);
+  expect((await pageEvents())[0]?.page_location).toBe('http://127.0.0.1:3100/');
+  await page.getByRole('link', { name: 'Explore services', exact: true }).click();
+  await expect.poll(async () => (await pageEvents()).length).toBe(2);
+  const events = await pageEvents();
+  expect(events[1]?.page_location).toBe('http://127.0.0.1:3100/services/');
+  expect(events[1]?.page_referrer).toBe('http://127.0.0.1:3100/');
+  expect(JSON.stringify(events)).not.toMatch(/private|@|%40/);
+});

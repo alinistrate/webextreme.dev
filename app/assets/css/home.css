@@ -39,9 +39,6 @@
   font-size: 0.875rem;
   color: var(--dim);
 }
-.hero-meta .eyebrow {
-  margin-block-start: 16px;
-}
 .hero-visual {
   padding-block-start: 62px;
   min-inline-size: 0;
@@ -110,11 +107,6 @@
 .art-caption {
   margin-block: 34px 28px;
   text-align: center;
-}
-.motion-controls {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
 }
 .mobile-eyebrow {
   display: none;

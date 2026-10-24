@@ -9,6 +9,15 @@ export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig();
   const router = useRouter();
   let loaded = false;
+  let trackedPath = '';
+  function cleanUrl(value: string) {
+    try {
+      const url = new URL(value);
+      return /^https?:$/.test(url.protocol) ? url.origin + url.pathname : '';
+    } catch {
+      return '';
+    }
+  }
   window.dataLayer = window.dataLayer || [];
   // Google Tag Manager reads the standard gtag arguments queue.
   window.gtag = function () {
@@ -29,10 +38,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   function load() {
     if (loaded || !/^GTM-[A-Z0-9]+$/.test(config.public.gtmId)) return;
     loaded = true;
+    trackedPath = router.currentRoute.value.path;
+    // Apply clean context before GA4 initializes its automatic first page view.
+    window.gtag('set', {
+      page_location: location.origin + trackedPath,
+      page_title: document.title,
+      page_referrer: cleanUrl(document.referrer),
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
     window.dataLayer.push({
       'gtm.start': Date.now(),
       event: 'gtm.js',
-      page_location: location.origin + router.currentRoute.value.path,
+      page_location: location.origin + trackedPath,
+      page_title: document.title,
+      page_referrer: cleanUrl(document.referrer),
     });
     const script = document.createElement('script');
     script.async = true;
@@ -69,11 +89,19 @@ export default defineNuxtPlugin((nuxtApp) => {
     consent.ready.value = true;
   });
   nuxtApp.hook('page:finish', () => {
-    if (loaded && consent.analytics.value)
-      window.dataLayer.push({
-        event: 'virtual_page_view',
-        page_location: location.origin + router.currentRoute.value.path,
-        page_title: document.title,
-      });
+    const path = router.currentRoute.value.path;
+    if (!loaded || !consent.analytics.value || trackedPath === path) return;
+    window.gtag('set', {
+      page_location: location.origin + path,
+      page_title: document.title,
+      page_referrer: location.origin + trackedPath,
+    });
+    window.dataLayer.push({
+      event: 'virtual_page_view',
+      page_location: location.origin + path,
+      page_title: document.title,
+      page_referrer: location.origin + trackedPath,
+    });
+    trackedPath = path;
   });
 });

@@ -1,6 +1,6 @@
 # Web Extreme Dev
 
-Vue 3, Nuxt 4, strict TypeScript and Tailwind CSS 4. English marketing pages are prerendered to HTML and served by Cloudflare Pages. A single Pages Function verifies Turnstile and sends contact enquiries through Mailjet.
+Vue 3, Nuxt 4, strict TypeScript and Tailwind CSS 4. English marketing pages are prerendered to HTML and served by Cloudflare Workers. A single Worker verifies Turnstile and sends contact enquiries through Mailjet.
 
 ## Run locally
 
@@ -22,7 +22,8 @@ Use Node 22.12+ and pnpm (the package manager version is pinned in package.json)
 - `app/plugins/analytics.client.ts`: denied consent defaults, consent-gated GTM loading and route events.
 - `app/assets/css/`: fonts, tokens and scoped layout/motion/responsive modules, imported by `main.css`.
 - `shared/contact.ts`: validated handler with injectable provider transport for testing.
-- `functions/api/contact.ts`: Cloudflare Pages adapter for JSON and native POST.
+- `worker/index.ts`: API routing and Static Assets binding.
+- `shared/contact-response.ts`: JSON/native HTML response adapter.
 - `public/`: sitemap, robots, redirects, headers, social image and real 404 fallback.
 - `tests/`: provider failures, abuse checks, browser accessibility and consent regressions.
 
@@ -37,9 +38,13 @@ Keep copy in route templates or typed content files. Keep reusable interactions 
 - `node scripts/audit.mjs / /contact/`: Lighthouse lab reports in ignored `reports/`. Set `AUDIT_BASE_URL` to audit production.
 - `node scripts/cookie-scan.mjs`: independent fresh-browser scans before choice, rejection, acceptance and withdrawal. Set `AUDIT_BASE_URL` for production. Reports record cookie metadata without values.
 
-## Cloudflare Pages
+## Cloudflare Workers
 
-Connect repository `alinistrate/webextreme.dev`, branch `main`. Build command: `pnpm build`. Output: `.output/public`. Root: repository root. Set `NODE_VERSION=22` and the pinned pnpm version where required by the build platform. Keep `functions/` at repository root; `_routes.json` invokes it only for `/api/*`.
+Deploy through GitHub Actions from `alinistrate/webextreme.dev`, branch `main`. The Worker uses Static Assets and the Modules API. GitHub Actions deploys it without the Cloudflare GitHub App. The workflow checks formatting, lint, types and contact tests, prerenders the website, then runs the pinned local Wrangler to deploy prerendered assets and the contact endpoint in one version. Pull requests run checks and build without receiving the deployment token. The workflow has only `contents: read` GitHub permissions and does not store checkout credentials.
+
+Create repository Actions secrets `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`. Use an account API token with Individual Workers Editor restricted to the webextreme-dev Worker. The launch token expires after 90 days. Rotate it before its configured expiration. Runtime Mailjet and Turnstile secrets belong only in Cloudflare Worker Secrets, never in the GitHub repository or Actions build environment.
+
+`wrangler.jsonc` declares the Worker entry point, asset routing and non-secret contact settings. Production secrets are managed in the dashboard. No database, legacy Pages project or Workers Sites KV bucket is required.
 
 Public build variables:
 
@@ -72,7 +77,7 @@ GTM should send an initial GA4 page_view and virtual_page_view route changes exa
 
 ## Accessibility and browser support
 
-Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Motion follows OS reduced-motion preferences, with no public Motion On/Off control or stored override.
+Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Motion follows OS reduced-motion preferences, with no public animation controls or stored override.
 
 Automated axe and Lighthouse checks complement keyboard, focus, zoom, contrast and assistive-technology review. Playwright WebKit is not physical Safari/iOS testing. Automated scores do not establish ADA legal certification. Record actual browser test and audit limits in the launch report.
 
@@ -81,3 +86,9 @@ Automated axe and Lighthouse checks complement keyboard, focus, zoom, contrast a
 Every route has prerendered readable HTML, one main heading, a unique description, canonical URL, social metadata, and linked structured Organization, WebSite, WebPage and breadcrumb data. The sitemap lists canonical URLs and is referenced in robots.txt. FAQ answers and service copy are visible and factual. Redirect secondary hostnames to webextreme.dev to avoid duplicates.
 
 Verify the domain property in Google Search Console, submit https://webextreme.dev/sitemap.xml after launch, then monitor crawling and indexing. Search and AI answer placement are not guaranteed. No speculative AI files, hidden keyword text, fabricated reviews, clients or company metrics are included.
+
+## Brand icons
+
+The SVG favicon is the source of truth. Run `node scripts/generate-icons.mjs` after changing it to regenerate the multi-size ICO, 96px PNG, Apple touch icon and Android home-screen icons. This uses the existing Playwright development dependency and adds no client JavaScript. The minimal web manifest supplies icon metadata without adding a service worker or offline caching.
+
+The consent-gated GA4 configuration is documented in `docs/gtm-container.json`. This export contains public container settings, not credentials. After changing Google Tag Manager, publish the reviewed version and rerun the cookie scan against the public hostname.
