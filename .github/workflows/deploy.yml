@@ -38,21 +38,9 @@ jobs:
       - name: Deploy production to Cloudflare Workers
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
-          node --input-type=module <<'JS'
-          const root = 'https://api.cloudflare.com/client/v4/accounts/' + process.env.CLOUDFLARE_ACCOUNT_ID;
-          const paths = [
-            '/workers/services/webextreme-dev/environments/production/bindings',
-            '/workers/services/webextreme-dev/environments/production/routes?show_zonename=true',
-            '/workers/domains/records?page=0&per_page=5&service=webextreme-dev&environment=production',
-            '/workers/services/webextreme-dev/environments/production/subdomain',
-            '/workers/services/webextreme-dev/environments/production',
-            '/workers/scripts/webextreme-dev/schedules',
-          ];
-          for (const path of paths) {
-            const response = await fetch(root + path, {headers: {Authorization: 'Bearer ' + process.env.CLOUDFLARE_API_TOKEN}});
-            console.log(response.status + ' ' + path);
-          }
-          JS
+          pnpm exec wrangler versions list --json > "$RUNNER_TEMP/worker-versions.json"
+          version_id=$(node --input-type=module -e 'import fs from "node:fs"; const versions=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP + "/worker-versions.json", "utf8")); console.log(versions.at(-1).id)')
+          pnpm exec wrangler versions deploy "$version_id@100" --yes --message "Initialize repository deployment ownership"
           pnpm exec wrangler deploy
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
