@@ -96,3 +96,9 @@ The consent-gated GA4 configuration is documented in `docs/gtm-container.json`. 
 ## Live service configuration
 
 The launch configuration, dashboard-managed edge rules and validation results are recorded in [docs/operations.md](docs/operations.md). Keep this record aligned with dashboard changes.
+
+## Brand illustrations and icons
+
+PageHeroArt contains four decorative SVG compositions. BrandIcon uses the typed 24px path inventory in app/content/icons.ts; reuse these paths for design exports instead of installing an icon font. Icons beside text are decorative, while labels remain real HTML. ServicesJourney keeps a gold sphere in view during service browsing; supported browsers add native scroll-linked drift, and others retain the sticky sphere. No animation loop or scroll handler runs in JavaScript. Route transitions use Vue's supported CSS transition lifecycle. Motion state is owned by reactive useHead, so it survives metadata changes on every navigation.
+
+The header color-scheme toggle follows the system by default and stores only explicit opposite choices in wed_theme local storage. A minimal early head script prevents a theme flash; reactive head state owns subsequent updates. Both state icons remain in markup and CSS exposes only the current action. Yellow contact sections retain a fixed light scheme for predictable form contrast.

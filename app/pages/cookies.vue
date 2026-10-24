@@ -53,6 +53,11 @@ usePageMotion();
           for 180 days. It stores the consent version and a yes/no analytics choice, not your name,
           email or project details.
         </p>
+        <p>
+          The local storage preference <code>wed_theme</code> remembers an explicit light or dark
+          appearance choice until you change it or clear browser storage. It is a first-party
+          interface preference and does not identify you or load analytics.
+        </p>
         <h2>Optional analytics</h2>
         <p>
           If you accept analytics, Google Tag Manager loads the Google Analytics configuration.
@@ -84,6 +89,11 @@ usePageMotion();
                 <th scope="row">wed_consent</th>
                 <td>Remember cookie choice for 180 days</td>
                 <td>After saving a choice</td>
+              </tr>
+              <tr>
+                <th scope="row">wed_theme (local storage)</th>
+                <td>Remember the selected color theme until changed or cleared</td>
+                <td>Only after an appearance choice</td>
               </tr>
               <tr>
                 <th scope="row">Cloudflare / Turnstile</th>

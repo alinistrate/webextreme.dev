@@ -16,10 +16,21 @@ export default defineNuxtConfig({
   },
   typescript: { strict: true },
   app: {
+    pageTransition: { name: 'route', mode: 'out-in' },
     head: {
       htmlAttrs: { lang: 'en', 'data-motion': 'off' },
       titleTemplate: '%s | Web Extreme Dev',
-      meta: [{ name: 'theme-color', content: '#191b1d' }],
+      meta: [
+        { name: 'theme-color', content: '#191b1d' },
+        { name: 'color-scheme', content: 'light dark' },
+      ],
+      script: [
+        {
+          key: 'theme-init',
+          tagPosition: 'head',
+          innerHTML: `try{var t=localStorage.getItem('wed_theme');if(t==='light'||t==='dark')document.querySelector('meta[name="color-scheme"]').content=t}catch{}`,
+        },
+      ],
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: '16x16 32x32 48x48' },
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },

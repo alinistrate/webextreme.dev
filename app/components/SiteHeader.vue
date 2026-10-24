@@ -49,7 +49,7 @@ onBeforeUnmount(() => {
         :to="route.path === '/' ? '/#enquiry-form' : '/contact/#enquiry-form'"
         @click="goToForm"
         >Let us talk <span aria-hidden="true">↗</span></NuxtLink
-      ><button
+      ><ThemeToggle /><button
         ref="trigger"
         class="menu-button icon-button"
         type="button"
@@ -59,7 +59,10 @@ onBeforeUnmount(() => {
         @click="openMenu"
       >
         <span>Menu</span
-        ><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18M3 16h18" /></svg>
+        ><svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M3 8h18" />
+          <path d="M3 16h18" />
+        </svg>
       </button>
     </div>
   </header>

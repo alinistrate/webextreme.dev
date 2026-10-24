@@ -23,26 +23,24 @@ usePageMotion();
               Tell us about the idea, the challenge or the next thing you want to improve.
             </p>
           </div>
-          <div class="page-art reveal" aria-hidden="true">
-            <div class="page-grid-art"></div>
-            <svg viewBox="0 0 100 100">
-              <path d="M0 0H28L50 28L72 0H100L60 46H40Z" />
-              <path d="M40 54H60L100 100H72L50 72L28 100H0Z" /></svg
-            ><span>DESIGN / BUILD / CONNECT</span>
-          </div>
+          <PageHeroArt variant="contact" />
         </div>
       </div>
     </section>
     <section class="section contact-page-form">
       <div class="container contact-page-grid">
         <div class="contact-aside reveal">
-          <p class="eyebrow">Start a conversation</p>
+          <p class="eyebrow icon-label">
+            <BrandIcon name="conversation" framed />Start a conversation
+          </p>
           <h2 tabindex="-1">A few details.<br />A useful starting point.</h2>
           <p>
             Share the goal, the context and any important constraints. We can clarify the scope and
             the next steps from there.
           </p>
-          <a class="email-link" href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>
+          <a class="email-link" href="mailto:contact@webextreme.dev"
+            ><BrandIcon name="email" />contact@webextreme.dev</a
+          >
           <div class="contact-next">
             <h3>What happens next</h3>
             <ol>

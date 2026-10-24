@@ -1,0 +1,242 @@
+/* Each page has its own illustration; the shared frame is the brand's coordinate system. */
+.page-art .hero-illustration {
+  inline-size: 88%;
+  fill: none;
+  overflow: visible;
+}
+.art-coordinate {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid #41464466;
+  border-radius: 2px;
+}
+.art-approach {
+  border-radius: 50% 50% 16px 16px;
+}
+.art-about {
+  border-radius: 16px 64px 16px 16px;
+}
+.art-contact {
+  border-radius: 48px 16px 48px 16px;
+}
+.art-accent {
+  fill: var(--yellow);
+  stroke: var(--yellow);
+  stroke-width: 1.5;
+}
+.art-surface {
+  fill: var(--dark);
+  stroke: var(--dark-line);
+  stroke-width: 1.5;
+}
+.art-wire {
+  fill: var(--dark);
+  stroke: var(--yellow);
+  stroke-width: 1.5;
+}
+.art-line {
+  fill: none;
+  stroke: var(--dark-line);
+  stroke-width: 1.5;
+}
+.art-yellow-line {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 2;
+}
+.art-dark-line {
+  fill: none;
+  stroke: var(--dark);
+  stroke-width: 2;
+}
+.art-muted {
+  fill: var(--dark-line);
+}
+.art-piece {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.art-piece:nth-child(2) {
+  --piece-delay: 100ms;
+}
+.art-piece:nth-child(3) {
+  --piece-delay: 200ms;
+}
+.art-piece:nth-child(4) {
+  --piece-delay: 300ms;
+}
+.art-piece:nth-child(5) {
+  --piece-delay: 380ms;
+}
+.art-piece:nth-child(6) {
+  --piece-delay: 440ms;
+}
+.art-piece:nth-child(7) {
+  --piece-delay: 500ms;
+}
+@keyframes art-piece-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.88) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+html[data-motion='on'] .playing .art-piece {
+  animation: art-piece-in 650ms var(--piece-delay, 0ms) var(--ease) backwards;
+}
+.brand-icon {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 24px;
+  block-size: 24px;
+  flex-shrink: 0;
+  color: inherit;
+}
+.brand-icon svg {
+  inline-size: 24px;
+  block-size: 24px;
+}
+.brand-icon.is-framed {
+  inline-size: 44px;
+  block-size: 44px;
+  color: var(--dark);
+  background: var(--yellow);
+  border: 1px solid var(--dark);
+  border-radius: 8px 2px 8px 2px;
+}
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.icon-number {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.process-cards .icon-number {
+  flex-direction: row;
+  align-items: center;
+}
+.process-cards .brand-icon {
+  color: var(--dark);
+}
+.service-card .brand-icon {
+  color: var(--dark);
+}
+.services-journey {
+  position: relative;
+  isolation: isolate;
+  view-timeline: --service-journey block;
+}
+.journey-track {
+  position: absolute;
+  inset: 64px max(32px, calc((100% - 1200px) / 2));
+  pointer-events: none;
+  z-index: 1;
+}
+.journey-track > svg {
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+}
+.journey-track > svg path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.55;
+}
+.journey-orb {
+  position: sticky;
+  top: 50svh;
+  inline-size: 26px;
+  block-size: 26px;
+  margin-inline: auto;
+}
+.journey-orb > span {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: 50%;
+  border: 1px solid #725c00;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #fff8cb 0%,
+    #ffe76b 18%,
+    #ffd426 42%,
+    #aa7900 77%,
+    #4e3600 100%
+  );
+  box-shadow: 0 0 0 5px #ffd42620;
+}
+@keyframes journey-drift {
+  0%,
+  14.3%,
+  28.6%,
+  42.9%,
+  57.2%,
+  71.5%,
+  85.8%,
+  100% {
+    translate: 0 0;
+  }
+  7.15%,
+  35.75%,
+  64.35%,
+  92.9% {
+    translate: 24px 0;
+  }
+  21.45%,
+  50.05%,
+  78.65% {
+    translate: -24px 0;
+  }
+}
+@supports ((animation-timeline: view()) and (animation-range: contain 0% contain 100%)) {
+  html[data-motion='on'] .journey-orb {
+    animation: journey-drift auto linear both;
+    animation-timeline: --service-journey;
+    animation-range: contain 0% contain 100%;
+  }
+}
+@media (max-width: 1100px) {
+  .journey-orb {
+    inline-size: 18px;
+    block-size: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .journey-track {
+    inset-inline: 4px auto;
+    inline-size: 2px;
+  }
+  .journey-track > svg {
+    display: none;
+  }
+  .journey-track {
+    background: var(--line);
+  }
+  .journey-orb {
+    inline-size: 10px;
+    block-size: 10px;
+    margin-inline-start: -4px;
+    animation: none !important;
+  }
+  .page-art.art-contact > span {
+    font-size: 7px;
+  }
+}
+
+.email-link {
+  align-items: center;
+  gap: 12px;
+}
+.content-card > .brand-icon {
+  margin-block-end: 20px;
+}

@@ -1,0 +1,185 @@
+/* Semantic pairs adapt the entire page and native UI. Brand yellow remains constant. */
+:root {
+  color-scheme: light dark;
+  --ink: light-dark(#191b1d, #f3f3ef);
+  --surface: light-dark(#ffffff, #191b1d);
+  --cloud: light-dark(#f3f3ef, #24282a);
+  --muted: light-dark(#59615d, #b9bdb8);
+  --dim: light-dark(#59615d, #b9bdb8);
+  --line: light-dark(#dde0d8, #414644);
+  --dark-line: light-dark(#b5bcb6, #414644);
+  --accent-ink: light-dark(#6a5400, #ffd426);
+  color: var(--ink);
+  background: var(--surface);
+}
+:root:has(> head > meta[name='color-scheme'][content='light']) {
+  color-scheme: light;
+}
+:root:has(> head > meta[name='color-scheme'][content='dark']) {
+  color-scheme: dark;
+}
+body,
+.dark {
+  color: var(--ink);
+  background: var(--surface);
+}
+.wordmark {
+  fill: var(--ink);
+}
+.devmark {
+  fill: var(--accent-ink);
+}
+.yellow,
+.dark .eyebrow.yellow,
+.headline-line:last-child,
+.hero .line-three,
+.experience-number {
+  color: var(--accent-ink);
+}
+.dark :where(a, button):focus-visible,
+.dark .button:focus-visible {
+  outline-color: var(--ink);
+}
+.scope-panel,
+.content-card,
+.cookie-banner,
+.cookie-dialog,
+.cookie-button {
+  color: var(--ink);
+  background: var(--surface);
+}
+.dark-card {
+  background: transparent;
+}
+.detail-copy > .detail-lead,
+.faq-item button {
+  color: var(--ink);
+}
+.scope-panel li::before {
+  background: var(--ink);
+}
+.scope-panel,
+.content-card,
+.cookie-banner,
+.cookie-dialog,
+.cookie-button {
+  border-color: var(--border);
+}
+.cookie-button:hover,
+.capability-index a:hover {
+  color: var(--dark);
+  background: var(--yellow);
+}
+.capability-index a:hover span {
+  color: var(--dark);
+}
+.cookie-dialog input {
+  accent-color: var(--ink);
+}
+.hero-illustration .art-surface,
+.hero-illustration .art-wire {
+  fill: var(--surface);
+}
+.art-coordinate {
+  border-color: var(--dark-line);
+}
+.contact,
+.contact-page-form,
+.page-cta {
+  color-scheme: light;
+  --ink: #191b1d;
+  --surface: white;
+  --muted: #515650;
+  --dim: #515650;
+  color: var(--ink);
+}
+.contact .button,
+.contact-page-form .button {
+  color: white;
+  background: #191b1d;
+}
+.contact .button:hover,
+.contact-page-form .button:hover {
+  background: #33383b;
+}
+.brand-icon.is-framed,
+.service-card .brand-icon,
+.process-cards .brand-icon {
+  color: var(--accent-ink);
+}
+.brand-icon.is-framed {
+  color: var(--dark);
+}
+.mobile-menu nav > a:is(:hover, :focus-visible, [aria-current='page']),
+.mobile-menu nav > a > span:last-child,
+.mobile-menu nav > a:is(:hover, :focus-visible) > .eyebrow {
+  color: var(--accent-ink);
+}
+.mobile-menu nav > a::after {
+  background: var(--accent-ink);
+}
+.theme-toggle {
+  flex-shrink: 0;
+}
+.theme-toggle:is(:hover, :focus-visible) svg {
+  transform: rotate(-15deg);
+}
+.theme-action-light {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(> head > meta[name='color-scheme'][content='light'])) .theme-action-dark {
+    display: none;
+  }
+  :root:not(:has(> head > meta[name='color-scheme'][content='light'])) .theme-action-light {
+    display: block;
+  }
+}
+:root:has(> head > meta[name='color-scheme'][content='dark']) .theme-action-dark {
+  display: none;
+}
+:root:has(> head > meta[name='color-scheme'][content='dark']) .theme-action-light {
+  display: block;
+}
+:root:has(> head > meta[name='color-scheme'][content='light']) .theme-action-dark {
+  display: block;
+}
+:root:has(> head > meta[name='color-scheme'][content='light']) .theme-action-light {
+  display: none;
+}
+/* The header keeps three 48px actions and a readable wordmark on narrow screens. */
+@media (max-width: 700px) {
+  .header-inner {
+    gap: 10px;
+  }
+  .site-header .brand {
+    inline-size: 112px;
+  }
+  .header-cta {
+    font-size: 0.75rem;
+    padding-inline: 8px;
+  }
+  .menu-button {
+    min-inline-size: 48px;
+    inline-size: 48px;
+  }
+  .menu-button > span {
+    display: none;
+  }
+}
+@media (max-width: 380px) {
+  .header-inner {
+    gap: 8px;
+  }
+  .site-header .brand {
+    inline-size: 48px;
+  }
+  .site-header .brand .header-wordmark-enter {
+    display: none;
+  }
+  .site-header .brand svg {
+    inline-size: 160px;
+    max-inline-size: none;
+    flex-shrink: 0;
+  }
+}

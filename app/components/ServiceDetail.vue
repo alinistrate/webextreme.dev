@@ -10,7 +10,9 @@ defineProps<{ service: Service; index: number }>();
   >
     <div class="container detail-grid">
       <div class="detail-copy">
-        <p class="eyebrow reveal">0{{ index + 1 }} / {{ service.title }}</p>
+        <p class="eyebrow reveal icon-label">
+          <BrandIcon :name="service.id" framed />0{{ index + 1 }} / {{ service.title }}
+        </p>
         <h2 class="reveal">{{ service.headline }}</h2>
         <p class="detail-lead reveal">{{ service.intro }}</p>
         <p class="reveal">{{ service.body }}</p>

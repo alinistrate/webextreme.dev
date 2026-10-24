@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { site } from '~/content/site';
 import { company } from '~/content/company';
+const { enabled } = useMotion();
+const { choice } = useTheme();
+useHead(() => ({
+  meta: [
+    { name: 'color-scheme', content: choice.value === 'system' ? 'light dark' : choice.value },
+  ],
+}));
+// Keep the head manager as the single owner: manual DOM attributes were reset on navigation.
+useHead(() => ({ htmlAttrs: { 'data-motion': enabled.value ? 'on' : 'off' } }));
 useHead({
   script: [
     {

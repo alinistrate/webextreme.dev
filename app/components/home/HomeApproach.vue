@@ -12,32 +12,32 @@
       </div>
       <ol class="process-cards" role="list">
         <li class="reveal">
-          <span class="step-number">01</span>
+          <span class="step-number icon-number"><BrandIcon name="discover" />01</span>
           <h3>Discover</h3>
           <p>Align on goals, users and the problem to solve.</p>
         </li>
         <li class="reveal">
-          <span class="step-number">02</span>
+          <span class="step-number icon-number"><BrandIcon name="scope" />02</span>
           <h3>Scope</h3>
           <p>Define priorities, deliverables and practical milestones.</p>
         </li>
         <li class="reveal">
-          <span class="step-number">03</span>
+          <span class="step-number icon-number"><BrandIcon name="design" />03</span>
           <h3>Design</h3>
           <p>Shape journeys, wireframes and the visual direction.</p>
         </li>
         <li class="reveal">
-          <span class="step-number">04</span>
+          <span class="step-number icon-number"><BrandIcon name="software" />04</span>
           <h3>Develop</h3>
           <p>Build working features and review progress together.</p>
         </li>
         <li class="reveal">
-          <span class="step-number">05</span>
+          <span class="step-number icon-number"><BrandIcon name="test" />05</span>
           <h3>Test &amp; refine</h3>
           <p>Check usability, accessibility and performance.</p>
         </li>
         <li class="reveal">
-          <span class="step-number">06</span>
+          <span class="step-number icon-number"><BrandIcon name="launch" />06</span>
           <h3>Launch &amp; support</h3>
           <p>Prepare the handoff and agree the next steps after launch.</p>
         </li>

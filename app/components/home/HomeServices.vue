@@ -12,7 +12,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#design"
-              ><span class="eyebrow">01</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="design" />01</span>
               <div>
                 <h3>Design &amp; UI/UX</h3>
                 <p>Interfaces with a clear purpose.</p>
@@ -24,7 +24,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#web-development"
-              ><span class="eyebrow">02</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="web-development" />02</span>
               <div>
                 <h3>Web Development</h3>
                 <p>Websites built around your goals.</p>
@@ -36,7 +36,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#automation"
-              ><span class="eyebrow">03</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="automation" />03</span>
               <div>
                 <h3>AI &amp; Workflow Automation</h3>
                 <p>Less repetition. More useful work.</p>
@@ -48,7 +48,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#brand"
-              ><span class="eyebrow">04</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="brand" />04</span>
               <div>
                 <h3>Brand &amp; Creative Direction</h3>
                 <p>An identity that holds together.</p>
@@ -60,7 +60,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#landing-pages"
-              ><span class="eyebrow">05</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="landing-pages" />05</span>
               <div>
                 <h3>Landing Pages</h3>
                 <p>One clear page. One focused goal.</p>
@@ -72,7 +72,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#ecommerce"
-              ><span class="eyebrow">06</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="ecommerce" />06</span>
               <div>
                 <h3>Ecommerce Development</h3>
                 <p>Commerce designed around the customer.</p>
@@ -84,7 +84,7 @@
           <li class="service-card reveal">
             <span class="service-node" aria-hidden="true"></span
             ><NuxtLink to="/services/#software"
-              ><span class="eyebrow">07</span>
+              ><span class="eyebrow icon-number"><BrandIcon name="software" />07</span>
               <div>
                 <h3>Web Apps &amp; Custom Software</h3>
                 <p>Software shaped around your business.</p>

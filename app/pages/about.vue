@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { about } from '~/content/about';
+import type { IconName } from '~/content/icons';
+const technicalIcons: IconName[] = ['software', 'performance', 'security'];
+const principleIcons: IconName[] = ['clarity', 'conversation', 'delivery'];
 usePageSeo(
   'About',
   'Web Extreme Dev brings hands-on web development and technical project delivery experience across websites, ecommerce and applications.',
@@ -25,13 +28,7 @@ usePageMotion();
               experience.
             </p>
           </div>
-          <div class="page-art reveal" aria-hidden="true">
-            <div class="page-grid-art"></div>
-            <svg viewBox="0 0 100 100">
-              <path d="M0 0H28L50 28L72 0H100L60 46H40Z" />
-              <path d="M40 54H60L100 100H72L50 72L28 100H0Z" /></svg
-            ><span>DESIGN / BUILD / CONNECT</span>
-          </div>
+          <PageHeroArt variant="about" />
         </div>
       </div>
     </section>
@@ -43,7 +40,7 @@ usePageMotion();
           <span class="eyebrow yellow">WEB DEVELOPMENT & DELIVERY</span>
         </div>
         <div class="story-copy reveal">
-          <p class="eyebrow">The foundation</p>
+          <p class="eyebrow icon-label"><BrandIcon name="delivery" framed />The foundation</p>
           <h2 tabindex="-1">Experience that connects<br />the details.</h2>
           <p>{{ about.intro }}</p>
           <p>{{ about.experience }}</p>
@@ -58,7 +55,12 @@ usePageMotion();
           <h2>A practical foundation<br />for web projects.</h2>
         </div>
         <div class="content-grid three">
-          <article v-for="item in about.technology" :key="item[0]" class="content-card reveal">
+          <article
+            v-for="(item, index) in about.technology"
+            :key="item[0]"
+            class="content-card reveal"
+          >
+            <BrandIcon :name="technicalIcons[index]!" framed />
             <h3>{{ item[0] }}</h3>
             <p>{{ item[1] }}</p>
           </article>
@@ -73,10 +75,11 @@ usePageMotion();
         </div>
         <div class="content-grid three">
           <article
-            v-for="item in about.principles"
+            v-for="(item, index) in about.principles"
             :key="item[0]"
             class="content-card dark-card reveal"
           >
+            <BrandIcon :name="principleIcons[index]!" framed />
             <h3>{{ item[0] }}</h3>
             <p>{{ item[1] }}</p>
           </article>

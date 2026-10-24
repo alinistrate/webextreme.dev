@@ -26,13 +26,7 @@ usePageMotion();
               Design, development and connected software, shaped around the work your project needs.
             </p>
           </div>
-          <div class="page-art reveal" aria-hidden="true">
-            <div class="page-grid-art"></div>
-            <svg viewBox="0 0 100 100">
-              <path d="M0 0H28L50 28L72 0H100L60 46H40Z" />
-              <path d="M40 54H60L100 100H72L50 72L28 100H0Z" /></svg
-            ><span>DESIGN / BUILD / CONNECT</span>
-          </div>
+          <PageHeroArt variant="services" />
         </div>
       </div>
     </section>
@@ -47,12 +41,14 @@ usePageMotion();
         </nav>
       </div>
     </section>
-    <ServiceDetail
-      v-for="(service, index) in services"
-      :key="service.id"
-      :service="service"
-      :index="index"
-    />
+    <ServicesJourney>
+      <ServiceDetail
+        v-for="(service, index) in services"
+        :key="service.id"
+        :service="service"
+        :index="index"
+      />
+    </ServicesJourney>
     <section class="section dark">
       <div class="container decision-grid">
         <h2 class="reveal" tabindex="-1">Not sure where<br />to start?</h2>

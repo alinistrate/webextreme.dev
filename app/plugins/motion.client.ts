@@ -3,6 +3,5 @@ export default defineNuxtPlugin(() => {
   // The approved visual direction keeps short, non-looping motion active for all visitors.
   onNuxtReady(() => {
     enabled.value = true;
-    document.documentElement.dataset.motion = 'on';
   });
 });

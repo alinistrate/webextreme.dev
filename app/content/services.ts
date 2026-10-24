@@ -1,5 +1,13 @@
+export type ServiceId =
+  | 'design'
+  | 'web-development'
+  | 'automation'
+  | 'brand'
+  | 'landing-pages'
+  | 'ecommerce'
+  | 'software';
 export interface Service {
-  id: string;
+  id: ServiceId;
   title: string;
   headline: string;
   intro: string;

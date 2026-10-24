@@ -70,7 +70,7 @@ defineExpose({ show });
         <NuxtLink class="brand" to="/" aria-label="Web Extreme Dev home" @click.prevent="close('/')"
           ><BrandLogo /></NuxtLink
         ><button
-          class="icon-button"
+          class="icon-button menu-close"
           type="button"
           aria-label="Close menu"
           autofocus

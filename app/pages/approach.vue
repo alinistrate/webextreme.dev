@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { steps } from '~/content/approach';
+import { processIcons } from '~/content/icons';
 usePageSeo(
   'Our approach',
   'From discovery and scope to design, development, testing and launch. See how we plan and deliver web projects.',
@@ -24,13 +25,7 @@ usePageMotion();
               Six focused stages, with clear decisions and useful feedback throughout.
             </p>
           </div>
-          <div class="page-art reveal" aria-hidden="true">
-            <div class="page-grid-art"></div>
-            <svg viewBox="0 0 100 100">
-              <path d="M0 0H28L50 28L72 0H100L60 46H40Z" />
-              <path d="M40 54H60L100 100H72L50 72L28 100H0Z" /></svg
-            ><span>DESIGN / BUILD / CONNECT</span>
-          </div>
+          <PageHeroArt variant="approach" />
         </div>
       </div>
     </section>
@@ -47,7 +42,9 @@ usePageMotion();
         <ol class="phase-list" role="list">
           <li v-for="(step, index) in steps" :id="'phase-' + (index + 1)" :key="step.title">
             <div class="phase-title reveal">
-              <span class="phase-number">0{{ index + 1 }}</span>
+              <span class="phase-number icon-label"
+                ><BrandIcon :name="processIcons[index]!" framed />0{{ index + 1 }}</span
+              >
               <h3>{{ step.title }}</h3>
               <p>{{ step.lead }}</p>
             </div>

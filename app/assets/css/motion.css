@@ -114,9 +114,7 @@ html[data-motion='on'] .reveal.is-observed {
 html[data-motion='on'] .reveal.is-visible {
   opacity: 1;
   transform: none;
-  transition:
-    opacity 480ms var(--ease),
-    transform 480ms var(--ease);
+  transition: transform 480ms var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
 }
 html[data-motion='on'] .mobile-menu[open] nav > a {
@@ -185,7 +183,6 @@ html[data-motion='off'] .reveal {
 }
 @keyframes page-detail-in {
   from {
-    opacity: 0.4;
     transform: translateY(10px);
   }
   to {
@@ -214,12 +211,7 @@ html[data-motion='on'] .playing .page-hero .page-title {
 html[data-motion='on'] .playing .page-hero :is(.eyebrow, .page-lead, .policy-meta) {
   animation: page-detail-in 420ms 60ms var(--ease) backwards;
 }
-html[data-motion='on'] .playing .page-art svg path:first-child {
-  animation: logo-top 560ms var(--ease) both;
-}
-html[data-motion='on'] .playing .page-art svg path:last-child {
-  animation: logo-bottom 560ms 60ms var(--ease) both;
-}
+
 html[data-motion='on']
   :is(.button, .text-link):is(:hover, :focus-visible)
   > span[aria-hidden='true'],
@@ -348,4 +340,60 @@ html[data-motion='on'] .brand:is(:hover, :focus-visible) .x-lower {
 }
 .mobile-menu nav > a:is(:hover, :focus-visible) > .eyebrow {
   color: var(--yellow);
+}
+
+/* Vue route transitions work across the full supported browser range, without a polyfill. */
+.route-leave-active {
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+  pointer-events: none;
+}
+.route-leave-to {
+  opacity: 0.2;
+  transform: translateY(-10px);
+}
+.route-enter-active {
+  animation: route-arrive 560ms var(--ease) both;
+}
+@keyframes route-arrive {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+.icon-button {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+.icon-button:is(:hover, :focus-visible) {
+  color: var(--dark);
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+.icon-button svg {
+  transition: transform 280ms var(--ease);
+}
+.menu-close:is(:hover, :focus-visible) svg {
+  transform: rotate(90deg);
+}
+.menu-button svg path {
+  transform-origin: center;
+  transition: transform 220ms var(--ease);
+}
+.menu-button:is(:hover, :focus-visible) svg path:first-child {
+  transform: translateX(2px) scaleX(0.75);
+}
+.menu-button:is(:hover, :focus-visible) svg path:last-child {
+  transform: translateX(-2px) scaleX(0.75);
+}
+.brand .header-wordmark-enter {
+  transition: transform 240ms var(--ease);
+}
+.brand:is(:hover, :focus-visible) .header-wordmark-enter {
+  transform: translateX(4px);
 }

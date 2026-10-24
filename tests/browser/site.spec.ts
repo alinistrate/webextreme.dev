@@ -208,3 +208,83 @@ test('policy content reveals as it enters view without changing keyboard access'
   await expect(heading).toHaveCSS('opacity', '1');
   await expect(page.getByRole('heading', { name: 'Privacy Policy', exact: true })).toHaveCount(1);
 });
+
+test('motion survives client navigation, brands replay hover and menu buttons respond', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  for (const [label, variant] of [
+    ['Services', 'services'],
+    ['Approach', 'approach'],
+    ['About', 'about'],
+    ['Contact', 'contact'],
+    ['Services', 'services'],
+  ]) {
+    await page
+      .getByRole('navigation', { name: 'Footer', exact: true })
+      .getByRole('link', { name: label, exact: true })
+      .click();
+    await expect(page).toHaveURL(new RegExp('/' + variant + '/$'));
+    await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
+    await expect(page.locator('main.playing .art-' + variant)).toHaveCount(1);
+    const brand = page.locator('.site-header .brand');
+    await page.mouse.move(0, 200);
+    await brand.hover();
+    await expect(brand.locator('.x-upper')).toHaveCSS('animation-name', 'brand-upper-gesture');
+    const menu = page.getByRole('button', { name: 'Menu', exact: true });
+    await menu.hover();
+    await expect(menu).toHaveCSS('background-color', 'rgb(255, 212, 38)');
+    await menu.click();
+    const close = page.getByRole('button', { name: 'Close menu', exact: true });
+    await close.hover();
+    await expect(close).toHaveCSS('background-color', 'rgb(255, 212, 38)');
+    await close.click();
+    await expect(page.getByRole('dialog', { name: 'Site menu', exact: true })).not.toBeVisible();
+    await expect(menu).toBeFocused();
+  }
+});
+test('service journey follows scrolling without covering links or capturing pointer input', async ({
+  page,
+}) => {
+  await page.goto('/services/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  const sphere = page.locator('.journey-orb');
+  await page.locator('#automation h2').scrollIntoViewIfNeeded();
+  await expect
+    .poll(async () =>
+      Math.abs((await sphere.boundingBox())!.y - (await page.evaluate(() => innerHeight / 2))),
+    )
+    .toBeLessThan(35);
+  await expect(page.locator('.journey-track')).toHaveCSS('pointer-events', 'none');
+  await page.locator('#automation').getByRole('link', { name: 'Discuss this service' }).click();
+  await expect(page).toHaveURL(/contact/);
+  await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
+});
+
+test('theme choice survives navigation and reload and remains accessible in both schemes', async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/services/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  await page.getByRole('button', { name: 'Switch to dark theme', exact: true }).click();
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+  await page
+    .getByRole('navigation', { name: 'Footer', exact: true })
+    .getByRole('link', { name: 'About', exact: true })
+    .click();
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+  await page.reload();
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+  for (const scheme of ['dark', 'light']) {
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+    if (scheme === 'dark')
+      await page.getByRole('button', { name: 'Switch to light theme', exact: true }).click();
+  }
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'light dark');
+  expect(await page.evaluate(() => localStorage.getItem('wed_theme'))).toBeNull();
+});
