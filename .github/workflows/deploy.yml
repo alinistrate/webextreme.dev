@@ -37,22 +37,7 @@ jobs:
         run: pnpm build
       - name: Deploy production to Cloudflare Workers
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: |
-          pnpm exec wrangler deploy --dry-run --outdir "$RUNNER_TEMP/worker-init"
-          node --input-type=module <<'JS'
-          import fs from 'node:fs';
-          // One-time initialization with the real Worker bundle. The content endpoint
-          // preserves all existing runtime settings and encrypted provider secrets.
-          const content = fs.readFileSync(process.env.RUNNER_TEMP + '/worker-init/index.js');
-          const body = new FormData();
-          body.append('metadata', JSON.stringify({main_module: 'index.js'}));
-          body.append('index.js', new Blob([content], {type: 'application/javascript+module'}), 'index.js');
-          const endpoint = 'https://api.cloudflare.com/client/v4/accounts/' + process.env.CLOUDFLARE_ACCOUNT_ID + '/workers/scripts/webextreme-dev/content';
-          const response = await fetch(endpoint, {method: 'PUT', headers: {Authorization: 'Bearer ' + process.env.CLOUDFLARE_API_TOKEN}, body});
-          console.log('Worker bundle initialization HTTP ' + response.status);
-          if (!response.ok) throw new Error('Worker bundle initialization failed.');
-          JS
-          pnpm exec wrangler deploy
+        run: pnpm exec wrangler deploy --message "$GITHUB_SHA"
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
