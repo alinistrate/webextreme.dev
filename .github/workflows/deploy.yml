@@ -37,7 +37,23 @@ jobs:
         run: pnpm build
       - name: Deploy production to Cloudflare Workers
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: pnpm exec wrangler deploy
+        run: |
+          node --input-type=module <<'JS'
+          const root = 'https://api.cloudflare.com/client/v4/accounts/' + process.env.CLOUDFLARE_ACCOUNT_ID;
+          const paths = [
+            '/workers/services/webextreme-dev/environments/production/bindings',
+            '/workers/services/webextreme-dev/environments/production/routes?show_zonename=true',
+            '/workers/domains/records?page=0&per_page=5&service=webextreme-dev&environment=production',
+            '/workers/services/webextreme-dev/environments/production/subdomain',
+            '/workers/services/webextreme-dev/environments/production',
+            '/workers/scripts/webextreme-dev/schedules',
+          ];
+          for (const path of paths) {
+            const response = await fetch(root + path, {headers: {Authorization: 'Bearer ' + process.env.CLOUDFLARE_API_TOKEN}});
+            console.log(response.status + ' ' + path);
+          }
+          JS
+          pnpm exec wrangler deploy
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
