@@ -92,3 +92,7 @@ Verify the domain property in Google Search Console, submit https://webextreme.d
 The SVG favicon is the source of truth. Run `node scripts/generate-icons.mjs` after changing it to regenerate the multi-size ICO, 96px PNG, Apple touch icon and Android home-screen icons. This uses the existing Playwright development dependency and adds no client JavaScript. The minimal web manifest supplies icon metadata without adding a service worker or offline caching.
 
 The consent-gated GA4 configuration is documented in `docs/gtm-container.json`. This export contains public container settings, not credentials. After changing Google Tag Manager, publish the reviewed version and rerun the cookie scan against the public hostname.
+
+## Live service configuration
+
+The launch configuration, dashboard-managed edge rules and validation results are recorded in [docs/operations.md](docs/operations.md). Keep this record aligned with dashboard changes.
