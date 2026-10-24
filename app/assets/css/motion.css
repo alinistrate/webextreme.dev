@@ -99,7 +99,7 @@ html[data-motion='on'] .precision-art.is-visible .hero-x .x-lower {
   animation: logo-bottom 680ms 260ms var(--ease) both;
 }
 html[data-motion='on'] .playing .type-line {
-  animation: type-in 500ms steps(14, end) backwards;
+  animation: page-title-in 520ms var(--ease) backwards;
 }
 html[data-motion='on'] .playing .line-two {
   animation: title-slide 500ms 120ms var(--ease) backwards;

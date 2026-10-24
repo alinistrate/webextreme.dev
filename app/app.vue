@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { site } from '~/content/site';
 import { company } from '~/content/company';
+import displayFont from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 const { enabled } = useMotion();
 const { choice } = useTheme();
 useHead(() => ({
@@ -11,6 +12,9 @@ useHead(() => ({
 // Keep the head manager as the single owner: manual DOM attributes were reset on navigation.
 useHead(() => ({ htmlAttrs: { 'data-motion': enabled.value ? 'on' : 'off' } }));
 useHead({
+  link: [
+    { rel: 'preload', href: displayFont, as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+  ],
   script: [
     {
       type: 'application/ld+json',
