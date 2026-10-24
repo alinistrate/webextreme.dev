@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import HomeHero from '~/components/home/HomeHero.vue';
-import HomeServices from '~/components/home/HomeServices.vue';
-import HomeAbout from '~/components/home/HomeAbout.vue';
-import HomeApproach from '~/components/home/HomeApproach.vue';
 import HomeFaq from '~/components/home/HomeFaq.vue';
 import HomeContact from '~/components/home/HomeContact.vue';
 usePageSeo(
@@ -22,9 +19,9 @@ usePageMotion();
         ><span aria-hidden="true">/</span><span>Custom software</span>
       </div>
     </div>
-    <HomeServices />
-    <HomeAbout />
-    <HomeApproach />
+    <LazyHomeServices :hydrate-on-visible="{ rootMargin: '200px' }" />
+    <LazyHomeAbout :hydrate-on-visible="{ rootMargin: '200px' }" />
+    <LazyHomeApproach :hydrate-on-visible="{ rootMargin: '200px' }" />
     <HomeFaq />
     <HomeContact />
   </main>
