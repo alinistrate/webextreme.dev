@@ -175,32 +175,17 @@ html[data-motion='on'] .playing .art-piece {
   );
   box-shadow: 0 0 0 5px #ffd42620;
 }
-@keyframes journey-drift {
-  0%,
-  14.3%,
-  28.6%,
-  42.9%,
-  57.2%,
-  71.5%,
-  85.8%,
-  100% {
-    translate: 0 0;
+@keyframes journey-turn {
+  from {
+    transform: rotate(-25deg);
   }
-  7.15%,
-  35.75%,
-  64.35%,
-  92.9% {
-    translate: 24px 0;
-  }
-  21.45%,
-  50.05%,
-  78.65% {
-    translate: -24px 0;
+  to {
+    transform: rotate(105deg);
   }
 }
 @supports ((animation-timeline: view()) and (animation-range: contain 0% contain 100%)) {
-  html[data-motion='on'] .journey-orb {
-    animation: journey-drift auto linear both;
+  html[data-motion='on'] .journey-orb > span {
+    animation: journey-turn auto linear both;
     animation-timeline: --service-journey;
     animation-range: contain 0% contain 100%;
   }
