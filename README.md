@@ -89,7 +89,7 @@ Verify the domain property in Google Search Console, submit https://webextreme.d
 
 ## Brand icons
 
-The SVG favicon is the source of truth. Run `node scripts/generate-icons.mjs` after changing it to regenerate the multi-size ICO (16, 32, 48 and 96px), 96px PNG, Apple touch icon and Android home-screen icons. This uses the existing Playwright development dependency and adds no client JavaScript. The minimal web manifest supplies icon metadata without adding a service worker or offline caching.
+The SVG favicon is the source of truth. Run `node scripts/generate-icons.mjs` after changing it to regenerate the multi-size ICO (16, 32, 48 and 96px), 16/32/48/96px PNGs, Apple touch icon and Android home-screen icons. This uses the existing Playwright development dependency and adds no client JavaScript. The minimal web manifest supplies icon metadata without adding a service worker or offline caching.
 
 The consent-gated GA4 configuration is documented in `docs/gtm-container.json`. This export contains public container settings, not credentials. After changing Google Tag Manager, publish the reviewed version and rerun the cookie scan against the public hostname.
 
@@ -111,4 +111,4 @@ HeroHeadline keeps the first two headline lines static and types/erases five fin
 
 ProcessBuild reuses the existing Home process cards as named CSS view-timeline drivers for six decorative browser layers. timeline-scope is local to the scene; unsupported browsers use a page-scoped IntersectionObserver. Keep the scene non-interactive and the process copy in semantic HTML.
 
-Google Search favicon: the prerendered head declares stable ICO and 96px PNG URLs. Keep the PNG as the final rel=icon candidate; SVG remains the design source, not a Search favicon declaration. Both raster files must remain publicly crawlable by Googlebot-Image. Google controls recrawl timing and whether the favicon appears. Reference: https://developers.google.com/search/docs/appearance/favicon-in-search
+Google Search favicon: the prerendered head declares stable ICO and 16/32/48/96px PNG URLs, following the explicit raster pack used by hermanncavalier.ro. Keep the PNG as the final rel=icon candidate; SVG remains the design source, not a Search favicon declaration. Both raster files must remain publicly crawlable by Googlebot-Image. Google controls recrawl timing and whether the favicon appears. Reference: https://developers.google.com/search/docs/appearance/favicon-in-search

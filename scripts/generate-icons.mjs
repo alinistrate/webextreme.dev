@@ -17,6 +17,12 @@ try {
     );
     const png = await page.screenshot({ omitBackground: true });
     if (size <= 96) frames.push({ size, png });
+    if (size < 96) {
+      await writeFile(
+        new URL('../public/favicon-' + size + 'x' + size + '.png', import.meta.url),
+        png,
+      );
+    }
     if (size >= 96) {
       const name =
         size === 96
