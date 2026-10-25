@@ -45,11 +45,10 @@ usePageMotion();
         <ol class="phase-list" role="list">
           <li v-for="(step, index) in steps" :id="'phase-' + (index + 1)" :key="step.title">
             <div class="phase-title reveal">
-              <span class="phase-number icon-label"
-                ><AppIcon :name="processIcons[index]!" framed />0{{ index + 1 }}</span
-              >
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.lead }}</p>
+              <p class="eyebrow icon-label">
+                <AppIcon :name="processIcons[index]!" framed />0{{ index + 1 }} / {{ step.title }}
+              </p>
+              <h3>{{ step.lead }}</h3>
             </div>
             <div class="phase-content reveal">
               <p>{{ step.copy }}</p>

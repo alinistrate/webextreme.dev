@@ -13,6 +13,7 @@
   background: var(--dark);
   font-family: var(--font-sans);
   font-synthesis: none;
+  font-size-adjust: from-font;
   scrollbar-gutter: stable;
   scroll-padding-block-start: 112px;
 }
@@ -111,7 +112,7 @@ h2:focus {
   background: var(--cloud);
 }
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 1.7;

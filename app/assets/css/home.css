@@ -128,7 +128,7 @@
   font-weight: 500;
 }
 .capabilities span:nth-child(even) {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   color: var(--muted);
   font-size: 0.875rem;
 }
@@ -341,7 +341,7 @@
   grid-row: 1;
   align-self: center;
   color: var(--muted);
-  font: 0.6875rem var(--font-mono);
+  font: 0.6875rem var(--font-label);
 }
 .step-icon {
   display: grid;

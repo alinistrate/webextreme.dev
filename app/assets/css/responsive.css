@@ -121,14 +121,8 @@
   .content-grid.three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .phase-title {
-    gap: 16px;
-  }
   .phase-title h3 {
     font-size: 1.75rem;
-  }
-  .phase-title p {
-    grid-column: 1/-1;
   }
 }
 @media (max-width: 700px) {
@@ -419,7 +413,6 @@
   .detail-copy > .detail-lead,
   .decision-grid p,
   .page-section-heading > p:not(.eyebrow),
-  .phase-title p,
   .phase-content > p,
   .story-copy > p:not(.eyebrow),
   .contact-aside > p:not(.eyebrow) {
@@ -442,9 +435,6 @@
   }
   .phase-list > li {
     padding-block: 36px;
-  }
-  .phase-title {
-    grid-template-columns: 44px minmax(0, 1fr);
   }
   .phase-title h3 {
     font-size: 1.75rem;

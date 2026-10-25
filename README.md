@@ -112,3 +112,7 @@ HeroHeadline keeps the first two headline lines static and types/erases five fin
 ProcessBuild reuses the existing Home process cards as named CSS view-timeline drivers for six decorative browser layers. timeline-scope is local to the scene; unsupported browsers use a page-scoped IntersectionObserver. Keep the scene non-interactive and the process copy in semantic HTML.
 
 Google Search favicon: the prerendered head declares stable ICO and 16/32/48/96px PNG URLs, following the explicit raster pack used by hermanncavalier.ro. Keep the PNG as the final rel=icon candidate; SVG remains the design source, not a Search favicon declaration. Both raster files must remain publicly crawlable by Googlebot-Image. Google controls recrawl timing and whether the favicon appears. Reference: https://developers.google.com/search/docs/appearance/favicon-in-search
+
+## Typography
+
+Bricolage Grotesque Variable supplies headings and the WEB EXTREME wordmark. Commissioner Variable supplies body copy, interface labels and DEV lettering. Both are open-source OFL families served locally as Latin WOFF2 subsets, with no runtime Google Fonts requests. Only the display face is preloaded. Font families live in fonts.css and role tokens in main.css; the X symbol and favicon remain independent vector artwork. Labels use a proportional family deliberately rather than a terminal-style monospace face.

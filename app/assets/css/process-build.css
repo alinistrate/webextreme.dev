@@ -78,7 +78,7 @@
   block-size: 12%;
   padding-inline: 10px;
   border-block-end: 1px solid var(--line);
-  font: 8px var(--font-mono);
+  font: 8px var(--font-label);
   color: var(--muted);
 }
 .build-browser-bar i {
@@ -165,7 +165,7 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   rotate: -6deg;
-  font: 8px/1.5 var(--font-mono);
+  font: 8px/1.5 var(--font-label);
 }
 .build-code b {
   color: #f3f3ef;
@@ -202,7 +202,7 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font: 9px var(--font-mono);
+  font: 9px var(--font-label);
 }
 .build-launch .app-icon {
   inline-size: 18px;
@@ -212,7 +212,7 @@
 .build-caption {
   margin-block-start: 20px;
   color: var(--muted);
-  font: 9px/1.5 var(--font-mono);
+  font: 9px/1.5 var(--font-label);
   letter-spacing: 0.04em;
   text-align: center;
 }

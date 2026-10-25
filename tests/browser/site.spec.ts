@@ -439,7 +439,16 @@ test('Home builds the process scene on scroll and keeps the active card clear on
           : supports(args[0]!, args[1]!)) as typeof CSS.supports;
   });
   await page.reload();
-  await page.locator('.process-cards > li').last().scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.fonts.ready);
+  const finalCard = page.locator('.process-cards > li').last();
+  await finalCard.scrollIntoViewIfNeeded();
+  // Cross the same activation point as the native-path checks above.
+  await finalCard.evaluate((el) =>
+    window.scrollTo({
+      top: el.getBoundingClientRect().top + scrollY - innerHeight * 0.42,
+      behavior: 'instant',
+    }),
+  );
   await expect(page.locator('.process-build')).toHaveClass(/is-fallback/);
   await expect(page.locator('.build-launch')).toHaveCSS('opacity', '1');
   await expect(page.locator('.build-launch')).toHaveCSS('animation-name', 'none');

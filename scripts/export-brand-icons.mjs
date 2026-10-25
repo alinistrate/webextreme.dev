@@ -27,7 +27,7 @@ for (const [index, [name, definition]] of Object.entries(icons).entries()) {
       viewBox +
       '" fill="#FFD426">' +
       pathsSvg +
-      '</svg><text x="64" y="92" fill="#F3F3EF" text-anchor="middle" font-family="Inter,Arial" font-size="10">' +
+      '</svg><text x="64" y="92" fill="#F3F3EF" text-anchor="middle" font-family="Commissioner,Arial" font-size="10">' +
       name +
       '</text></g>',
   );
@@ -41,11 +41,11 @@ const board =
   height +
   '"><!-- Font Awesome Free 7.3.1 by Fonticons, Inc. — https://fontawesome.com — Icons: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ --><rect width="944" height="' +
   height +
-  '" fill="#191B1D"/><text x="40" y="55" fill="#FFD426" font-family="Inter,Arial" font-size="26" font-weight="700">WEB EXTREME / FONT AWESOME</text><text x="40" y="85" fill="#B9BDB8" font-family="Inter,Arial" font-size="13">' +
+  '" fill="#191B1D"/><text x="40" y="55" fill="#FFD426" font-family="Commissioner,Arial" font-size="26" font-weight="700">WEB EXTREME / FONT AWESOME</text><text x="40" y="85" fill="#B9BDB8" font-family="Commissioner,Arial" font-size="13">' +
   Object.keys(icons).length +
   ' icons · Font Awesome Free Classic Solid · shared with AppIcon.vue</text>' +
   nodes.join('') +
   '<text x="40" y="' +
   (height - 24) +
-  '" fill="#B9BDB8" font-family="Inter,Arial" font-size="12">Font Awesome Free by Fonticons, Inc. / CC BY 4.0 / fontawesome.com</text></svg>';
+  '" fill="#B9BDB8" font-family="Commissioner,Arial" font-size="12">Font Awesome Free by Fonticons, Inc. / CC BY 4.0 / fontawesome.com</text></svg>';
 await fs.writeFile(root + 'design/icons/library.svg', board);

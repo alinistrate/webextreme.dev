@@ -3,9 +3,9 @@
 @theme {
   --color-brand-yellow: #ffd426;
   --color-graphite: #191b1d;
-  --font-sans: 'Inter Variable', Inter, Arial, sans-serif;
-  --font-display: 'Space Grotesk Variable', 'Space Grotesk', Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Commissioner Variable', Commissioner, Arial, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', Arial, sans-serif;
+  --font-label: 'Commissioner Variable', Commissioner, Arial, sans-serif;
 }
 
 @import './fonts.css';
