@@ -5,7 +5,7 @@ const questions = [
   {
     question: 'What can you help me build?',
     answer:
-      'Design, websites, ecommerce, web applications and custom software. The right starting point depends on the problem you want to solve.',
+      'Web development, ecommerce, design, custom web applications and technical consulting. The right starting point depends on the problem you want to solve.',
   },
   {
     question: 'Can we start with a smaller scope?',

@@ -40,19 +40,19 @@ h3 {
   text-wrap: balance;
 }
 h1 {
-  font-size: 5rem;
+  font-size: 4.5rem;
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: 600;
 }
 h2 {
   font-size: 3rem;
   line-height: 1.17;
-  font-weight: 700;
+  font-weight: 600;
 }
 h3 {
   font-size: 2rem;
   line-height: 1.25;
-  font-weight: 500;
+  font-weight: 600;
 }
 a {
   color: inherit;
@@ -113,7 +113,7 @@ h2:focus {
 }
 .eyebrow {
   font-family: var(--font-label);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.75rem;
   line-height: 1.7;
   letter-spacing: 0.075em;
@@ -190,7 +190,7 @@ h2:focus {
   text-decoration-thickness: 1px;
 }
 .light-link {
-  font-weight: 500;
+  font-weight: 400;
 }
 .outline-button {
   display: inline-flex;

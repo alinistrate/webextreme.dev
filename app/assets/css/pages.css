@@ -24,7 +24,7 @@
   align-items: center;
 }
 .page-title {
-  font-size: clamp(3rem, 5.55vw, 5rem);
+  font-size: clamp(3rem, 1rem + 4vw, 4.5rem);
   line-height: 1.1;
   margin-block: 28px 32px;
 }
@@ -317,7 +317,7 @@
   display: block;
   font-family: var(--font-display);
   font-size: 6rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 1;
   color: var(--yellow);

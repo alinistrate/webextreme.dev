@@ -1,16 +1,7 @@
 @font-face {
-  font-family: 'Commissioner Variable';
+  font-family: 'Noto Sans Variable';
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url('@fontsource-variable/commissioner/files/commissioner-latin-wght-normal.woff2')
-    format('woff2');
-}
-@font-face {
-  font-family: 'Bricolage Grotesque Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 200 800;
-  src: url('@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2')
-    format('woff2');
+  src: url('@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2') format('woff2');
 }

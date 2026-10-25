@@ -5,7 +5,8 @@ export type ServiceId =
   | 'brand'
   | 'landing-pages'
   | 'ecommerce'
-  | 'software';
+  | 'software'
+  | 'consulting';
 export interface Service {
   id: ServiceId;
   title: string;
@@ -96,8 +97,8 @@ export const services: Service[] = [
   },
   {
     id: 'software',
-    title: 'Web Apps & Custom Software',
-    headline: 'Software shaped around your business.',
+    title: 'Web Application Development',
+    headline: 'Web applications shaped around your business.',
     intro: 'Portals, business tools and connected systems built around real workflows.',
     body: 'We clarify the requirements, model the important interactions and build the features in a sequence that can be reviewed and tested.',
     scope: [
@@ -106,5 +107,18 @@ export const services: Service[] = [
       'Testing, deployment and handoff',
     ],
     tags: ['Portals', 'Business tools', 'Connected systems'],
+  },
+  {
+    id: 'consulting',
+    title: 'Web & Technical Consulting',
+    headline: 'A clear direction before the next build.',
+    intro: 'Practical guidance for your website, web application or next development decision.',
+    body: 'We review the current setup, clarify the priorities and help you choose a workable technical direction. You get clear findings and next steps for your team or implementation partner.',
+    scope: [
+      'Website, performance and accessibility reviews',
+      'Technology choices, architecture and integrations',
+      'Development planning, code review and technical guidance',
+    ],
+    tags: ['Audits', 'Technical direction', 'Project planning'],
   },
 ];

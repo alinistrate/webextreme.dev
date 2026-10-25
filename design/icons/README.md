@@ -1,7 +1,11 @@
-# Web Extreme icons
+# Web Extreme original icon family
 
-Source: app/content/icons.ts. Render with BrandIcon.vue. Each individual SVG has a 24px viewBox and 1.5px square-ended strokes. Website components inherit their context color, so yellow is never used for low-contrast text on white.
+29 original drawings for the Web Extreme website and Figma library. The source is app/content/icons.ts; AppIcon.vue renders those paths directly. Run pnpm icons:export to regenerate this directory.
 
-Run pnpm icons:export after changing the paths. The generator only updates SVG assets.
+- 24 by 24 units, 1.75-unit strokes, rounded stroke caps and joins.
+- Clipped corners, short connector rails and diamond details connect the family to the X identity.
+- Standard controls retain familiar shapes. Decorative icons are hidden from assistive technology; the containing control owns its accessible name.
+- SVG currentColor follows both themes, hover and focus. No icon font, CDN or runtime library is required.
+- Grid and layers preserve the existing Figma web-kit vocabulary. The other 27 names map directly to the website's established IconName contract.
 
-The existing Figma Brand Guidebook contains 18 native main components under WED / Icon / Website and an editable [Icon Library specimen](https://www.figma.com/design/ORNJZpRhzf7UNAgIboZ14q/Web-Extreme-Dev-Brand-Guidebook?node-id=47-4). The components were created through the editor because the Starter MCP quota was exhausted. Their paths are editable; automated variable bindings were unavailable. Construction components sit separately below the specimen.
+These are custom paths, not modified Font Awesome artwork. Common functional symbols remain conventional; no claim of exclusive rights over generic arrows or control shapes is made.

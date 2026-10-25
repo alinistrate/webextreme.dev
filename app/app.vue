@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { site } from '~/content/site';
 import { company } from '~/content/company';
-import displayFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import displayFont from '@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2?url';
 const { enabled } = useMotion();
 const { hasChoice } = useConsent();
 useHead(() => ({ htmlAttrs: { 'data-consent-known': hasChoice.value ? 'true' : 'false' } }));

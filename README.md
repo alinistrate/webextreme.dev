@@ -99,7 +99,7 @@ The launch configuration, dashboard-managed edge rules and validation results ar
 
 ## Brand illustrations and icons
 
-PageHeroArt contains four decorative SVG compositions. AppIcon renders the selected Font Awesome Free Classic Solid definitions in app/content/icons.ts as native SVG. Named imports include only selected icons; no external kit, icon font or DOM replacement runtime is loaded. Run pnpm icons:export to regenerate the design SVGs. Attribution and the upstream license are published at /fontawesome-license.txt. Icons beside text are decorative, while labels remain real HTML. ServicesJourney keeps a gold sphere aligned to a curved rail during service browsing. Native CSS timelines drive the curve and highlight rotation; unsupported browsers use a passive scroll handler batched by requestAnimationFrame. No idle animation loop runs. Route transitions use Vue's supported CSS transition lifecycle. Motion state is owned by reactive useHead, so it survives metadata changes on every navigation.
+PageHeroArt contains four decorative SVG compositions. AppIcon renders the original Web Extreme icon family from app/content/icons.ts as inline SVG. The 29 drawings use a 24-unit grid and 1.75-unit strokes, with clipped corners and diamond details derived from the X identity. Run pnpm icons:export to regenerate individual SVGs and the gallery. Icons beside text are decorative, while labels remain real HTML. ServicesJourney keeps a gold sphere aligned to a curved rail during service browsing. Native CSS timelines drive the curve and highlight rotation; unsupported browsers use a passive scroll handler batched by requestAnimationFrame. No idle animation loop runs. Route transitions use Vue's supported CSS transition lifecycle. Motion state is owned by reactive useHead, so it survives metadata changes on every navigation.
 
 The header color-scheme toggle follows the system by default and stores only explicit opposite choices in wed_theme local storage. A minimal early head script prevents a theme flash; reactive head state owns subsequent updates. Both state icons remain in markup and CSS exposes only the current action. Yellow contact sections retain a fixed light scheme for predictable form contrast.
 
@@ -113,6 +113,8 @@ ProcessBuild reuses the existing Home process cards as named CSS view-timeline d
 
 Google Search favicon: the prerendered head declares stable ICO and 16/32/48/96px PNG URLs, following the explicit raster pack used by hermanncavalier.ro. Keep the PNG as the final rel=icon candidate; SVG remains the design source, not a Search favicon declaration. Both raster files must remain publicly crawlable by Googlebot-Image. Google controls recrawl timing and whether the favicon appears. Reference: https://developers.google.com/search/docs/appearance/favicon-in-search
 
-## Typography
+## Typography and logo
 
-Bricolage Grotesque Variable supplies headings and the WEB EXTREME wordmark. Commissioner Variable supplies body copy, interface labels and DEV lettering. Both are open-source OFL families served locally as Latin WOFF2 subsets, with no runtime Google Fonts requests. Only the display face is preloaded. Font families live in fonts.css and role tokens in main.css; the X symbol and favicon remain independent vector artwork. Labels use a proportional family deliberately rather than a terminal-style monospace face.
+Noto Sans Variable supplies body copy at 400 and headings and controls at 600. A single Latin WOFF2 file is served locally and preloaded; no runtime Google Fonts request is made. Font definitions live in fonts.css and semantic role tokens in main.css.
+
+The logo uses custom vector letterforms, not live font text. Geometry and optical spacing live in app/content/brand.ts. BrandLogo.vue renders that source and pnpm logo:export generates the matching SVG files in public/brand and design/brand. The X symbol and favicon keep the approved geometry.

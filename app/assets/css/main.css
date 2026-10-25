@@ -3,9 +3,9 @@
 @theme {
   --color-brand-yellow: #ffd426;
   --color-graphite: #191b1d;
-  --font-sans: 'Commissioner Variable', Commissioner, Arial, sans-serif;
-  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', Arial, sans-serif;
-  --font-label: 'Commissioner Variable', Commissioner, Arial, sans-serif;
+  --font-sans: 'Noto Sans Variable', 'Noto Sans', Arial, sans-serif;
+  --font-display: 'Noto Sans Variable', 'Noto Sans', Arial, sans-serif;
+  --font-label: 'Noto Sans Variable', 'Noto Sans', Arial, sans-serif;
 }
 
 @import './fonts.css';

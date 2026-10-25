@@ -2,7 +2,7 @@
 import { services } from '~/content/services';
 usePageSeo(
   'Services',
-  'Design, web development, ecommerce, automation and custom software. Explore the services available from Web Extreme Dev.',
+  'Web development, ecommerce, design, web applications, automation and technical consulting. Explore the services available from Web Extreme Dev.',
   '/services/',
 );
 usePageMotion();
@@ -24,7 +24,8 @@ usePageMotion();
               <span class="page-title-line">The right capabilities.</span>
             </h1>
             <p class="page-lead reveal">
-              Design, development and connected software, shaped around the work your project needs.
+              Websites, ecommerce and connected web applications, shaped around the work your
+              project needs.
             </p>
           </div>
           <PageHeroArt variant="services" />

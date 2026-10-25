@@ -1,35 +1,44 @@
 import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { icons } from '../app/content/icons.ts';
 const root = fileURLToPath(new URL('../', import.meta.url));
-const { icons } = await import('../app/content/icons.ts');
 await fs.mkdir(root + 'design/icons', { recursive: true });
 const nodes = [];
-for (const [index, [name, definition]] of Object.entries(icons).entries()) {
-  const [width, height, , , pathData] = definition.icon;
-  const paths = typeof pathData === 'string' ? [pathData] : pathData;
-  const pathsSvg = paths.map((d) => '<path d="' + d + '"/>').join('');
-  const viewBox = '0 0 ' + width + ' ' + height;
+const stroke =
+  ' fill="none" stroke="#FFD426" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"';
+for (const [index, [name, paths]] of Object.entries(icons).entries()) {
+  const drawing = paths.map((d) => '<path d="' + d + '"/>').join('');
   const svg =
-    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="' +
-    viewBox +
-    '" fill="#FFD426"><!-- Font Awesome Free 7.3.1 by Fonticons, Inc. — https://fontawesome.com — Icons: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ -->' +
-    pathsSvg +
-    '</svg>';
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"' +
+    stroke +
+    '>' +
+    drawing +
+    '</svg>\n';
   await fs.writeFile(root + 'design/icons/' + name + '.svg', svg);
-  const x = 40 + (index % 6) * 144,
-    y = 140 + Math.floor(index / 6) * 144;
+  const x = 40 + (index % 6) * 144;
+  const y = 140 + Math.floor(index / 6) * 144;
   nodes.push(
-    '<g transform="translate(' +
+    '<rect x="' +
       x +
-      ' ' +
+      '" y="' +
       y +
-      ')"><rect width="128" height="120" rx="8" fill="#24282A"/><svg x="40" y="18" width="48" height="48" viewBox="' +
-      viewBox +
-      '" fill="#FFD426">' +
-      pathsSvg +
-      '</svg><text x="64" y="92" fill="#F3F3EF" text-anchor="middle" font-family="Commissioner,Arial" font-size="10">' +
+      '" width="128" height="120" rx="8" fill="#24282A"/><g id="WED_Icon_' +
+      name.replaceAll('-', '_') +
+      '" transform="translate(' +
+      (x + 40) +
+      ' ' +
+      (y + 18) +
+      ') scale(2)"' +
+      stroke +
+      '>' +
+      drawing +
+      '</g><text x="' +
+      (x + 64) +
+      '" y="' +
+      (y + 92) +
+      '" fill="#F3F3EF" text-anchor="middle" font-family="Noto Sans" font-size="10">' +
       name +
-      '</text></g>',
+      '</text>',
   );
 }
 const rows = Math.ceil(Object.keys(icons).length / 6);
@@ -39,13 +48,13 @@ const board =
   height +
   '" viewBox="0 0 944 ' +
   height +
-  '"><!-- Font Awesome Free 7.3.1 by Fonticons, Inc. — https://fontawesome.com — Icons: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ --><rect width="944" height="' +
+  '"><rect width="944" height="' +
   height +
-  '" fill="#191B1D"/><text x="40" y="55" fill="#FFD426" font-family="Commissioner,Arial" font-size="26" font-weight="700">WEB EXTREME / FONT AWESOME</text><text x="40" y="85" fill="#B9BDB8" font-family="Commissioner,Arial" font-size="13">' +
+  '" fill="#191B1D"/><text x="40" y="55" fill="#FFD426" font-family="Noto Sans" font-size="26" font-weight="600">WEB EXTREME / ORIGINAL ICONS</text><text x="40" y="85" fill="#B9BDB8" font-family="Noto Sans" font-size="13">' +
   Object.keys(icons).length +
-  ' icons · Font Awesome Free Classic Solid · shared with AppIcon.vue</text>' +
+  ' drawings / 24 px grid / 1.75 px stroke / shared with AppIcon.vue</text>' +
   nodes.join('') +
   '<text x="40" y="' +
   (height - 24) +
-  '" fill="#B9BDB8" font-family="Commissioner,Arial" font-size="12">Font Awesome Free by Fonticons, Inc. / CC BY 4.0 / fontawesome.com</text></svg>';
+  '" fill="#B9BDB8" font-family="Noto Sans" font-size="12">Custom artwork for Web Extreme Dev / Geometry source: app/content/icons.ts</text></svg>\n';
 await fs.writeFile(root + 'design/icons/library.svg', board);

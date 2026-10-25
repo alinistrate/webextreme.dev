@@ -119,7 +119,7 @@
 }
 .build-interface strong {
   display: block;
-  font: 700 clamp(10px, 1.4vw, 20px)/1.2 var(--font-display);
+  font: 600 clamp(10px, 1.4vw, 20px)/1.2 var(--font-display);
 }
 .build-interface em {
   color: var(--accent-ink);

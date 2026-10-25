@@ -1,14 +1,36 @@
+<script setup lang="ts">
+import { devGlyphs, symbolPaths, wordmarkGlyphs } from '~/content/brand';
+</script>
+
 <template>
-  <svg aria-hidden="true" viewBox="0 0 400 100">
+  <svg aria-hidden="true" viewBox="0 0 340 80">
     <g class="header-symbol">
-      <g fill="#FFD426" transform="translate(0 10) scale(.8)">
-        <path class="x-upper" d="M0 0H28L50 28L72 0H100L60 46H40Z" />
-        <path class="x-lower" d="M40 54H60L100 100H72L50 72L28 100H0Z" />
+      <g fill="#FFD426" transform="translate(0 8) scale(.64)">
+        <path class="x-upper" :d="symbolPaths[0]" />
+        <path class="x-lower" :d="symbolPaths[1]" />
       </g>
     </g>
-    <g class="header-wordmark-enter">
-      <text x="104" y="44" class="wordmark">WEB EXTREME</text>
-      <text x="104" y="76" class="devmark">{{ ' DEV' }}</text>
+    <g class="header-wordmark-enter" fill-rule="evenodd">
+      <g transform="translate(82 16) scale(.9)">
+        <g class="wordmark">
+          <path
+            v-for="glyph in wordmarkGlyphs"
+            :key="glyph.id"
+            :d="glyph.path"
+            :transform="'translate(' + glyph.x + ' 0)'"
+          />
+        </g>
+      </g>
+      <g transform="translate(82 56) scale(.36)">
+        <g class="devmark">
+          <path
+            v-for="glyph in devGlyphs"
+            :key="glyph.id"
+            :d="glyph.path"
+            :transform="'translate(' + glyph.x + ' 0)'"
+          />
+        </g>
+      </g>
     </g>
   </svg>
 </template>

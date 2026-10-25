@@ -33,7 +33,7 @@ usePageMotion();
               <span class="page-title-line">Clear delivery.</span>
             </h1>
             <p class="page-lead reveal">
-              A software and web company. Built on practical development and project delivery
+              A web development company. Built on practical development and project delivery
               experience.
             </p>
           </div>

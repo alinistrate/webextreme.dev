@@ -86,17 +86,29 @@
             ><NuxtLink to="/services/#software"
               ><span class="eyebrow icon-number"><AppIcon name="software" />07</span>
               <div>
-                <h3>Web Apps &amp; Custom Software</h3>
-                <p>Software shaped around your business.</p>
+                <h3>Web Application Development</h3>
+                <p>Web applications shaped around your business.</p>
                 <p class="service-detail">Portals, business tools and connected systems.</p>
               </div>
               <AppIcon class="service-arrow" name="arrow"
             /></NuxtLink>
           </li>
+          <li class="service-card reveal">
+            <span class="service-node" aria-hidden="true"></span
+            ><NuxtLink to="/services/#consulting">
+              <span class="eyebrow icon-number"><AppIcon name="consulting" />08</span>
+              <div>
+                <h3>Web &amp; Technical Consulting</h3>
+                <p>A clear direction before the next build.</p>
+                <p class="service-detail">Audits, technical decisions and development planning.</p>
+              </div>
+              <AppIcon class="service-arrow" name="arrow" />
+            </NuxtLink>
+          </li>
         </ol>
       </div>
       <div class="services-bottom">
-        <p class="eyebrow">Seven capabilities. One connected approach.</p>
+        <p class="eyebrow">Eight capabilities. One connected approach.</p>
         <NuxtLink class="text-link" to="/contact/"
           >Discuss your project <AppIcon name="arrow"
         /></NuxtLink>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 usePageSeo(
   'Contact',
-  'Tell Web Extreme Dev about your website, ecommerce or software project. Contact contact@webextreme.dev or send an enquiry.',
+  'Tell Web Extreme Dev about your website, ecommerce or web application project. Contact contact@webextreme.dev or send an enquiry.',
   '/contact/',
 );
 usePageMotion();

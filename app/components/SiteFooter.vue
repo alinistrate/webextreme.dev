@@ -13,7 +13,7 @@ const { settingsOpen } = useConsent();
           ><NuxtLink to="/about/">About</NuxtLink><NuxtLink to="/contact/">Contact</NuxtLink>
         </nav>
       </div>
-      <p class="footer-description">Design, software &amp; web development.</p>
+      <p class="footer-description">Web development, software &amp; design.</p>
       <div class="footer-bottom">
         <p>© 2026 Web Extreme Dev</p>
         <NuxtLink class="plain-button" to="/privacy/">Privacy</NuxtLink

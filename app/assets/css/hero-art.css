@@ -99,8 +99,11 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
 .app-icon svg {
   inline-size: 100%;
   block-size: 100%;
-  fill: currentColor;
-  stroke: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .app-icon.is-arrow svg {
   rotate: -45deg;

@@ -3,12 +3,12 @@
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow yellow">
-          <span class="desktop-eyebrow">Design, software &amp; web development</span
+          <span class="desktop-eyebrow">Web development, software &amp; design</span
           ><span class="mobile-eyebrow">Design &amp; development</span>
         </p>
         <HeroHeadline />
         <p class="hero-description">
-          Design, websites and custom software.<br class="desktop-break" />
+          Websites, ecommerce and web applications.<br class="desktop-break" />
           A connected approach from your idea to launch.
         </p>
         <div class="hero-actions">
