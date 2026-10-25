@@ -20,7 +20,10 @@ usePageMotion();
         <div class="page-hero-grid">
           <div>
             <p class="eyebrow yellow reveal">Approach</p>
-            <h1 tabindex="-1" class="page-title reveal">A clear path.<br />From idea to launch.</h1>
+            <h1 tabindex="-1" class="page-title reveal">
+              <span class="page-title-line">A clear path.</span>
+              <span class="page-title-line">From idea to launch.</span>
+            </h1>
             <p class="page-lead reveal">
               Six focused stages, with clear decisions and useful feedback throughout.
             </p>

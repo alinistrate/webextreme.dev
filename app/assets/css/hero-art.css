@@ -84,7 +84,7 @@
     transform: none;
   }
 }
-html[data-motion='on'] .playing .art-piece {
+html[data-motion='on'] .page-art.is-visible .art-piece {
   animation: art-piece-in 650ms var(--piece-delay, 0ms) var(--ease) backwards;
 }
 .brand-icon {
@@ -117,13 +117,6 @@ html[data-motion='on'] .playing .art-piece {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-}
-.process-cards .icon-number {
-  flex-direction: row;
-  align-items: center;
-}
-.process-cards .brand-icon {
-  color: var(--dark);
 }
 .service-card .brand-icon {
   color: var(--dark);

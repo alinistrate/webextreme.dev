@@ -18,7 +18,7 @@ Use Node 22.12+ and pnpm (the package manager version is pinned in package.json)
 - `app/pages/`: route templates and metadata, including legal pages.
 - `app/components/`: header, native dialog menu, footer, contact form, Turnstile, consent banner and FAQ. Home sections live in `home/`.
 - `app/content/`: typed services, process, company and site data.
-- `app/composables/`: metadata, consent, OS motion preference and page-scoped reveal lifecycle.
+- `app/composables/`: metadata, consent, motion state and page-scoped reveal lifecycle.
 - `app/plugins/analytics.client.ts`: denied consent defaults, consent-gated GTM loading and route events.
 - `app/assets/css/`: fonts, tokens and scoped layout/motion/responsive modules, imported by `main.css`.
 - `shared/contact.ts`: validated handler with injectable provider transport for testing.

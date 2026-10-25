@@ -137,7 +137,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 48px;
-  margin-block: 28px 56px;
+  margin-block: 24px 32px;
 }
 .section-heading > p {
   color: var(--muted);
@@ -243,6 +243,13 @@
   gap: 24px;
   margin-block-start: 48px;
 }
+/* Adjacent sections on the same surface share one spacing interval. */
+.services + .about {
+  padding-block-start: 0;
+}
+.about + .approach {
+  padding-block-start: 0;
+}
 .about-grid,
 .contact-grid {
   display: grid;
@@ -301,7 +308,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 64px;
-  margin-block-end: 64px;
+  margin-block-end: 32px;
 }
 .process-heading h2 {
   margin-block-start: 28px;
@@ -320,25 +327,37 @@
   gap: 24px;
 }
 .process-cards li {
-  padding: 24px;
+  padding: 20px;
   background: var(--cloud);
   border: 1px solid var(--line);
   border-radius: 12px;
   display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 20px 16px;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-content: start;
+  gap: 12px;
 }
 .step-number {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: center;
+  color: var(--muted);
+  font: 0.6875rem var(--font-mono);
+}
+.step-icon {
   display: grid;
   place-items: center;
   inline-size: 36px;
   block-size: 36px;
   background: var(--yellow);
-  border-radius: 50%;
-  font: 0.75rem var(--font-mono);
+  border-radius: 8px 2px 8px 2px;
+}
+.step-icon .brand-icon {
+  color: var(--dark);
 }
 .process-cards h3 {
-  font-size: 1.5rem;
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 1.25rem;
   align-self: center;
   font-weight: 700;
 }

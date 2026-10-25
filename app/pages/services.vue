@@ -20,7 +20,8 @@ usePageMotion();
           <div>
             <p class="eyebrow yellow reveal">Services</p>
             <h1 tabindex="-1" class="page-title reveal">
-              Good ideas.<br />The right capabilities.
+              <span class="page-title-line">Good ideas.</span>
+              <span class="page-title-line">The right capabilities.</span>
             </h1>
             <p class="page-lead reveal">
               Design, development and connected software, shaped around the work your project needs.
@@ -34,9 +35,9 @@ usePageMotion();
       <div class="container">
         <p class="eyebrow">Explore capabilities</p>
         <nav aria-label="Service categories">
-          <a v-for="(service, index) in services" :key="service.id" :href="'#' + service.id"
+          <NuxtLink v-for="(service, index) in services" :key="service.id" :to="'#' + service.id"
             ><span>0{{ index + 1 }}</span
-            >{{ service.title }}</a
+            >{{ service.title }}</NuxtLink
           >
         </nav>
       </div>

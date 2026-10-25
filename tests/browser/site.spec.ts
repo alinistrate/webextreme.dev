@@ -291,3 +291,62 @@ test('theme choice survives navigation and reload and remains accessible in both
   await expect(page.locator('html')).toHaveCSS('color-scheme', 'light dark');
   expect(await page.evaluate(() => localStorage.getItem('wed_theme'))).toBeNull();
 });
+
+test('inner page entrances and scroll reveals survive navigation from the footer', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  for (const label of ['Services', 'Approach', 'About', 'Contact']) {
+    await page
+      .getByRole('navigation', { name: 'Footer', exact: true })
+      .getByRole('link', { name: label, exact: true })
+      .click();
+    await expect(page.locator('main.playing')).toHaveCount(1);
+    await expect(page.locator('main')).not.toHaveClass(/route-enter-active/);
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    const title = page.locator('.page-title-line').first();
+    await expect(title).toHaveCSS('animation-name', 'hero-line-in');
+    await expect(title).toHaveCSS('opacity', '1');
+    const artwork = page.locator('.page-art');
+    await artwork.scrollIntoViewIfNeeded();
+    await expect(artwork).toHaveClass(/is-visible/);
+    await expect(artwork.locator('.art-piece').first()).toHaveCSS('animation-name', 'art-piece-in');
+    const reveal = page.locator('.section .reveal.is-observed').first();
+    await expect(reveal).toHaveCSS('opacity', '0');
+    await reveal.scrollIntoViewIfNeeded();
+    await expect(reveal).toHaveCSS('opacity', '1');
+    await expect(reveal).toHaveCSS('transition-duration', '0.6s');
+    await expect.poll(() => reveal.evaluate((el) => getComputedStyle(el).transform)).toBe('none');
+  }
+});
+
+test('mobile process labels do not overlap and adjacent sections share compact spacing', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.locator('.process-cards').scrollIntoViewIfNeeded();
+    const cards = await page.locator('.process-cards li').evaluateAll((elements) =>
+      elements.map((card) => {
+        const icon = card.querySelector('.step-icon')!.getBoundingClientRect();
+        const number = card.querySelector('.step-number')!.getBoundingClientRect();
+        const title = card.querySelector('h3')!.getBoundingClientRect();
+        return {
+          separate: icon.right <= title.left && title.right <= number.left,
+          numberFits: number.right <= card.getBoundingClientRect().right,
+        };
+      }),
+    );
+    expect(cards.every((card) => card.separate && card.numberFits)).toBeTruthy();
+    const spacing = await page.evaluate(() => ({
+      services: parseFloat(getComputedStyle(document.querySelector('.services')!).paddingBottom),
+      about: parseFloat(getComputedStyle(document.querySelector('.about')!).paddingTop),
+    }));
+    expect(spacing.services + spacing.about).toBeLessThanOrEqual(72);
+    expect(spacing.services + spacing.about).toBeGreaterThanOrEqual(48);
+  }
+});

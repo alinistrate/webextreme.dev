@@ -103,8 +103,7 @@ body,
   background: #33383b;
 }
 .brand-icon.is-framed,
-.service-card .brand-icon,
-.process-cards .brand-icon {
+.service-card .brand-icon {
   color: var(--accent-ink);
 }
 .brand-icon.is-framed {

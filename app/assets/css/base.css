@@ -7,6 +7,7 @@
   --line: #dde0d8;
   --dim: #b9bdb8;
   --dark-line: #414644;
+  --section-space: clamp(48px, 6vw, 72px);
   --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
   color: var(--dark);
   background: var(--dark);
@@ -14,7 +15,6 @@
   font-synthesis: none;
   scrollbar-gutter: stable;
   scroll-padding-block-start: 112px;
-  scroll-behavior: smooth;
 }
 * {
   box-sizing: border-box;
@@ -104,7 +104,7 @@ h2:focus {
   background: var(--dark);
 }
 .section {
-  padding-block: 96px;
+  padding-block: var(--section-space);
 }
 .soft-section,
 .faq {

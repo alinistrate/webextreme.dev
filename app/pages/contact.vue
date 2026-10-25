@@ -18,7 +18,10 @@ usePageMotion();
         <div class="page-hero-grid">
           <div>
             <p class="eyebrow yellow reveal">Contact</p>
-            <h1 tabindex="-1" class="page-title reveal">Let us build<br />what comes next.</h1>
+            <h1 tabindex="-1" class="page-title reveal">
+              <span class="page-title-line">Let us build</span>
+              <span class="page-title-line">what comes next.</span>
+            </h1>
             <p class="page-lead reveal">
               Tell us about the idea, the challenge or the next thing you want to improve.
             </p>

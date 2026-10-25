@@ -27,7 +27,7 @@ Verified launch: 24 October 2026. Canonical origin: https://webextreme.dev.
 ## Verification and limits
 
 - ESLint, strict TypeScript, formatting, prerender build and 10 contact-handler tests pass.
-- 42 Playwright checks pass across Chromium and WebKit, including axe WCAG 2.2 AA rules, responsive widths, menu keyboard/focus, motion, contact simulation, consent and analytics URL filtering.
+- 46 Playwright checks pass across Chromium and WebKit, including axe WCAG 2.2 AA rules, responsive widths, menu keyboard/focus, motion, contact simulation, consent and analytics URL filtering.
 - Production Lighthouse measurements are recorded in the current implementation status report. Reports are generated into ignored reports/. Read the route, device and measurement date before comparing results.
 - Lab scores fluctuate and are not a PageSpeed field-data guarantee or ADA legal certification. Firefox could not launch in this Windows environment; physical Safari/iOS and assistive-technology review remain outside the verified test coverage.
 - One transitive node-forge advisory remains in the Nuxt build/development toolchain; no such code was found in the deployed assets or Worker. Check upstream patches during maintenance rather than suppressing audit results.
@@ -45,3 +45,13 @@ Light and dark themes follow the system until an explicit opposite choice is mad
 Services, Approach, About and Contact use distinct decorative vector hero compositions. Services has a sticky gold sphere and a native scroll-linked highlight rotation in supporting browsers; the stable sticky sphere remains available elsewhere. No pointer capture, scroll listener, or JavaScript animation loop is added. The straight rail keeps the sphere exactly aligned and stays outside the mobile text column.
 
 The typed 18-icon family is shared by Services, Home service cards, process steps, About cards and contact information. SVG exports and a regeneration script are included under design/icons and scripts/export-brand-icons.mjs. The existing Figma Brand Guidebook includes the specimen and 18 editable main components. MCP access hit its Starter quota; creation was completed with native editor controls, so automatic variable binding was unavailable.
+
+## Compact layout and route entry verification (2026-10-25)
+
+Section padding uses one fluid 48–72px token. Adjacent Home sections on the same surface share a single interval. Process cards keep the icon, title and number in separate grid columns, with the description spanning the card. Inner hero illustrations are capped at 260px and use 176px on phones.
+
+Route reveals wait until the enter transition and scroll restoration have finished before measuring the new content. Hero title lines enter with a short stagger, while each illustration assembles on its first viewport intersection. Keep separate animation frames for scroll preparation and the intro so navigation hooks cannot cancel the title animation. Keyboard focus reveals content immediately; pointer focus does not move an animating link under the cursor.
+
+Service category anchors use NuxtLink and the router's native smooth scroll behavior. Avoid root-level CSS smooth scrolling: it also animates scroll restoration from the previous page's footer, delaying the next hero and invalidating reveal measurements.
+
+Validation: strict TypeScript, ESLint, Prettier, ten contact endpoint tests and 46 Chromium/WebKit browser checks pass. New regressions cover navigation from each page's footer, hero entry, below-fold reveals, non-overlapping process labels and compact section spacing at 320, 390, 768 and 1440px. Light/dark automated axe checks and overflow checks pass across all nine routes.

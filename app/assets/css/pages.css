@@ -1,6 +1,6 @@
 /* Interior pages */
 .page-hero {
-  padding-block: 40px 80px;
+  padding-block: 24px var(--section-space);
 }
 .breadcrumb {
   display: flex;
@@ -8,7 +8,7 @@
   gap: 16px;
   color: var(--dim);
   font-size: 0.875rem;
-  margin-block-end: 64px;
+  margin-block-end: 32px;
 }
 .breadcrumb a {
   display: inline-flex;
@@ -20,7 +20,7 @@
 .page-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.7fr);
-  gap: 80px;
+  gap: 48px;
   align-items: center;
 }
 .page-title {
@@ -35,6 +35,8 @@
   color: var(--dim);
 }
 .page-art {
+  inline-size: min(100%, 260px);
+  justify-self: end;
   aspect-ratio: 1;
   position: relative;
   display: grid;
@@ -205,7 +207,7 @@
 }
 .page-section-heading {
   max-inline-size: 720px;
-  margin-block-end: 56px;
+  margin-block-end: 32px;
 }
 .page-section-heading h2 {
   margin-block: 24px;
@@ -230,18 +232,19 @@
 }
 .phase-title {
   display: grid;
-  grid-template-columns: 56px 1fr;
+  grid-template-columns: 44px minmax(0, 1fr);
   gap: 20px 24px;
   align-content: start;
 }
 .phase-number {
-  inline-size: 48px;
-  block-size: 48px;
-  display: grid;
-  place-items: center;
-  background: var(--yellow);
-  border-radius: 50%;
-  font: 0.75rem var(--font-mono);
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font: 0.6875rem var(--font-mono);
+  color: var(--muted);
 }
 .phase-title h3 {
   align-self: center;

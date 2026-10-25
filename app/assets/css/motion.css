@@ -109,12 +109,12 @@ html[data-motion='on'] .playing .line-three {
 }
 html[data-motion='on'] .reveal.is-observed {
   opacity: 0;
-  transform: translate(var(--entry-x, 0), 18px);
+  transform: translate(var(--entry-x, 0), 28px);
 }
 html[data-motion='on'] .reveal.is-visible {
   opacity: 1;
   transform: none;
-  transition: transform 480ms var(--ease);
+  transition: transform 600ms var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
 }
 html[data-motion='on'] .mobile-menu[open] nav > a {
@@ -155,7 +155,8 @@ html[data-motion='on'] .mobile-menu[open].is-closing nav > a:nth-child(1) {
   }
 }
 
-.reveal:focus-within {
+.reveal:focus-visible,
+.reveal:has(:focus-visible) {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
@@ -205,8 +206,22 @@ html[data-motion='off'] .reveal {
     opacity: 0;
   }
 }
-html[data-motion='on'] .playing .page-hero .page-title {
-  animation: page-title-in 520ms var(--ease) both;
+.page-title-line {
+  display: block;
+}
+@keyframes hero-line-in {
+  from {
+    transform: translateY(32px);
+  }
+  to {
+    transform: none;
+  }
+}
+html[data-motion='on'] .playing .page-hero .page-title-line {
+  animation: hero-line-in 680ms var(--ease) backwards;
+}
+html[data-motion='on'] .playing .page-hero .page-title-line:nth-child(2) {
+  animation-delay: 100ms;
 }
 html[data-motion='on'] .playing .page-hero :is(.eyebrow, .page-lead, .policy-meta) {
   animation: page-detail-in 420ms 60ms var(--ease) backwards;

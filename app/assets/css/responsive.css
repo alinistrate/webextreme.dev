@@ -141,9 +141,6 @@
   .container {
     inline-size: calc(100% - 48px);
   }
-  .section {
-    padding-block: 72px;
-  }
   h1 {
     font-size: clamp(2.2rem, 11.282vw, 2.75rem);
     line-height: 1.137;
@@ -195,7 +192,7 @@
   }
   .hero-copy > .eyebrow {
     font-size: 0.6875rem;
-    margin-block-end: 40px;
+    margin-block-end: 32px;
   }
   .desktop-eyebrow,
   .desktop-break {
@@ -259,7 +256,7 @@
     display: none;
   }
   .section-heading {
-    margin-block: 28px 40px;
+    margin-block: 24px 32px;
   }
   .section-heading h2 {
     font-size: 2rem;
@@ -330,7 +327,7 @@
   }
   .process-heading {
     display: block;
-    margin-block-end: 40px;
+    margin-block-end: 28px;
   }
   .process-heading h2 {
     font-size: 2.25rem;
@@ -344,14 +341,14 @@
     gap: 16px;
   }
   .process-cards li {
-    padding: 20px;
-    gap: 16px;
+    padding: 18px;
+    gap: 12px;
   }
   .process-cards h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .process-cards p {
-    grid-column: 2;
+    grid-column: 1 / -1;
     font-size: 0.875rem;
   }
   .faq-item button {
@@ -382,14 +379,14 @@
     inline-size: 100%;
   }
   .page-hero {
-    padding-block: 24px 56px;
+    padding-block: 16px var(--section-space);
   }
   .breadcrumb {
-    margin-block-end: 36px;
+    margin-block-end: 24px;
   }
   .page-hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 24px;
   }
   .page-title {
     font-size: 2.75rem;
@@ -400,7 +397,7 @@
     font-size: 1rem;
   }
   .page-art {
-    inline-size: 210px;
+    inline-size: 176px;
     justify-self: center;
   }
   .page-art > span {
@@ -447,13 +444,13 @@
     padding-block: 36px;
   }
   .phase-title {
-    grid-template-columns: 48px 1fr;
+    grid-template-columns: 44px minmax(0, 1fr);
   }
   .phase-title h3 {
     font-size: 1.75rem;
   }
   .page-section-heading {
-    margin-block-end: 40px;
+    margin-block-end: 32px;
   }
   .page-section-heading h2 {
     font-size: 2rem;
@@ -508,7 +505,7 @@
     padding: 24px;
   }
   .mobile-menu .menu-top {
-    margin-block-end: 40px;
+    margin-block-end: 32px;
   }
   .mobile-menu nav > a {
     font-size: 2.25rem;

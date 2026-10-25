@@ -22,7 +22,10 @@ usePageMotion();
         <div class="page-hero-grid">
           <div>
             <p class="eyebrow yellow reveal">About</p>
-            <h1 tabindex="-1" class="page-title reveal">Technical depth.<br />Clear delivery.</h1>
+            <h1 tabindex="-1" class="page-title reveal">
+              <span class="page-title-line">Technical depth.</span>
+              <span class="page-title-line">Clear delivery.</span>
+            </h1>
             <p class="page-lead reveal">
               A software and web company. Built on practical development and project delivery
               experience.
