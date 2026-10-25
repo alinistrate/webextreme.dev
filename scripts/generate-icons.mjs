@@ -16,8 +16,8 @@ try {
         source,
     );
     const png = await page.screenshot({ omitBackground: true });
-    if (size <= 48) frames.push({ size, png });
-    else {
+    if (size <= 96) frames.push({ size, png });
+    if (size >= 96) {
       const name =
         size === 96
           ? 'favicon-96x96.png'
