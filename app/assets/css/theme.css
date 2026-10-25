@@ -102,11 +102,11 @@ body,
 .contact-page-form .button:hover {
   background: #33383b;
 }
-.brand-icon.is-framed,
-.service-card .brand-icon {
+.app-icon.is-framed,
+.service-card .app-icon {
   color: var(--accent-ink);
 }
-.brand-icon.is-framed {
+.app-icon.is-framed {
   color: var(--dark);
 }
 .mobile-menu nav > a:is(:hover, :focus-visible, [aria-current='page']),
@@ -162,7 +162,7 @@ body,
     min-inline-size: 48px;
     inline-size: 48px;
   }
-  .menu-button > span {
+  .menu-button > .menu-label {
     display: none;
   }
 }

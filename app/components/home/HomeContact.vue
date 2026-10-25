@@ -8,7 +8,7 @@
           Tell us about the idea, the challenge or the next thing you want to improve.
         </p>
         <a class="email-link" href="mailto:contact@webextreme.dev"
-          ><BrandIcon name="email" />contact@webextreme.dev</a
+          ><AppIcon name="email" />contact@webextreme.dev</a
         >
       </div>
       <ContactForm />

@@ -6,23 +6,13 @@
           <span class="desktop-eyebrow">Design, software &amp; web development</span
           ><span class="mobile-eyebrow">Design &amp; development</span>
         </p>
-        <h1 tabindex="-1">
-          <span class="sr-only">Your next idea. Built with precision.</span
-          ><span class="headline-line" aria-hidden="true"
-            ><span class="type-line">Your next idea.</span></span
-          ><span class="headline-line" aria-hidden="true"
-            ><span class="slide-line line-two">Built with</span></span
-          ><span class="headline-line" aria-hidden="true"
-            ><span class="slide-line line-three">precision.</span></span
-          >
-        </h1>
+        <HeroHeadline />
         <p class="hero-description">
           Design, websites and custom software.<br class="desktop-break" />
           A connected approach from your idea to launch.
         </p>
         <div class="hero-actions">
-          <NuxtLink class="button" to="/contact/"
-            >Start a project <span aria-hidden="true">↗</span></NuxtLink
+          <NuxtLink class="button" to="/contact/">Start a project <AppIcon name="arrow" /></NuxtLink
           ><NuxtLink class="text-link light-link" to="/services/">Explore services</NuxtLink>
         </div>
         <div class="hero-meta">

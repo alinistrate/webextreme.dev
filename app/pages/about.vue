@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { about } from '~/content/about';
 import type { IconName } from '~/content/icons';
-const technicalIcons: IconName[] = ['software', 'performance', 'security'];
+const technicalIcons: IconName[] = [
+  'software',
+  'landing-pages',
+  'automation',
+  'web-development',
+  'launch',
+];
 const principleIcons: IconName[] = ['clarity', 'conversation', 'delivery'];
 usePageSeo(
   'About',
@@ -43,7 +49,7 @@ usePageMotion();
           <span class="eyebrow yellow">WEB DEVELOPMENT & DELIVERY</span>
         </div>
         <div class="story-copy reveal">
-          <p class="eyebrow icon-label"><BrandIcon name="delivery" framed />The foundation</p>
+          <p class="eyebrow icon-label"><AppIcon name="delivery" framed />The foundation</p>
           <h2 tabindex="-1">Experience that connects<br />the details.</h2>
           <p>{{ about.intro }}</p>
           <p>{{ about.experience }}</p>
@@ -63,7 +69,7 @@ usePageMotion();
             :key="item[0]"
             class="content-card reveal"
           >
-            <BrandIcon :name="technicalIcons[index]!" framed />
+            <AppIcon :name="technicalIcons[index]!" framed />
             <h3>{{ item[0] }}</h3>
             <p>{{ item[1] }}</p>
           </article>
@@ -82,7 +88,7 @@ usePageMotion();
             :key="item[0]"
             class="content-card dark-card reveal"
           >
-            <BrandIcon :name="principleIcons[index]!" framed />
+            <AppIcon :name="principleIcons[index]!" framed />
             <h3>{{ item[0] }}</h3>
             <p>{{ item[1] }}</p>
           </article>
@@ -90,8 +96,8 @@ usePageMotion();
         <div class="location-line reveal">
           <span class="location-dot" aria-hidden="true"></span>
           <NuxtLink class="text-link light-link" to="/contact/"
-            >Start a conversation <span aria-hidden="true">↗</span></NuxtLink
-          >
+            >Start a conversation <AppIcon name="arrow"
+          /></NuxtLink>
         </div>
       </div>
     </section>
@@ -101,8 +107,8 @@ usePageMotion();
         <h2 tabindex="-1">Let us build<br />what comes next.</h2>
         <p>Bring the idea, the challenge or the thing you want to improve.</p>
         <NuxtLink class="button black-button" to="/contact/"
-          >Start a conversation <span aria-hidden="true">↗</span></NuxtLink
-        >
+          >Start a conversation <AppIcon name="arrow"
+        /></NuxtLink>
       </div>
     </section>
   </main>

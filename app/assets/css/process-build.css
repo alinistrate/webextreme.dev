@@ -1,0 +1,379 @@
+/* Each process card drives one layer of the same canvas. Text never depends on the scene. */
+.process-build {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
+  timeline-scope: --build-1, --build-2, --build-3, --build-4, --build-5, --build-6, --build-story;
+  view-timeline: --build-story block;
+}
+.process-build .process-cards {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding-block-end: 32px;
+}
+.process-build .process-cards > li:nth-child(1) {
+  view-timeline: --build-1 block;
+}
+.process-build .process-cards > li:nth-child(2) {
+  view-timeline: --build-2 block;
+}
+.process-build .process-cards > li:nth-child(3) {
+  view-timeline: --build-3 block;
+}
+.process-build .process-cards > li:nth-child(4) {
+  view-timeline: --build-4 block;
+}
+.process-build .process-cards > li:nth-child(5) {
+  view-timeline: --build-5 block;
+}
+.process-build .process-cards > li:nth-child(6) {
+  view-timeline: --build-6 block;
+}
+.build-scene {
+  position: sticky;
+  inset-block-start: 136px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+.build-canvas {
+  position: relative;
+  aspect-ratio: 1.15;
+  max-inline-size: 360px;
+  margin-inline: auto;
+  isolation: isolate;
+}
+.build-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse, black, transparent 75%);
+}
+.build-layer {
+  position: absolute;
+  transform-origin: center;
+}
+.build-shell {
+  --stage-timeline: --build-1;
+  --layer-y: 70px;
+  --layer-rotate: -12deg;
+  inset: 10% 5% 14%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+}
+.build-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  block-size: 12%;
+  padding-inline: 10px;
+  border-block-end: 1px solid var(--line);
+  font: 8px var(--font-mono);
+  color: var(--muted);
+}
+.build-browser-bar i {
+  inline-size: 4px;
+  block-size: 4px;
+  background: var(--yellow);
+  border-radius: 50%;
+}
+.build-browser-bar span {
+  margin-inline: auto;
+}
+.build-wireframe {
+  --stage-timeline: --build-2;
+  --layer-x: -90px;
+  --layer-rotate: 8deg;
+  inset: 25% 12% 24%;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 10px;
+}
+.build-wireframe span {
+  border: 1px dashed var(--border);
+  border-radius: 3px;
+}
+.build-interface {
+  --stage-timeline: --build-3;
+  --layer-y: 90px;
+  --layer-rotate: -8deg;
+  inset: 25% 12% 24%;
+  padding: 6%;
+  color: var(--ink);
+  background: var(--cloud);
+  border-radius: 4px;
+}
+.build-interface > svg {
+  inline-size: 42%;
+  margin-block-end: 7%;
+}
+.build-interface strong {
+  display: block;
+  font: 700 clamp(10px, 1.4vw, 20px)/1.2 var(--font-display);
+}
+.build-interface em {
+  color: var(--accent-ink);
+  font-style: normal;
+}
+.build-mini-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-block-start: 7%;
+  padding: 5px 7px;
+  background: var(--yellow);
+  color: var(--dark);
+  font-size: 7px;
+}
+.build-mini-cta .app-icon {
+  inline-size: 8px;
+  block-size: 8px;
+}
+.build-mini-cards {
+  position: absolute;
+  inset: auto 7% 6% auto;
+  display: flex;
+  gap: 8px;
+}
+.build-mini-cards .app-icon {
+  inline-size: 12px;
+  block-size: 12px;
+  color: var(--muted);
+}
+.build-code {
+  --stage-timeline: --build-4;
+  --layer-x: -80px;
+  --layer-y: 40px;
+  --layer-rotate: -15deg;
+  inset: auto auto 9% 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--dark);
+  color: var(--yellow);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  rotate: -6deg;
+  font: 8px/1.5 var(--font-mono);
+}
+.build-code b {
+  color: #f3f3ef;
+  font-weight: 400;
+}
+.build-checks {
+  --stage-timeline: --build-5;
+  --layer-x: 80px;
+  --layer-rotate: 12deg;
+  inset: 16% 0 auto auto;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: var(--yellow);
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  border-radius: 8px;
+  rotate: 6deg;
+}
+.build-checks .app-icon {
+  inline-size: 18px;
+  block-size: 18px;
+}
+.build-launch {
+  --stage-timeline: --build-6;
+  --layer-y: 70px;
+  --layer-rotate: 8deg;
+  inset: auto 0 1% auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: 9px var(--font-mono);
+}
+.build-launch .app-icon {
+  inline-size: 18px;
+  block-size: 18px;
+  color: var(--accent-ink);
+}
+.build-caption {
+  margin-block-start: 20px;
+  color: var(--muted);
+  font: 9px/1.5 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.build-progress {
+  block-size: 2px;
+  background: var(--yellow);
+  margin-block-start: 20px;
+  transform-origin: left;
+}
+@keyframes build-assemble {
+  from {
+    opacity: 0;
+    transform: perspective(800px) translate3d(var(--layer-x, 0), var(--layer-y, 0), 80px)
+      rotateX(18deg) rotateZ(var(--layer-rotate, 0deg)) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes build-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@supports (
+  (animation-timeline: view()) and (animation-range: entry) and (timeline-scope: --build-1)
+) {
+  html[data-motion='on'] .build-layer {
+    animation: build-assemble auto linear both;
+    animation-timeline: var(--stage-timeline);
+    animation-range: cover 30% cover 45%;
+  }
+  html[data-motion='on'] .build-progress {
+    animation: build-progress auto linear both;
+    animation-timeline: --build-story;
+    animation-range: contain 0% contain 100%;
+  }
+}
+html[data-motion='on'] .process-build.is-fallback .build-layer {
+  animation: none;
+  opacity: 0;
+  transform: translate(var(--layer-x, 0), var(--layer-y, 0)) rotate(var(--layer-rotate, 0deg))
+    scale(0.88);
+  transition:
+    transform 650ms var(--ease),
+    opacity 400ms ease;
+}
+html[data-motion='on'] .process-build.is-fallback .build-layer.is-built {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 1023px) {
+  .process-build {
+    gap: 28px;
+  }
+  .build-scene {
+    padding: 16px;
+  }
+  .build-interface strong {
+    font-size: 12px;
+  }
+  .build-code {
+    padding: 10px;
+    gap: 8px;
+    font-size: 7px;
+  }
+}
+@media (max-width: 700px) {
+  .process-build {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .build-scene {
+    inset-block-start: 96px;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  .build-canvas {
+    inline-size: 210px;
+    max-inline-size: 100%;
+    block-size: 152px;
+    aspect-ratio: auto;
+    margin-inline: auto;
+  }
+  .build-caption {
+    margin-block-start: 6px;
+    font-size: 7px;
+  }
+  .build-progress {
+    margin-block-start: 6px;
+  }
+  .build-interface {
+    padding: 4%;
+  }
+  .build-interface strong {
+    font-size: 9px;
+  }
+  .build-interface > svg {
+    inline-size: 38%;
+    margin-block-end: 4%;
+  }
+  .build-mini-cta {
+    margin-block-start: 4%;
+    padding: 3px 5px;
+    font-size: 5px;
+  }
+  .build-mini-cards {
+    gap: 5px;
+  }
+  .build-mini-cards .app-icon {
+    inline-size: 8px;
+    block-size: 8px;
+  }
+  .build-code {
+    padding: 6px;
+    gap: 6px;
+    font-size: 5px;
+  }
+  .build-code .app-icon {
+    inline-size: 16px;
+    block-size: 16px;
+  }
+  .build-checks {
+    padding: 6px;
+    gap: 6px;
+  }
+  .build-checks .app-icon {
+    inline-size: 10px;
+    block-size: 10px;
+  }
+  .build-launch {
+    padding: 6px;
+    font-size: 6px;
+    gap: 6px;
+  }
+  .build-launch .app-icon {
+    inline-size: 12px;
+    block-size: 12px;
+  }
+  .build-browser-bar {
+    gap: 3px;
+    padding-inline: 5px;
+    font-size: 5px;
+  }
+  .build-browser-bar i {
+    inline-size: 3px;
+    block-size: 3px;
+  }
+  .process-build .process-cards {
+    gap: 16px;
+  }
+}
+@media print {
+  .build-scene {
+    display: none;
+  }
+  .process-build {
+    display: block;
+  }
+}

@@ -11,7 +11,7 @@ defineProps<{ service: Service; index: number }>();
     <div class="container detail-grid">
       <div class="detail-copy">
         <p class="eyebrow reveal icon-label">
-          <BrandIcon :name="service.id" framed />0{{ index + 1 }} / {{ service.title }}
+          <AppIcon :name="service.id" framed />0{{ index + 1 }} / {{ service.title }}
         </p>
         <h2 class="reveal">{{ service.headline }}</h2>
         <p class="detail-lead reveal">{{ service.intro }}</p>
@@ -22,8 +22,8 @@ defineProps<{ service: Service; index: number }>();
         <NuxtLink
           class="text-link reveal"
           :to="{ path: '/contact/', query: { service: service.title } }"
-          >Discuss this service <span aria-hidden="true">↗</span></NuxtLink
-        >
+          >Discuss this service <AppIcon name="arrow"
+        /></NuxtLink>
       </div>
       <div class="scope-panel reveal">
         <p class="eyebrow">Typical scope</p>

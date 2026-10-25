@@ -44,7 +44,7 @@ function accept(allow: boolean) {
       autofocus
       @click="settingsOpen = false"
     >
-      ×
+      <AppIcon name="close" />
     </button>
     <h2 id="cookie-title">Cookie settings</h2>
     <p>

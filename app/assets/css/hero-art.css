@@ -87,19 +87,34 @@
 html[data-motion='on'] .page-art.is-visible .art-piece {
   animation: art-piece-in 650ms var(--piece-delay, 0ms) var(--ease) backwards;
 }
-.brand-icon {
+.app-icon {
   display: inline-grid;
   place-items: center;
   inline-size: 24px;
   block-size: 24px;
   flex-shrink: 0;
   color: inherit;
+  pointer-events: none;
 }
-.brand-icon svg {
-  inline-size: 24px;
-  block-size: 24px;
+.app-icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+  fill: currentColor;
+  stroke: none;
 }
-.brand-icon.is-framed {
+.app-icon.is-arrow svg {
+  rotate: -45deg;
+}
+:is(.button, .text-link, .service-card, .faq-item, .mobile-menu nav) .app-icon.is-arrow,
+.faq-item .app-icon {
+  inline-size: 18px;
+  block-size: 18px;
+}
+.app-icon.is-framed svg {
+  inline-size: 22px;
+  block-size: 22px;
+}
+.app-icon.is-framed {
   inline-size: 44px;
   block-size: 44px;
   color: var(--dark);
@@ -118,7 +133,7 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
   align-items: flex-start;
   gap: 10px;
 }
-.service-card .brand-icon {
+.service-card .app-icon {
   color: var(--dark);
 }
 .services-journey {
@@ -131,6 +146,9 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
   inset: 64px max(32px, calc((100% - 1200px) / 2));
   pointer-events: none;
   z-index: 1;
+  container-type: inline-size;
+  --journey-amplitude: 3cqi;
+  --journey-radius: 13px;
 }
 .journey-track > svg {
   position: absolute;
@@ -184,6 +202,10 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
   }
 }
 @media (max-width: 1100px) {
+  .journey-track {
+    --journey-amplitude: 1.5cqi;
+    --journey-radius: 9px;
+  }
   .journey-orb {
     inline-size: 18px;
     block-size: 18px;
@@ -192,19 +214,13 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
 @media (max-width: 700px) {
   .journey-track {
     inset-inline: 4px auto;
-    inline-size: 2px;
-  }
-  .journey-track > svg {
-    display: none;
-  }
-  .journey-track {
-    background: var(--line);
+    inline-size: 12px;
+    --journey-amplitude: 30cqi;
+    --journey-radius: 5px;
   }
   .journey-orb {
     inline-size: 10px;
     block-size: 10px;
-    margin-inline-start: -4px;
-    animation: none !important;
   }
   .page-art.art-contact > span {
     font-size: 7px;
@@ -215,6 +231,61 @@ html[data-motion='on'] .page-art.is-visible .art-piece {
   align-items: center;
   gap: 12px;
 }
-.content-card > .brand-icon {
+.content-card > .app-icon {
   margin-block-end: 20px;
+}
+
+/* Match the sphere's X to the Bézier rail while sticky positioning keeps its Y in view. */
+.journey-path-tablet,
+.journey-path-mobile {
+  display: none;
+}
+@keyframes journey-curve {
+  0%,
+  25%,
+  50%,
+  75% {
+    translate: 0 0;
+    animation-timing-function: cubic-bezier(0.333333, 0.666667, 0.666667, 1);
+  }
+  12.5%,
+  62.5% {
+    translate: var(--journey-amplitude) 0;
+    animation-timing-function: cubic-bezier(0.333333, 0, 0.666667, 0.333333);
+  }
+  37.5%,
+  87.5% {
+    translate: calc(var(--journey-amplitude) * -1) 0;
+    animation-timing-function: cubic-bezier(0.333333, 0, 0.666667, 0.333333);
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+@supports (
+  (animation-timeline: view()) and
+    (animation-range: cover calc(50svh + 64px) cover calc(100% - 50svh - 64px))
+) {
+  html[data-motion='on'] .journey-track:not(.is-fallback) .journey-orb {
+    animation: journey-curve auto linear both;
+    animation-timeline: --service-journey;
+    animation-range: cover calc(50svh + 64px - var(--journey-radius)) cover
+      calc(100% - 50svh + 64px - var(--journey-radius));
+  }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .journey-path-desktop {
+    display: none;
+  }
+  .journey-path-tablet {
+    display: block;
+  }
+}
+@media (max-width: 700px) {
+  .journey-path-desktop {
+    display: none;
+  }
+  .journey-path-mobile {
+    display: block;
+  }
 }

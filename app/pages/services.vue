@@ -59,8 +59,8 @@ usePageMotion();
             capabilities it needs.
           </p>
           <NuxtLink class="text-link light-link" to="/approach/"
-            >See how we work <span aria-hidden="true">↗</span></NuxtLink
-          >
+            >See how we work <AppIcon name="arrow"
+          /></NuxtLink>
         </div>
       </div>
     </section>
@@ -70,8 +70,8 @@ usePageMotion();
         <h2 tabindex="-1">Let us build<br />what comes next.</h2>
         <p>Bring the idea, the challenge or the thing you want to improve.</p>
         <NuxtLink class="button black-button" to="/contact/"
-          >Start a conversation <span aria-hidden="true">↗</span></NuxtLink
-        >
+          >Start a conversation <AppIcon name="arrow"
+        /></NuxtLink>
       </div>
     </section>
   </main>

@@ -29,8 +29,9 @@ usePageMotion();
         <h2>Using the website</h2>
         <p>
           You can navigate using a keyboard, skip directly to the main content and enlarge text.
-          Decorative animations use short transitions and stop after entering view. Content remains
-          available when JavaScript is disabled.
+          Entrance animations use short transitions. Scroll scenes follow your scrolling. The
+          rotating homepage headline has a pause button and stops while it is offscreen or the
+          browser tab is hidden. Content remains available when JavaScript is disabled.
         </p>
         <h2>Report a problem</h2>
         <p>

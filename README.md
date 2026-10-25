@@ -77,7 +77,7 @@ GTM should send an initial GA4 page_view and virtual_page_view route changes exa
 
 ## Accessibility and browser support
 
-Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Short, non-looping motion stays active for all visitors, including reduced-motion preferences, as explicitly requested for the visual direction. There are no public animation controls or stored overrides. Native anchor scrolling is smooth with fixed-header offsets.
+Target WCAG 2.2 AA and modern browser releases from the previous 24 months. Feature-detected decorative scroll effects fall back to static content. Fixed-duration reveals use IntersectionObserver and clean up after route changes. Content remains visible without JavaScript. Native dialogs provide focus containment. Entrance and scroll motion stays active for all visitors, including reduced-motion preferences, as explicitly requested for the visual direction. The looping headline has its own accessible pause control. There is no global motion toggle or stored motion override. Native anchor scrolling is smooth with fixed-header offsets.
 
 Automated axe and Lighthouse checks complement keyboard, focus, zoom, contrast and assistive-technology review. Playwright WebKit is not physical Safari/iOS testing. Automated scores do not establish ADA legal certification. Record actual browser test and audit limits in the launch report.
 
@@ -99,10 +99,14 @@ The launch configuration, dashboard-managed edge rules and validation results ar
 
 ## Brand illustrations and icons
 
-PageHeroArt contains four decorative SVG compositions. BrandIcon uses the typed 24px path inventory in app/content/icons.ts; reuse these paths for design exports instead of installing an icon font. Icons beside text are decorative, while labels remain real HTML. ServicesJourney keeps a gold sphere in view during service browsing; supported browsers add native scroll-linked highlight rotation, and others retain the sticky sphere. No animation loop or scroll handler runs in JavaScript. Route transitions use Vue's supported CSS transition lifecycle. Motion state is owned by reactive useHead, so it survives metadata changes on every navigation.
+PageHeroArt contains four decorative SVG compositions. AppIcon renders the selected Font Awesome Free Classic Solid definitions in app/content/icons.ts as native SVG. Named imports include only selected icons; no external kit, icon font or DOM replacement runtime is loaded. Run pnpm icons:export to regenerate the design SVGs. Attribution and the upstream license are published at /fontawesome-license.txt. Icons beside text are decorative, while labels remain real HTML. ServicesJourney keeps a gold sphere aligned to a curved rail during service browsing. Native CSS timelines drive the curve and highlight rotation; unsupported browsers use a passive scroll handler batched by requestAnimationFrame. No idle animation loop runs. Route transitions use Vue's supported CSS transition lifecycle. Motion state is owned by reactive useHead, so it survives metadata changes on every navigation.
 
 The header color-scheme toggle follows the system by default and stores only explicit opposite choices in wed_theme local storage. A minimal early head script prevents a theme flash; reactive head state owns subsequent updates. Both state icons remain in markup and CSS exposes only the current action. Yellow contact sections retain a fixed light scheme for predictable form contrast.
 
 Home keeps its hero, navigation, FAQ and contact form immediately interactive. Services, About and Approach sections use Nuxt visible hydration with a 200px margin. Their full HTML remains prerendered for search engines and no-JavaScript access. Motion observes this existing HTML independently of hydration.
 
 The consent banner is prerendered for fresh visits. A small early script only hides an already answered banner; it cannot load Analytics. Reactive cookie state owns subsequent visibility, while the existing readiness-and-consent checks continue to gate Google requests.
+
+HeroHeadline keeps the first two headline lines static and types/erases five final words. The full semantic heading is rendered on the server; a hidden longest-word measure prevents layout shifts. The pause control stops the cycle. Timers stop offscreen, in background tabs and on unmount.
+
+ProcessBuild reuses the existing Home process cards as named CSS view-timeline drivers for six decorative browser layers. timeline-scope is local to the scene; unsupported browsers use a page-scoped IntersectionObserver. Keep the scene non-interactive and the process copy in semantic HTML.

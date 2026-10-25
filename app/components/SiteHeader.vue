@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
         class="button header-cta"
         :to="route.path === '/' ? '/#enquiry-form' : '/contact/#enquiry-form'"
         @click="goToForm"
-        >Let us talk <span aria-hidden="true">↗</span></NuxtLink
+        >Let us talk <AppIcon name="arrow" /></NuxtLink
       ><ThemeToggle /><button
         ref="trigger"
         class="menu-button icon-button"
@@ -58,11 +58,7 @@ onBeforeUnmount(() => {
         aria-controls="site-menu"
         @click="openMenu"
       >
-        <span>Menu</span
-        ><svg aria-hidden="true" viewBox="0 0 24 24">
-          <path d="M3 8h18" />
-          <path d="M3 16h18" />
-        </svg>
+        <span class="menu-label">Menu</span><AppIcon name="menu" />
       </button>
     </div>
   </header>

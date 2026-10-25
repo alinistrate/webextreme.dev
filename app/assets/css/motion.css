@@ -396,15 +396,8 @@ html[data-motion='on'] .brand:is(:hover, :focus-visible) .x-lower {
 .menu-close:is(:hover, :focus-visible) svg {
   transform: rotate(90deg);
 }
-.menu-button svg path {
-  transform-origin: center;
-  transition: transform 220ms var(--ease);
-}
-.menu-button:is(:hover, :focus-visible) svg path:first-child {
-  transform: translateX(2px) scaleX(0.75);
-}
-.menu-button:is(:hover, :focus-visible) svg path:last-child {
-  transform: translateX(-2px) scaleX(0.75);
+.menu-button:is(:hover, :focus-visible) svg {
+  transform: scaleX(0.85);
 }
 .brand .header-wordmark-enter {
   transition: transform 240ms var(--ease);

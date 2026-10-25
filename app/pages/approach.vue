@@ -46,7 +46,7 @@ usePageMotion();
           <li v-for="(step, index) in steps" :id="'phase-' + (index + 1)" :key="step.title">
             <div class="phase-title reveal">
               <span class="phase-number icon-label"
-                ><BrandIcon :name="processIcons[index]!" framed />0{{ index + 1 }}</span
+                ><AppIcon :name="processIcons[index]!" framed />0{{ index + 1 }}</span
               >
               <h3>{{ step.title }}</h3>
               <p>{{ step.lead }}</p>
@@ -94,8 +94,8 @@ usePageMotion();
         <h2 tabindex="-1">Let us build<br />what comes next.</h2>
         <p>Bring the idea, the challenge or the thing you want to improve.</p>
         <NuxtLink class="button black-button" to="/contact/"
-          >Start a conversation <span aria-hidden="true">↗</span></NuxtLink
-        >
+          >Start a conversation <AppIcon name="arrow"
+        /></NuxtLink>
       </div>
     </section>
   </main>

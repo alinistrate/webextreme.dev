@@ -76,7 +76,7 @@ defineExpose({ show });
           autofocus
           @click="close()"
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19" /></svg>
+          <AppIcon name="close" />
         </button>
       </div>
       <p class="eyebrow yellow">Explore webextreme.dev</p>
@@ -88,11 +88,11 @@ defineExpose({ show });
           :aria-current="route.path === item.to ? 'page' : undefined"
           @click="follow($event, item.to)"
           ><span class="eyebrow">0{{ index + 1 }}</span
-          >{{ item.label }}<span aria-hidden="true">↗</span></NuxtLink
-        >
+          >{{ item.label }}<AppIcon name="arrow"
+        /></NuxtLink>
       </nav>
       <NuxtLink class="button menu-project" to="/contact/" @click="follow($event, '/contact/')"
-        >Start a project <span aria-hidden="true">↗</span></NuxtLink
+        >Start a project <AppIcon name="arrow" /></NuxtLink
       ><a class="menu-email" href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>
     </div>
   </dialog>

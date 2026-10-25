@@ -20,3 +20,6 @@
 @import './links.css';
 @import './hero-art.css';
 @import './theme.css';
+
+@import './headline.css';
+@import './process-build.css';

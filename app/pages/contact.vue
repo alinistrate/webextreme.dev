@@ -34,7 +34,7 @@ usePageMotion();
       <div class="container contact-page-grid">
         <div class="contact-aside reveal">
           <p class="eyebrow icon-label">
-            <BrandIcon name="conversation" framed />Start a conversation
+            <AppIcon name="conversation" framed />Start a conversation
           </p>
           <h2 tabindex="-1">A few details.<br />A useful starting point.</h2>
           <p>
@@ -42,7 +42,7 @@ usePageMotion();
             the next steps from there.
           </p>
           <a class="email-link" href="mailto:contact@webextreme.dev"
-            ><BrandIcon name="email" />contact@webextreme.dev</a
+            ><AppIcon name="email" />contact@webextreme.dev</a
           >
           <div class="contact-next">
             <h3>What happens next</h3>
@@ -66,10 +66,10 @@ usePageMotion();
           </p>
           <div class="inline-links">
             <NuxtLink class="text-link" to="/services/"
-              >Explore services <span aria-hidden="true">↗</span></NuxtLink
+              >Explore services <AppIcon name="arrow" /></NuxtLink
             ><NuxtLink class="text-link" to="/approach/"
-              >Our approach <span aria-hidden="true">↗</span></NuxtLink
-            >
+              >Our approach <AppIcon name="arrow"
+            /></NuxtLink>
           </div>
         </div>
       </div>

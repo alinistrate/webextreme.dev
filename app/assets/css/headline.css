@@ -1,0 +1,65 @@
+/* The longest word reserves space; typing never moves the surrounding layout. */
+.hero-heading {
+  position: relative;
+}
+.headline-word-line {
+  padding-inline-end: 44px;
+}
+.word-stage {
+  display: inline-grid;
+  max-inline-size: 100%;
+}
+.word-reserve,
+.word-copy {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+.word-reserve {
+  visibility: hidden;
+}
+.word-copy {
+  justify-self: start;
+}
+.word-caret {
+  display: inline-block;
+  inline-size: 2px;
+  block-size: 0.8em;
+  background: currentColor;
+  margin-inline-start: 4px;
+  vertical-align: -0.02em;
+  opacity: 0;
+}
+@keyframes headline-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+.is-running .word-caret {
+  animation: headline-caret 1200ms ease-in-out infinite;
+}
+.headline-pause {
+  position: absolute;
+  inset: auto 0 0.2em auto;
+  display: grid;
+  place-items: center;
+  min-inline-size: 32px;
+  min-block-size: 32px;
+  padding: 6px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+.headline-pause .app-icon {
+  inline-size: 12px;
+  block-size: 12px;
+}
+.headline-pause:is(:hover, :focus-visible) {
+  color: var(--dark);
+  background: var(--yellow);
+}

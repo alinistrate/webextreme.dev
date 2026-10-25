@@ -10,47 +10,49 @@
           Six focused steps. Clear decisions throughout.<br />A process that adapts to the work.
         </p>
       </div>
-      <ol class="process-cards" role="list">
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="discover" /></span>
-          <span class="step-number">01</span>
-          <h3>Discover</h3>
-          <p>Align on goals, users and the problem to solve.</p>
-        </li>
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="scope" /></span>
-          <span class="step-number">02</span>
-          <h3>Scope</h3>
-          <p>Define priorities, deliverables and practical milestones.</p>
-        </li>
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="design" /></span>
-          <span class="step-number">03</span>
-          <h3>Design</h3>
-          <p>Shape journeys, wireframes and the visual direction.</p>
-        </li>
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="software" /></span>
-          <span class="step-number">04</span>
-          <h3>Develop</h3>
-          <p>Build working features and review progress together.</p>
-        </li>
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="test" /></span>
-          <span class="step-number">05</span>
-          <h3>Test &amp; refine</h3>
-          <p>Check usability, accessibility and performance.</p>
-        </li>
-        <li class="reveal">
-          <span class="step-icon" aria-hidden="true"><BrandIcon name="launch" /></span>
-          <span class="step-number">06</span>
-          <h3>Launch &amp; support</h3>
-          <p>Prepare the handoff and agree the next steps after launch.</p>
-        </li>
-      </ol>
+      <ProcessBuild>
+        <ol class="process-cards" role="list">
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="discover" /></span>
+            <span class="step-number">01</span>
+            <h3>Discover</h3>
+            <p>Align on goals, users and the problem to solve.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="scope" /></span>
+            <span class="step-number">02</span>
+            <h3>Scope</h3>
+            <p>Define priorities, deliverables and practical milestones.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="design" /></span>
+            <span class="step-number">03</span>
+            <h3>Design</h3>
+            <p>Shape journeys, wireframes and the visual direction.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="software" /></span>
+            <span class="step-number">04</span>
+            <h3>Develop</h3>
+            <p>Build working features and review progress together.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="test" /></span>
+            <span class="step-number">05</span>
+            <h3>Test &amp; refine</h3>
+            <p>Check usability, accessibility and performance.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-icon" aria-hidden="true"><AppIcon name="launch" /></span>
+            <span class="step-number">06</span>
+            <h3>Launch &amp; support</h3>
+            <p>Prepare the handoff and agree the next steps after launch.</p>
+          </li>
+        </ol>
+      </ProcessBuild>
       <NuxtLink class="text-link reveal process-more" to="/approach/"
-        >Explore our approach <span aria-hidden="true">↗</span></NuxtLink
-      >
+        >Explore our approach <AppIcon name="arrow"
+      /></NuxtLink>
     </div>
   </section>
 </template>

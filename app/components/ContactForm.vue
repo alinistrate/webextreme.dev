@@ -125,7 +125,7 @@ async function submit() {
     </div>
     <TurnstileChallenge ref="challenge" v-model="turnstileToken" />
     <button class="button black-button" type="submit" :disabled="pending">
-      {{ pending ? 'Sending…' : 'Send enquiry' }} <span aria-hidden="true">↗</span>
+      {{ pending ? 'Sending…' : 'Send enquiry' }} <AppIcon name="arrow" />
     </button>
     <p class="form-note">
       We use these details to respond to your enquiry.

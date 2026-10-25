@@ -35,7 +35,7 @@ const questions = [
           :aria-controls="id + '-' + index"
           @click="active = active === index ? -1 : index"
         >
-          {{ item.question }}<span aria-hidden="true">{{ active === index ? '−' : '+' }}</span>
+          {{ item.question }}<AppIcon :name="active === index ? 'minus' : 'plus'" />
         </button>
       </h3>
       <div :id="id + '-' + index" class="faq-panel" :hidden="active !== index">

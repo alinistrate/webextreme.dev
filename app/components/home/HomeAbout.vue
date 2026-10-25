@@ -26,8 +26,8 @@
           </li>
         </ul>
         <NuxtLink class="text-link light-link reveal" to="/about/"
-          >More about the company <span aria-hidden="true">↗</span></NuxtLink
-        >
+          >More about the company <AppIcon name="arrow"
+        /></NuxtLink>
       </div>
     </div>
   </section>

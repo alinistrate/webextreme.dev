@@ -350,3 +350,97 @@ test('mobile process labels do not overlap and adjacent sections share compact s
     expect(spacing.services + spacing.about).toBeGreaterThanOrEqual(48);
   }
 });
+
+test('headline types and erases only the final word, supports pause and keeps its layout', async ({
+  page,
+}) => {
+  await page.clock.install();
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  const word = page.locator('.word-copy');
+  const heading = page.getByRole('heading', {
+    name: 'Your next idea. Built with precision.',
+    exact: true,
+  });
+  await expect(heading).toBeVisible();
+  const initialHeight = (await heading.boundingBox())!.height;
+  await expect(
+    page.getByRole('button', { name: 'Pause rotating headline', exact: true }),
+  ).toBeVisible();
+  await page.clock.runFor(4000);
+  await expect(word).toHaveText('dedication.');
+  expect((await heading.boundingBox())!.height).toBe(initialHeight);
+  await page.getByRole('button', { name: 'Pause rotating headline', exact: true }).click();
+  await page.clock.runFor(10000);
+  await expect(word).toHaveText('dedication.');
+  await page.getByRole('button', { name: 'Resume rotating headline', exact: true }).click();
+  await page.clock.runFor(4000);
+  await expect(word).toHaveText('commitment.');
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    const fits = await page.evaluate(() => {
+      const word = document.querySelector('.word-copy')!.getBoundingClientRect();
+      const pause = document.querySelector('.headline-pause')!.getBoundingClientRect();
+      return (
+        word.right <= pause.left &&
+        document.documentElement.scrollWidth <= document.documentElement.clientWidth
+      );
+    });
+    expect(fits).toBeTruthy();
+  }
+});
+
+test('Home builds the process scene on scroll and keeps the active card clear on mobile', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Reject optional', exact: true }).click();
+  const cards = page.locator('.process-cards > li');
+  for (const index of [0, 2, 5]) {
+    await cards.nth(index).scrollIntoViewIfNeeded();
+    await cards.nth(index).evaluate((el) =>
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + scrollY - innerHeight * 0.42,
+        behavior: 'instant',
+      }),
+    );
+    await expect
+      .poll(() =>
+        page
+          .locator('.build-layer')
+          .nth(index)
+          .evaluate((el) => Number(getComputedStyle(el).opacity)),
+      )
+      .toBeGreaterThan(0.9);
+    const scene = (await page.locator('.build-scene').boundingBox())!;
+    const card = (await cards.nth(index).boundingBox())!;
+    expect(card.y).toBeGreaterThanOrEqual(scene.y + scene.height);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= document.documentElement.clientWidth,
+      ),
+    ).toBeTruthy();
+  }
+  await page.locator('.process-heading').scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      page.locator('.build-launch').evaluate((el) => Number(getComputedStyle(el).opacity)),
+    )
+    .toBeLessThan(0.1);
+  // Force the support check off to exercise the no-native-timeline path in both engines.
+  await page.addInitScript(() => {
+    const supports = CSS.supports.bind(CSS);
+    CSS.supports = ((...args: string[]) =>
+      args[0]?.includes('timeline-scope')
+        ? false
+        : args.length === 1
+          ? supports(args[0]!)
+          : supports(args[0]!, args[1]!)) as typeof CSS.supports;
+  });
+  await page.reload();
+  await page.locator('.process-cards > li').last().scrollIntoViewIfNeeded();
+  await expect(page.locator('.process-build')).toHaveClass(/is-fallback/);
+  await expect(page.locator('.build-launch')).toHaveCSS('opacity', '1');
+  await expect(page.locator('.build-launch')).toHaveCSS('animation-name', 'none');
+});
