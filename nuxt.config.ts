@@ -22,6 +22,7 @@ export default defineNuxtConfig({
       titleTemplate: '%s | Web Extreme Dev',
       meta: [
         { name: 'theme-color', content: '#191b1d' },
+        { name: 'msvalidate.01', content: 'BB3C21665F862E3AB6CD10E41D29D1AB' },
         { name: 'color-scheme', content: 'light dark' },
       ],
       script: [
