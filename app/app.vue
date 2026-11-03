@@ -47,10 +47,12 @@ useHead({
 <template>
   <NuxtRouteAnnouncer /><a class="skip" href="#main">{{ tr('Skip to main content') }}</a
   ><SiteHeader /><NuxtPage /><noscript
-    ><p class="container form-note">
-      {{ tr('JavaScript is disabled. To send an enquiry, email') }}
-      <a href="mailto:contact@webextreme.dev">contact@webextreme.dev</a
-      >{{ tr('. Navigation links are available in the footer.') }}
-    </p></noscript
+    class="container form-note"
+    v-text="
+      tr('JavaScript is disabled. To send an enquiry, email') +
+      ' contact@webextreme.dev' +
+      tr('. Navigation links are available in the footer.')
+    "
+  ></noscript
   ><SiteFooter /><CookieConsent />
 </template>

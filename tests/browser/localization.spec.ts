@@ -5,6 +5,10 @@ test('Romanian pages expose localized navigation, metadata and readable static H
   page,
   request,
 }) => {
+  const hydrationErrors: string[] = [];
+  page.on('console', (message) => {
+    if (/hydration|mismatch/i.test(message.text())) hydrationErrors.push(message.text());
+  });
   const response = await request.get('/ro/services/');
   const html = await response.text();
   expect(html).toContain('Găzduire web personalizată');
@@ -26,6 +30,7 @@ test('Romanian pages expose localized navigation, metadata and readable static H
         .analyze()
     ).violations,
   ).toEqual([]);
+  expect(hydrationErrors).toEqual([]);
   for (const width of [320, 390, 540, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
