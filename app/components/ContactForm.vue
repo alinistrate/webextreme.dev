@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { services } from '~/content/services';
+const { tr, locale } = useCopy();
 const id = useId();
 const route = useRoute();
 const fields = reactive({ name: '', email: '', service: '', details: '', website: '' });
@@ -23,10 +24,13 @@ async function submit() {
   pending.value = true;
   status.value = '';
   try {
-    const result = await $fetch<{ message: string; test?: boolean }>('/api/contact', {
-      method: 'POST',
-      body: { ...fields, turnstileToken: turnstileToken.value },
-    });
+    const result = await $fetch<{ message: string; test?: boolean }>(
+      '/api/contact?lang=' + locale.value,
+      {
+        method: 'POST',
+        body: { ...fields, turnstileToken: turnstileToken.value },
+      },
+    );
     status.value = result.message;
     if (!result.test) {
       if (analytics.value)
@@ -49,7 +53,7 @@ async function submit() {
 
 <template>
   <form
-    action="/api/contact"
+    :action="'/api/contact?lang=' + locale"
     method="post"
     id="enquiry-form"
     class="contact-form reveal"
@@ -60,7 +64,8 @@ async function submit() {
   >
     <div class="form-row">
       <div class="field">
-        <label :for="id + '-name'">Name <span>(required)</span></label
+        <label :for="id + '-name'"
+          >{{ tr('Name') }} <span>{{ tr('(required)') }}</span></label
         ><input
           :id="id + '-name'"
           v-model="fields.name"
@@ -69,11 +74,12 @@ async function submit() {
           required
           minlength="2"
           maxlength="120"
-          placeholder="Your name"
+          :placeholder="tr('Your name')"
         />
       </div>
       <div class="field">
-        <label :for="id + '-email'">Email <span>(required)</span></label
+        <label :for="id + '-email'"
+          >{{ tr('Email') }} <span>{{ tr('(required)') }}</span></label
         ><input
           :id="id + '-email'"
           v-model="fields.email"
@@ -85,21 +91,24 @@ async function submit() {
           :spellcheck="false"
           required
           maxlength="254"
-          placeholder="you@company.com"
+          :placeholder="locale === 'ro' ? 'tu@companie.ro' : 'you@company.com'"
         />
       </div>
     </div>
     <div class="field">
-      <label :for="id + '-service'">Service <span>(optional)</span></label
+      <label :for="id + '-service'"
+        >{{ tr('Service') }} <span>{{ tr('(optional)') }}</span></label
       ><select :id="id + '-service'" v-model="fields.service" name="service">
-        <option value="">Select a service</option>
+        <option value="">{{ tr('Select a service') }}</option>
         <option v-for="service in services" :key="service.id" :value="service.title">
-          {{ service.title }}
+          {{ tr(service.title) }}
         </option>
       </select>
     </div>
     <div class="field">
-      <label :for="id + '-details'">Project details <span>(required)</span></label>
+      <label :for="id + '-details'"
+        >{{ tr('Project details') }} <span>{{ tr('(required)') }}</span></label
+      >
       <textarea
         :id="id + '-details'"
         v-model="fields.details"
@@ -109,12 +118,14 @@ async function submit() {
         minlength="20"
         maxlength="5000"
         rows="3"
-        placeholder="What would you like to build?"
+        :placeholder="tr('What would you like to build?')"
       />
-      <p :id="id + '-details-help'" class="form-note">Please include at least 20 characters.</p>
+      <p :id="id + '-details-help'" class="form-note">
+        {{ tr('Please include at least 20 characters.') }}
+      </p>
     </div>
     <div class="honeypot" aria-hidden="true">
-      <label :for="id + '-website'">Leave this field empty</label
+      <label :for="id + '-website'">{{ tr('Leave this field empty') }}</label
       ><input
         :id="id + '-website'"
         v-model="fields.website"
@@ -125,11 +136,11 @@ async function submit() {
     </div>
     <TurnstileChallenge ref="challenge" v-model="turnstileToken" />
     <button class="button black-button" type="submit" :disabled="pending">
-      {{ pending ? 'Sending…' : 'Send enquiry' }} <AppIcon name="arrow" />
+      {{ tr(pending ? 'Sending…' : 'Send enquiry') }} <AppIcon name="arrow" />
     </button>
     <p class="form-note">
-      We use these details to respond to your enquiry.
-      <NuxtLink to="/privacy/">Read our privacy notice.</NuxtLink>
+      {{ tr('We use these details to respond to your enquiry.') }}
+      <NuxtLinkLocale to="/privacy/">{{ tr('Read our privacy notice.') }}</NuxtLinkLocale>
     </p>
     <p
       class="form-result"
@@ -138,7 +149,7 @@ async function submit() {
       aria-live="polite"
       aria-atomic="true"
     >
-      {{ status }}
+      {{ tr(status) }}
     </p>
   </form>
 </template>

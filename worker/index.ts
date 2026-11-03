@@ -1,3 +1,4 @@
+import { localeRedirect } from '../shared/locale-routing';
 import { contactResponse } from '../shared/contact-response';
 import type { ContactEnvironment } from '../shared/contact';
 
@@ -7,6 +8,9 @@ interface Environment extends ContactEnvironment {
 
 export default {
   async fetch(request: Request, env: Environment): Promise<Response> {
+    const country = (request as Request & { cf?: { country?: string } }).cf?.country;
+    const redirect = localeRedirect(request, country);
+    if (redirect) return redirect;
     const path = new URL(request.url).pathname;
     if (path === '/api/contact') return contactResponse(request, env);
     if (path.startsWith('/api/'))

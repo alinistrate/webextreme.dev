@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { loadTurnstile, type TurnstileApi } from '~/utils/turnstile';
+const { tr, locale } = useCopy();
 const token = defineModel<string>({ default: '' });
 const widget = useTemplateRef<HTMLElement>('widget');
 const error = ref('');
@@ -29,6 +30,7 @@ async function start() {
     widgetId = api.render(widget.value, {
       sitekey: config.public.turnstileSiteKey,
       action: 'contact',
+      language: locale.value,
       theme: 'light',
       // Use Cloudflare's supported appearance rather than styling its cross-origin frame.
       appearance: 'interaction-only',
@@ -80,12 +82,14 @@ defineExpose({ reset, start });
 </script>
 <template>
   <div class="turnstile-check">
-    <p class="form-note">Spam protection by Cloudflare Turnstile.</p>
+    <p class="form-note">{{ tr('Spam protection by Cloudflare Turnstile.') }}</p>
     <div ref="widget" class="turnstile-widget"></div>
     <input type="hidden" name="cf-turnstile-response" :value="token" />
     <p v-if="error" role="status" class="form-note">
-      {{ error }}
-      <button type="button" class="text-link" @click="start">Retry security check</button>
+      {{ tr(error) }}
+      <button type="button" class="text-link" @click="start">
+        {{ tr('Retry security check') }}
+      </button>
     </p>
   </div>
 </template>

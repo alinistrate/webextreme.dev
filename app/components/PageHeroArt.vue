@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { tr } = useCopy();
 defineProps<{ variant: 'services' | 'approach' | 'about' | 'contact' }>();
 const captions = {
   services: 'CAPABILITIES / CONNECTED',
@@ -94,6 +95,6 @@ const captions = {
         </g>
       </template>
     </svg>
-    <span>{{ captions[variant] }}</span>
+    <span>{{ tr(captions[variant]) }}</span>
   </div>
 </template>

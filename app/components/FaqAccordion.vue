@@ -1,11 +1,12 @@
 <script setup lang="ts">
+const { tr } = useCopy();
 const id = useId();
 const active = ref(0);
 const questions = [
   {
     question: 'What can you help me build?',
     answer:
-      'Web development, ecommerce, design, custom web applications and technical consulting. The right starting point depends on the problem you want to solve.',
+      'Web development, ecommerce, design, custom web applications, technical consulting and custom web hosting. The right starting point depends on the problem you want to solve.',
   },
   {
     question: 'Can we start with a smaller scope?',
@@ -35,11 +36,11 @@ const questions = [
           :aria-controls="id + '-' + index"
           @click="active = active === index ? -1 : index"
         >
-          {{ item.question }}<AppIcon :name="active === index ? 'minus' : 'plus'" />
+          {{ tr(item.question) }}<AppIcon :name="active === index ? 'minus' : 'plus'" />
         </button>
       </h3>
       <div :id="id + '-' + index" class="faq-panel" :hidden="active !== index">
-        <p>{{ item.answer }}</p>
+        <p>{{ tr(item.answer) }}</p>
       </div>
     </div>
   </div>

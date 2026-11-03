@@ -43,6 +43,7 @@ export const icons = {
   grid: ['M3 3h7v7H3ZM14 3h7v7h-7ZM3 14h7v7H3ZM14 14h7v7h-7Z'],
   layers: ['M12 2l10 6-10 6L2 8Z', 'M3 13l9 5 9-5M3 17l9 5 9-5'],
   consulting: ['M3 3h13l3 3v9H8l-5 4Z', 'M8 7h6M8 11h3M18 17l3 3M18 20l3-3'],
+  hosting: ['M3 3h15l3 3v5H3ZM3 14h18v7H3Z', 'M7 7h.01M7 17.5h.01M12 7h5M12 17.5h5'],
 } as const;
 
 export type IconName = keyof typeof icons;

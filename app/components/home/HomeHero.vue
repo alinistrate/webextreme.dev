@@ -1,22 +1,28 @@
+<script setup lang="ts">
+const { tr } = useCopy();
+</script>
 <template>
   <section class="hero dark" id="home">
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow yellow">
-          <span class="desktop-eyebrow">Web development, software &amp; design</span
-          ><span class="mobile-eyebrow">Design &amp; development</span>
+          <span class="desktop-eyebrow">{{ tr('Web development, software & design') }}</span
+          ><span class="mobile-eyebrow">{{ tr('Design & development') }}</span>
         </p>
         <HeroHeadline />
         <p class="hero-description">
-          Websites, ecommerce and web applications.<br class="desktop-break" />
-          A connected approach from your idea to launch.
+          {{ tr('Websites, ecommerce and web applications.') }}<br class="desktop-break" />
+          {{ tr('A connected approach from your idea to launch.') }}
         </p>
         <div class="hero-actions">
-          <NuxtLink class="button" to="/contact/">Start a project <AppIcon name="arrow" /></NuxtLink
-          ><NuxtLink class="text-link light-link" to="/services/">Explore services</NuxtLink>
+          <NuxtLinkLocale class="button" to="/contact/"
+            >{{ tr('Start a project') }} <AppIcon name="arrow" /></NuxtLinkLocale
+          ><NuxtLinkLocale class="text-link light-link" to="/services/">{{
+            tr('Explore services')
+          }}</NuxtLinkLocale>
         </div>
         <div class="hero-meta">
-          <p>Clear thinking. Precise execution.</p>
+          <p>{{ tr('Clear thinking. Precise execution.') }}</p>
         </div>
       </div>
       <div class="hero-visual">
@@ -32,7 +38,7 @@
           <i class="corner corner-tl"></i><i class="corner corner-tr"></i
           ><i class="corner corner-bl"></i><i class="corner corner-br"></i>
         </div>
-        <p class="eyebrow art-caption">X / Precision</p>
+        <p class="eyebrow art-caption">{{ tr('X / Precision') }}</p>
       </div>
     </div>
   </section>

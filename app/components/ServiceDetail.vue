@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Service } from '~/content/services';
+const { tr } = useCopy();
 defineProps<{ service: Service; index: number }>();
 </script>
 <template>
@@ -11,28 +12,28 @@ defineProps<{ service: Service; index: number }>();
     <div class="container detail-grid">
       <div class="detail-copy">
         <p class="eyebrow reveal icon-label">
-          <AppIcon :name="service.id" framed />0{{ index + 1 }} / {{ service.title }}
+          <AppIcon :name="service.id" framed />0{{ tr(index + 1) }} / {{ tr(service.title) }}
         </p>
-        <h2 class="reveal">{{ service.headline }}</h2>
-        <p class="detail-lead reveal">{{ service.intro }}</p>
-        <p class="reveal">{{ service.body }}</p>
+        <h2 class="reveal">{{ tr(service.headline) }}</h2>
+        <p class="detail-lead reveal">{{ tr(service.intro) }}</p>
+        <p class="reveal">{{ tr(service.body) }}</p>
         <div class="tags reveal">
-          <span v-for="tag in service.tags" :key="tag">{{ tag }}</span>
+          <span v-for="tag in service.tags" :key="tag">{{ tr(tag) }}</span>
         </div>
-        <NuxtLink
+        <NuxtLinkLocale
           class="text-link reveal"
           :to="{ path: '/contact/', query: { service: service.title } }"
-          >Discuss this service <AppIcon name="arrow"
-        /></NuxtLink>
+          >{{ tr('Discuss this service') }} <AppIcon name="arrow"
+        /></NuxtLinkLocale>
       </div>
       <div class="scope-panel reveal">
-        <p class="eyebrow">Typical scope</p>
-        <h3>What we can shape together.</h3>
+        <p class="eyebrow">{{ tr('Typical scope') }}</p>
+        <h3>{{ tr('What we can shape together.') }}</h3>
         <ul role="list">
-          <li v-for="item in service.scope" :key="item">{{ item }}</li>
+          <li v-for="item in service.scope" :key="item">{{ tr(item) }}</li>
         </ul>
         <p class="scope-note">
-          The final scope is agreed around your goals, requirements and priorities.
+          {{ tr('The final scope is agreed around your goals, requirements and priorities.') }}
         </p>
       </div>
     </div>

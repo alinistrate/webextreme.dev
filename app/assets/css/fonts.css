@@ -5,3 +5,12 @@
   font-weight: 100 900;
   src: url('@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: 'Noto Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../fonts/noto-sans-ro.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0218-021B;
+}

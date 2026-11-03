@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { navigation } from '~/content/site';
+const { tr } = useCopy();
 const emit = defineEmits<{ closed: [] }>();
 const dialog = useTemplateRef<HTMLDialogElement>('dialog');
 const closing = ref(false);
 const route = useRoute();
+const localePath = useLocalePath();
 const { enabled } = useMotion();
 let destination: string | undefined;
 let run = 0;
@@ -42,7 +44,7 @@ function onClosed() {
   if (destination) {
     const to = destination;
     destination = undefined;
-    void navigateTo(to);
+    void navigateTo(localePath(to));
   }
 }
 watch(enabled, (value) => {
@@ -61,38 +63,49 @@ defineExpose({ show });
     ref="dialog"
     class="mobile-menu dark"
     :class="{ 'is-closing': closing }"
-    aria-label="Site menu"
+    :aria-label="tr('Site menu')"
     @cancel.prevent="close()"
     @close="onClosed"
   >
     <div class="mobile-menu-inner">
       <div class="menu-top">
-        <NuxtLink class="brand" to="/" aria-label="Web Extreme Dev home" @click.prevent="close('/')"
-          ><BrandLogo /></NuxtLink
+        <NuxtLinkLocale
+          class="brand"
+          to="/"
+          :aria-label="tr('Web Extreme Dev home')"
+          @click.prevent="close('/')"
+          ><BrandLogo /></NuxtLinkLocale
         ><button
           class="icon-button menu-close"
           type="button"
-          aria-label="Close menu"
+          :aria-label="tr('Close menu')"
           autofocus
           @click="close()"
         >
           <AppIcon name="close" />
         </button>
       </div>
-      <p class="eyebrow yellow">Explore webextreme.dev</p>
-      <nav aria-label="Main navigation">
-        <NuxtLink
+      <p class="eyebrow yellow">{{ tr('Explore webextreme.dev') }}</p>
+      <nav :aria-label="tr('Main navigation')">
+        <NuxtLinkLocale
           v-for="(item, index) in navigation"
           :key="item.to"
           :to="item.to"
-          :aria-current="route.path === item.to ? 'page' : undefined"
+          :aria-current="
+            route.path.replace(/\/$/, '') === localePath(item.to).replace(/\/$/, '')
+              ? 'page'
+              : undefined
+          "
           @click="follow($event, item.to)"
-          ><span class="eyebrow">0{{ index + 1 }}</span
-          >{{ item.label }}<AppIcon name="arrow"
-        /></NuxtLink>
+          ><span class="eyebrow">0{{ tr(index + 1) }}</span
+          >{{ tr(item.label) }}<AppIcon name="arrow"
+        /></NuxtLinkLocale>
       </nav>
-      <NuxtLink class="button menu-project" to="/contact/" @click="follow($event, '/contact/')"
-        >Start a project <AppIcon name="arrow" /></NuxtLink
+      <NuxtLinkLocale
+        class="button menu-project"
+        to="/contact/"
+        @click="follow($event, '/contact/')"
+        >{{ tr('Start a project') }} <AppIcon name="arrow" /></NuxtLinkLocale
       ><a class="menu-email" href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>
     </div>
   </dialog>

@@ -8,6 +8,15 @@ const browser = await chromium.launch();
 const report = { base, checkedAt: new Date().toISOString(), assets: [], consent: [] };
 try {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await context.addCookies([
+    {
+      name: 'wed_locale',
+      value: 'en',
+      domain: new URL(base).hostname,
+      path: '/',
+      secure: base.startsWith('https:'),
+    },
+  ]);
   const page = await context.newPage();
   const measurement = [];
   page.on('response', (response) => {

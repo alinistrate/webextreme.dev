@@ -2,6 +2,7 @@
 import { site } from '~/content/site';
 import { company } from '~/content/company';
 import displayFont from '@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2?url';
+const { tr } = useCopy();
 const { enabled } = useMotion();
 const { hasChoice } = useConsent();
 useHead(() => ({ htmlAttrs: { 'data-consent-known': hasChoice.value ? 'true' : 'false' } }));
@@ -44,12 +45,12 @@ useHead({
 </script>
 
 <template>
-  <NuxtRouteAnnouncer /><a class="skip" href="#main">Skip to main content</a
+  <NuxtRouteAnnouncer /><a class="skip" href="#main">{{ tr('Skip to main content') }}</a
   ><SiteHeader /><NuxtPage /><noscript
     ><p class="container form-note">
-      JavaScript is disabled. To send an enquiry, email
-      <a href="mailto:contact@webextreme.dev">contact@webextreme.dev</a>. Navigation links are
-      available in the footer.
+      {{ tr('JavaScript is disabled. To send an enquiry, email') }}
+      <a href="mailto:contact@webextreme.dev">contact@webextreme.dev</a
+      >{{ tr('. Navigation links are available in the footer.') }}
     </p></noscript
   ><SiteFooter /><CookieConsent />
 </template>

@@ -6,7 +6,8 @@ export type ServiceId =
   | 'landing-pages'
   | 'ecommerce'
   | 'software'
-  | 'consulting';
+  | 'consulting'
+  | 'hosting';
 export interface Service {
   id: ServiceId;
   title: string;
@@ -120,5 +121,18 @@ export const services: Service[] = [
       'Development planning, code review and technical guidance',
     ],
     tags: ['Audits', 'Technical direction', 'Project planning'],
+  },
+  {
+    id: 'hosting',
+    title: 'Custom Web Hosting',
+    headline: 'Hosting tailored to each client.',
+    intro: 'We can provide web hosting configured around each client’s requirements.',
+    body: 'We discuss the needs of your website or web application and agree a suitable hosting setup for your project. Configuration, scope and support are defined individually for each client.',
+    scope: [
+      'Hosting requirements and configuration',
+      'A setup tailored to your website or web application',
+      'Individually agreed scope and support',
+    ],
+    tags: ['Web hosting', 'Custom configuration', 'Individual support'],
   },
 ];

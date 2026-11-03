@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+// Country redirects are tested separately; these regressions exercise explicit English.
+test.beforeEach(async ({ context }) => {
+  await context.addCookies([
+    { name: 'wed_locale', value: 'en', url: 'http://127.0.0.1:3100', sameSite: 'Lax' },
+  ]);
+});
 const pages = [
   '/',
   '/services/',
@@ -13,7 +19,7 @@ const pages = [
 ];
 for (const route of pages)
   test('accessible prerendered page ' + route, async ({ page, request }) => {
-    const response = await request.get(route);
+    const response = await request.get(route, { headers: { Cookie: 'wed_locale=en' } });
     expect(response.ok()).toBeTruthy();
     const html = await response.text();
     expect(html).toContain('<h1');
@@ -121,16 +127,18 @@ test('analytics requires a choice and rejection survives reload', async ({ page,
   await expect(banner).not.toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-consent-known', 'true');
   expect(googleRequests).toEqual([]);
-  expect((await context.cookies()).map((cookie) => cookie.name)).toEqual(['wed_consent']);
+  expect((await context.cookies()).map((cookie) => cookie.name)).toEqual(
+    expect.arrayContaining(['wed_consent', 'wed_locale']),
+  );
 });
 
-test('Let us talk focuses the form on Home and Contact', async ({ page }) => {
+test("Let's talk focuses the form on Home and Contact", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const route of ['/', '/contact/']) {
     await page.goto(route);
     const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
     if (await reject.isVisible()) await reject.click();
-    await page.getByRole('link', { name: /Let us talk/i }).click();
+    await page.getByRole('link', { name: /Let's talk/i }).click();
     await expect(page.locator('#enquiry-form')).toBeFocused();
     await expect(page).toHaveURL(/#enquiry-form$/);
     expect(

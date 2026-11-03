@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { services } from '~/content/services';
+const { tr } = useCopy();
 usePageSeo(
   'Services',
-  'Web development, ecommerce, design, web applications, automation and technical consulting. Explore the services available from Web Extreme Dev.',
+  'Web development, ecommerce, design, web applications, automation, technical consulting and custom web hosting. Explore the services available from Web Extreme Dev.',
   '/services/',
 );
 usePageMotion();
@@ -12,20 +13,23 @@ usePageMotion();
   <main id="main" ref="page" tabindex="-1">
     <section class="page-hero dark">
       <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <NuxtLink to="/">Home</NuxtLink><span aria-hidden="true">/</span
-          ><span aria-current="page">Services</span>
+        <nav class="breadcrumb" :aria-label="tr('Breadcrumb')">
+          <NuxtLinkLocale to="/">{{ tr('Home') }}</NuxtLinkLocale
+          ><span aria-hidden="true">/</span><span aria-current="page">{{ tr('Services') }}</span>
         </nav>
         <div class="page-hero-grid">
           <div>
-            <p class="eyebrow yellow reveal">Services</p>
+            <p class="eyebrow yellow reveal">{{ tr('Services') }}</p>
             <h1 tabindex="-1" class="page-title reveal">
-              <span class="page-title-line">Good ideas.</span>
-              <span class="page-title-line">The right capabilities.</span>
+              <span class="page-title-line">{{ tr('Good ideas.') }}</span>
+              <span class="page-title-line">{{ tr('The right capabilities.') }}</span>
             </h1>
             <p class="page-lead reveal">
-              Websites, ecommerce and connected web applications, shaped around the work your
-              project needs.
+              {{
+                tr(
+                  'Websites, ecommerce and connected web applications, shaped around the work your project needs.',
+                )
+              }}
             </p>
           </div>
           <PageHeroArt variant="services" />
@@ -34,11 +38,11 @@ usePageMotion();
     </section>
     <section class="capability-index">
       <div class="container">
-        <p class="eyebrow">Explore capabilities</p>
-        <nav aria-label="Service categories">
+        <p class="eyebrow">{{ tr('Explore capabilities') }}</p>
+        <nav :aria-label="tr('Service categories')">
           <NuxtLink v-for="(service, index) in services" :key="service.id" :to="'#' + service.id"
-            ><span>0{{ index + 1 }}</span
-            >{{ service.title }}</NuxtLink
+            ><span>0{{ tr(index + 1) }}</span
+            >{{ tr(service.title) }}</NuxtLink
           >
         </nav>
       </div>
@@ -53,26 +57,29 @@ usePageMotion();
     </ServicesJourney>
     <section class="section dark">
       <div class="container decision-grid">
-        <h2 class="reveal" tabindex="-1">Not sure where<br />to start?</h2>
+        <h2 class="reveal" tabindex="-1">{{ tr('Not sure where') }}<br />{{ tr('to start?') }}</h2>
         <div class="reveal">
           <p>
-            Start with the problem you want to solve. We can help clarify the scope and the
-            capabilities it needs.
+            {{
+              tr(
+                'Start with the problem you want to solve. We can help clarify the scope and the capabilities it needs.',
+              )
+            }}
           </p>
-          <NuxtLink class="text-link light-link" to="/approach/"
-            >See how we work <AppIcon name="arrow"
-          /></NuxtLink>
+          <NuxtLinkLocale class="text-link light-link" to="/approach/"
+            >{{ tr('See how we work') }} <AppIcon name="arrow"
+          /></NuxtLinkLocale>
         </div>
       </div>
     </section>
     <section class="page-cta section">
       <div class="container reveal">
-        <p class="eyebrow">Your next step</p>
-        <h2 tabindex="-1">Let us build<br />what comes next.</h2>
-        <p>Bring the idea, the challenge or the thing you want to improve.</p>
-        <NuxtLink class="button black-button" to="/contact/"
-          >Start a conversation <AppIcon name="arrow"
-        /></NuxtLink>
+        <p class="eyebrow">{{ tr('Your next step') }}</p>
+        <h2 tabindex="-1">{{ tr('Let us build') }}<br />{{ tr('what comes next.') }}</h2>
+        <p>{{ tr('Bring the idea, the challenge or the thing you want to improve.') }}</p>
+        <NuxtLinkLocale class="button black-button" to="/contact/"
+          >{{ tr('Start a conversation') }} <AppIcon name="arrow"
+        /></NuxtLinkLocale>
       </div>
     </section>
   </main>

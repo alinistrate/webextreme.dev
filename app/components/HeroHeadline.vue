@@ -1,8 +1,9 @@
 <script setup lang="ts">
-const words = ['precision.', 'dedication.', 'commitment.', 'purpose.', 'care.'] as const;
+const { tr } = useCopy();
+const words = ['precision.', 'dedication.', 'commitment.', 'purpose.', 'care.'].map(tr);
 const { enabled } = useMotion();
 const heading = useTemplateRef<HTMLElement>('heading');
-const displayed = ref<string>(words[0]);
+const displayed = ref<string>(words[0]!);
 const paused = ref(false);
 const ready = ref(false);
 const running = ref(false);
@@ -80,17 +81,17 @@ onBeforeUnmount(() => {
 <template>
   <div ref="heading" class="hero-heading" :class="{ 'is-running': running }">
     <h1 tabindex="-1">
-      <span class="sr-only">Your next idea. Built with precision.</span>
+      <span class="sr-only">{{ tr('Your next idea. Built with precision.') }}</span>
       <span class="headline-line" aria-hidden="true"
-        ><span class="type-line">Your next idea.</span></span
+        ><span class="type-line">{{ tr('Your next idea.') }}</span></span
       >
       <span class="headline-line" aria-hidden="true"
-        ><span class="slide-line line-two">Built with</span></span
+        ><span class="slide-line line-two">{{ tr('Built with') }}</span></span
       >
       <span class="headline-line headline-word-line" aria-hidden="true">
         <span class="word-stage">
-          <span class="word-reserve">commitment.</span>
-          <span class="word-copy">{{ displayed }}<span class="word-caret"></span></span>
+          <span class="word-reserve">{{ [...words].sort((a, b) => b.length - a.length)[0] }}</span>
+          <span class="word-copy">{{ tr(displayed) }}<span class="word-caret"></span></span>
         </span>
       </span>
     </h1>
@@ -98,8 +99,8 @@ onBeforeUnmount(() => {
       v-if="ready"
       class="headline-pause"
       type="button"
-      :aria-label="paused ? 'Resume rotating headline' : 'Pause rotating headline'"
-      :title="paused ? 'Resume animation' : 'Pause animation'"
+      :aria-label="tr(paused ? 'Resume rotating headline' : 'Pause rotating headline')"
+      :title="tr(paused ? 'Resume animation' : 'Pause animation')"
       @click="toggle"
     >
       <AppIcon :name="paused ? 'play' : 'pause'" />

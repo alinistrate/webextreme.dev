@@ -17,13 +17,14 @@
     "lint": "eslint .",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "test": "node --experimental-strip-types --test tests/contact.test.ts",
+    "test": "node --experimental-strip-types --test tests/contact.test.ts tests/locale-routing.test.ts",
     "test:e2e": "playwright test",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "logo:export": "node --experimental-strip-types scripts/export-brand-logo.mjs"
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "^5.3.0",
+    "@nuxtjs/i18n": "^10.6.0",
     "nuxt": "^4.0.0",
     "vue": "^3.5.0",
     "vue-router": "^5.4.0"

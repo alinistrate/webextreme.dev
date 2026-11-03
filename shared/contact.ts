@@ -1,3 +1,4 @@
+import { services } from '../app/content/services.ts';
 export interface ContactEnvironment {
   MAILJET_API_KEY?: string;
   MAILJET_API_SECRET?: string;
@@ -10,13 +11,9 @@ export interface ContactEnvironment {
 type Transport = typeof fetch;
 const MAX_BYTES = 24_000;
 const emailPattern = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+// Accept the current catalog; retain the previous label for forms open before an update.
 const serviceNames = new Set([
-  'Design & UI/UX',
-  'Web Development',
-  'AI & Workflow Automation',
-  'Brand & Creative Direction',
-  'Landing Pages',
-  'Ecommerce Development',
+  ...services.map((service) => service.title),
   'Web Apps & Custom Software',
 ]);
 function json(status: number, message: string, extra: Record<string, unknown> = {}) {

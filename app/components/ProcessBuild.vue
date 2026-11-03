@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { tr } = useCopy();
 const story = useTemplateRef<HTMLElement>('story');
 let observer: IntersectionObserver | undefined;
 onMounted(() => {
@@ -39,23 +40,27 @@ onBeforeUnmount(() => observer?.disconnect());
         </div>
         <div class="build-layer build-interface">
           <BrandLogo />
-          <strong>Your next idea.<br /><em>Built with precision.</em></strong>
-          <div class="build-mini-cta">Let us build <AppIcon name="arrow" /></div>
+          <strong
+            >{{ tr('Your next idea.') }}<br /><em>{{ tr('Built with precision.') }}</em></strong
+          >
+          <div class="build-mini-cta">{{ tr('Let us build') }} <AppIcon name="arrow" /></div>
           <div class="build-mini-cards">
             <AppIcon name="design" /><AppIcon name="ecommerce" /><AppIcon name="software" />
           </div>
         </div>
         <div class="build-layer build-code">
-          <AppIcon name="software" /><span>BUILD<br /><b>CONNECTED</b></span>
+          <AppIcon name="software" /><span
+            >{{ tr('BUILD') }}<br /><b>{{ tr('CONNECTED') }}</b></span
+          >
         </div>
         <div class="build-layer build-checks">
           <AppIcon name="test" /><AppIcon name="security" /><AppIcon name="performance" />
         </div>
         <div class="build-layer build-launch">
-          <AppIcon name="launch" /><span>READY TO LAUNCH</span>
+          <AppIcon name="launch" /><span>{{ tr('READY TO LAUNCH') }}</span>
         </div>
       </div>
-      <p class="build-caption">FROM FIRST SKETCH TO WHAT COMES NEXT.</p>
+      <p class="build-caption">{{ tr('FROM FIRST SKETCH TO WHAT COMES NEXT.') }}</p>
       <div class="build-progress"></div>
     </div>
     <slot />

@@ -1,0 +1,74 @@
+.language-switch {
+  flex-shrink: 0;
+  min-inline-size: 44px;
+  min-block-size: 48px;
+  padding: 8px;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.header-cta .header-cta-label {
+  font: inherit;
+  line-height: inherit;
+}
+@media (max-width: 1000px) {
+  .header-inner {
+    gap: 12px;
+  }
+  .site-header .brand {
+    inline-size: 180px;
+  }
+  .menu-button {
+    min-inline-size: 48px;
+    inline-size: 48px;
+  }
+  .menu-label {
+    display: none;
+  }
+}
+/* Keep controls comfortable with the longer Romanian labels. */
+@media (max-width: 700px) {
+  .site-header .brand {
+    inline-size: 48px;
+    overflow: hidden;
+  }
+  .site-header .brand svg {
+    inline-size: 220px;
+    max-inline-size: none;
+    flex-shrink: 0;
+  }
+  .site-header .header-wordmark-enter {
+    visibility: hidden;
+  }
+  .language-switch {
+    inline-size: 44px;
+    min-block-size: 48px;
+  }
+  .header-cta {
+    padding-inline: 8px;
+  }
+}
+@media (max-width: 540px) {
+  .header-cta {
+    min-inline-size: 44px;
+    inline-size: 44px;
+    padding: 8px;
+  }
+  .header-cta-label {
+    display: none;
+  }
+  .header-cta .app-icon {
+    display: inline-flex;
+  }
+  .menu-button {
+    min-inline-size: 48px;
+    inline-size: 48px;
+  }
+  .menu-label {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  html[lang='ro'] .hero-heading h1 {
+    font-size: clamp(1.75rem, 8.8vw, 2.25rem);
+  }
+}

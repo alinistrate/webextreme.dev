@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { tr } = useCopy();
 const compact = ref(false);
 const route = useRoute();
 const { enabled } = useMotion();
@@ -43,22 +44,28 @@ onBeforeUnmount(() => {
 <template>
   <header ref="header" class="site-header dark" :class="{ 'is-symbol': compact }">
     <div class="container header-inner">
-      <NuxtLink class="brand" to="/" aria-label="Web Extreme Dev home"><BrandLogo /></NuxtLink
-      ><NuxtLink
+      <NuxtLinkLocale class="brand" to="/" :aria-label="tr('Web Extreme Dev home')"
+        ><BrandLogo /></NuxtLinkLocale
+      ><NuxtLinkLocale
         class="button header-cta"
-        :to="route.path === '/' ? '/#enquiry-form' : '/contact/#enquiry-form'"
+        :aria-label="tr('Let\'s talk')"
+        :to="
+          route.path === '/' || route.path === '/ro/' ? '/#enquiry-form' : '/contact/#enquiry-form'
+        "
         @click="goToForm"
-        >Let us talk <AppIcon name="arrow" /></NuxtLink
-      ><ThemeToggle /><button
+        ><span class="header-cta-label">{{ tr("Let's talk") }}</span>
+        <AppIcon name="arrow" /></NuxtLinkLocale
+      ><LanguageSwitcher /><ThemeToggle /><button
         ref="trigger"
         class="menu-button icon-button"
         type="button"
-        aria-label="Menu"
+        :aria-label="tr('Menu')"
         :aria-expanded="open"
         aria-controls="site-menu"
         @click="openMenu"
       >
-        <span class="menu-label">Menu</span><AppIcon name="menu" />
+        <span class="menu-label">{{ tr('Menu') }}</span
+        ><AppIcon name="menu" />
       </button>
     </div>
   </header>
