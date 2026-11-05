@@ -49,9 +49,7 @@ usePageMotion();
               )
             }}
           </p>
-          <a class="email-link" href="mailto:contact@webextreme.dev"
-            ><AppIcon name="email" />contact@webextreme.dev</a
-          >
+          <ContactLinks />
           <div class="contact-next">
             <h3>{{ tr('What happens next') }}</h3>
             <ol>

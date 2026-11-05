@@ -16,7 +16,10 @@ const { settingsOpen } = useConsent();
           ><NuxtLinkLocale to="/contact/">{{ tr('Contact') }}</NuxtLinkLocale>
         </nav>
       </div>
-      <p class="footer-description">{{ tr('Web development, software & design.') }}</p>
+      <div class="footer-summary">
+        <p class="footer-description">{{ tr('Web development, software & design.') }}</p>
+        <ContactLinks :show-email="false" />
+      </div>
       <div class="footer-bottom">
         <p>{{ tr('© 2026 Web Extreme Dev') }}</p>
         <NuxtLinkLocale class="plain-button" to="/privacy/">{{ tr('Privacy') }}</NuxtLinkLocale

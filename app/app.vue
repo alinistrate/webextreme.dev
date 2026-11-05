@@ -30,6 +30,7 @@ useHead({
         taxID: company.cui,
         url: site.url,
         email: site.email,
+        telephone: site.phone,
         logo: site.url + '/favicon.svg',
         address: {
           '@type': 'PostalAddress',

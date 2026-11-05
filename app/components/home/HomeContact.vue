@@ -10,9 +10,7 @@ const { tr } = useCopy();
         <p class="contact-intro">
           {{ tr('Tell us about the idea, the challenge or the next thing you want to improve.') }}
         </p>
-        <a class="email-link" href="mailto:contact@webextreme.dev"
-          ><AppIcon name="email" />contact@webextreme.dev</a
-        >
+        <ContactLinks />
       </div>
       <ContactForm />
     </div>
